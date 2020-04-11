@@ -67,7 +67,7 @@
 									<td>TVT Quận 1</td>
 									<td>JohnDoe</td>
 									<td>
-										<a class="btn btn-primary" href="update-computer?computerId=${computer.computerId}">
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thanh-vien">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
 										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
@@ -84,7 +84,7 @@
 									<td>TVT Quận 1</td>
 									<td>Smith</td>
 									<td>
-										<a class="btn btn-primary" href="update-computer?computerId=${computer.computerId}">
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thanh-vien">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
 										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
@@ -100,7 +100,7 @@
 									<td>TVT Quận 1</td>
 									<td>huongpham</td>
 									<td>
-										<a class="btn btn-primary" href="update-computer?computerId=${computer.computerId}">
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thanh-vien">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
 										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>

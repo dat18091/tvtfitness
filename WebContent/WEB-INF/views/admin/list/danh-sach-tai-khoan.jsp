@@ -63,7 +63,7 @@
 									<td>Administrator</td>
 									<td>Administrator</td>
 									<td>
-										<a class="btn btn-primary" href="update-computer?computerId=${computer.computerId}">
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-tai-khoan">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
 										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
@@ -78,7 +78,7 @@
 									<td>Gymer</td>
 									<td>Gold</td>
 									<td>
-										<a class="btn btn-primary" href="update-computer?computerId=${computer.computerId}">
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-tai-khoan">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
 										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
@@ -93,7 +93,7 @@
 									<td>Employee</td>
 									<td>Employee</td>
 									<td>
-										<a class="btn btn-primary" href="update-computer?computerId=${computer.computerId}">
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-tai-khoan">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
 										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
