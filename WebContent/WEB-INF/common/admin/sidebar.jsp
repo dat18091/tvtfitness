@@ -114,6 +114,10 @@
 								class="fa fa-circle-o"></i>Đăng Ký Lớp Học</a></li>
 						<li><a href="${pageContext.request.contextPath}/dang-ky-dich-vu"><i
 								class="fa fa-circle-o"></i>Đăng Ký Dịch Vụ</a></li>
+						<li><a href="${pageContext.request.contextPath}/danh-sach-dang-ky-lop"><i
+								class="fa fa-circle-o"></i>Danh Sách Đăng Ký Lớp</a></li>
+						<li><a href="${pageContext.request.contextPath}/danh-sach-dang-ky-dich-vu"><i
+								class="fa fa-circle-o"></i>Danh Sach Dang Ky Dịch Vụ</a></li>		
 						<li><a href="${pageContext.request.contextPath}/danh-sach-dang-ky"><i
 								class="fa fa-circle-o"></i>Danh Sách Đăng Ký</a></li>
 					</ul>

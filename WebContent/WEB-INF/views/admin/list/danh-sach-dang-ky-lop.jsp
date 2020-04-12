@@ -17,7 +17,7 @@
 			<section class="wrapper">
 
 				<div class="panel panel-default">
-					<div class="panel-heading">Danh Sách Đăng Ký</div>
+					<div class="panel-heading">Danh Sách Đăng Ký Lớp</div>
 					<div class="row w3-res-tb">
 						<div class="col-sm-5 m-b-xs">
 							<select class="input-sm form-control w-sm inline v-middle">
@@ -49,9 +49,7 @@
 									<th>Mã thành viên</th>
 									<th>Tên thành viên</th>
 									<th>Trạng thái phí</th>
-									<th>Dịch vụ</th>
-									<th>Thời gian đăng ký</th>
-									<th>Chi phí</th>
+									<th style="width: 250px;">Chức năng</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -62,9 +60,12 @@
 									<td>TV0001</td>
 									<td>Nguyễn Thị Chi</td>
 									<td>Đã thanh toán hết</td>
-									<td>Tập với HLV Nam</td>
-									<td>Thời gian đăng ký</td>
-									<td>2000000</td>
+									<td>
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
+										<i class="fa fa-edit"></i> Update</a> &nbsp; 
+										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
+										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+									</td>
 								</tr>
 								
 								<tr>
@@ -74,9 +75,12 @@
 									<td>TV0002</td>
 									<td>Nguyễn Thanh Thảo</td>
 									<td>Đã thanh toán hết</td>
-									<td>Tập với HLV Nam</td>
-									<td>Thời gian đăng ký</td>
-									<td>2000000</td>
+									<td>
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
+										<i class="fa fa-edit"></i> Update</a> &nbsp; 
+										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
+										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+									</td>
 								</tr>
 								<tr>
 									<td><label class="i-checks m-b-none"><input
@@ -85,9 +89,12 @@
 									<td>TV0003</td>
 									<td>Nguyễn Hoàng Yến</td>
 									<td>Đã thanh toán hết</td>
-									<td>Tập với HLV Nam</td>
-									<td>Thời gian đăng ký</td>
-									<td>2000000</td>
+									<td>
+										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
+										<i class="fa fa-edit"></i> Update</a> &nbsp; 
+										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
+										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>

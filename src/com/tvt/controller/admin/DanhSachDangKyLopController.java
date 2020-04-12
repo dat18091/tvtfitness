@@ -1,4 +1,4 @@
-package com.tvt.controller.web;
+package com.tvt.controller.admin;
 
 import java.io.IOException;
 
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author dat18
  *
  */
-@WebServlet(urlPatterns = {"/our-team"})
-public class OurTeamController extends HttpServlet {
+@WebServlet(urlPatterns = "/danh-sach-dang-ky-lop")
+public class DanhSachDangKyLopController extends HttpServlet {
 
 	/**
 	 * 
@@ -23,7 +23,7 @@ public class OurTeamController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/web/team.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/list/danh-sach-dang-ky-lop.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
@@ -32,5 +32,4 @@ public class OurTeamController extends HttpServlet {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
-	
 }
