@@ -62,12 +62,12 @@
 									<td>${servicelist.serviceId}</td>
 									<td>${servicelist.serviceName}</td>
 									<td>${servicelist.serviceType}</td>
-									<td><img width="50px" height="50px" src="<c:url value="/resources/uploads/service/${servicelist.imageUrl}" />"></td>
+									<td><img width="50px" height="50px" src="<c:url value="/resources/uploads/${servicelist.imageUrl}" />"></td>
 									<td>${servicelist.price}</td>
 									<td>
 										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dich-vu">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
+										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="xoa-dich-vu?serviceId=${servicelist.serviceId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 									</td>
 								</tr>

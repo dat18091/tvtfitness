@@ -22,12 +22,12 @@
 							<header class="panel-heading">Thêm Dịch Vụ</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="{{URL::to('/save-brand-product')}}">
+									action="${pageContext.request.contextPath}/them-dich-vu" enctype="multipart/form-data">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="serviceId" value="${service.serviceId}"
 												placeholder="Nhập mã dịch vụ..." class="form-control">
 										</div>
 									</div>
@@ -35,7 +35,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="serviceName" value="${service.serviceName}"
 												placeholder="Nhập tên dịch vụ..." class="form-control">
 										</div>
 									</div>
@@ -43,34 +43,34 @@
 									<div class="form-group"><!-- Category Product Parent -->
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại dịch vụ</label>
 				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Tập với HLV Nữ</option>
-				                                   <option value="{{ $parent->parent_id }}">Tập với HLV Nam</option>
-				                                   <option value="{{ $parent->parent_id }}">Chế độ luyện tập chuyên nghiệp</option>
-				                                   <option value="{{ $parent->parent_id }}">Mua thiết bị</option>
-				                                   <option value="{{ $parent->parent_id }}">Ăn uống</option>
+				                            <select name="serviceType" class="form-control m-bot15">
+				                                   <option value="Tập với HLV Nữ">Tập với HLV Nữ</option>
+				                                   <option value="Tập luyện chuyên nghiệp">Tập luyện chuyên nghiệp</option>
+				                                   <option value="Mua thiết bị">Mua thiết bị</option>
+				                                   <option value="Ăn uống">Ăn uống</option>
 				                            </select>
+				                        </div>
+				                    </div>
+				                    
+				                    <div class="form-group"><!-- Product Image -->
+				                        <label class="col-sm-3 control-label">Hình</label>
+				                        <div class="col-sm-6">
+				                            <input type="file" name="imageUrl" value="${service.imageUrl}" class="form-control">
 				                        </div>
 				                    </div>
 									
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Phí dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="price" value="${service.price}"
 												placeholder="Nhập phí dịch vụ..." class="form-control">
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
-												type="submit">
-												<i class="glyphicon glyphicon-plus"></i> Save
-											</button>
-											<button name="cancel_brand_product" class="btn btn-cancel"
-												type="button">
-												<i class="glyphicon glyphicon-remove"></i> Cancel
-											</button>
+											<input type="submit" class="btn btn-primary" value="Submit" />
+											<a href="list-computer" class="btn btn-danger">Cancel</a>
 										</div>
 									</div>
 								</form>

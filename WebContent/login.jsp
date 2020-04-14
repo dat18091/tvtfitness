@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/common/taglib.jsp" %>
 <!DOCTYPE html>
-
+<html>
 <head>
 	<title>Admin Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,8 +28,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h2>TVT FITNESS</h2>
 			
 			<form action="${pageContext.request.contextPath}/admin-home" method="post">
-				<input type="text" class="text" name="admin_email" placeholder="Enter your email..." required="">
-				<input type="password" class="text" name="admin_password" placeholder="Enter your password..." required="">
+				<input type="text" class="text" name="admin_email" placeholder="Enter your email...">
+				<input type="password" class="text" name="admin_password" placeholder="Enter your password...">
 				<span><input type="checkbox" />Remember Me</span>
 				<h6><a href="#">Forgot Password?</a></h6>
 				<div class="clearfix"></div>
