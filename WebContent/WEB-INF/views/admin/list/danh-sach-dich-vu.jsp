@@ -48,18 +48,22 @@
 									<th>Mã dịch vụ</th>
 									<th>Tên dịch vụ</th>
 									<th>Loại dịch vụ</th>
+									<th>Hình</th>
 									<th>Phí dịch vụ</th>
 									<th style="width: 250px;">Chức năng</th>
 								</tr>
 							</thead>
 							<tbody>
+								<c:forEach items="${serviceList}" var="servicelist">
 								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>DV0001</td>
-									<td>Tập luyện cường độ cao</td>
-									<td>Chế độ luyện tập chuyên nghiệp</td>
-									<td>1500000</td>
+									<th style="width: 20px;"><label class="i-checks m-b-none">
+											<input type="checkbox"><i></i>
+									</label></th>
+									<td>${servicelist.serviceId}</td>
+									<td>${servicelist.serviceName}</td>
+									<td>${servicelist.serviceType}</td>
+									<td><img width="50px" height="50px" src="<c:url value="/resources/uploads/service/${servicelist.imageUrl}" />"></td>
+									<td>${servicelist.price}</td>
 									<td>
 										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dich-vu">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
@@ -67,35 +71,7 @@
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 									</td>
 								</tr>
-								
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>DV0002</td>
-									<td>Tập luyện hưng phấn</td>
-									<td>Tập với HLV Nữ</td>
-									<td>1500000</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dich-vu">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>DV0003</td>
-									<td>Tập luyện cường độ cao</td>
-									<td>Chế độ luyện tập chuyên nghiệp</td>
-									<td>1500000</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dich-vu">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
