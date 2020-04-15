@@ -1,5 +1,6 @@
 package com.tvt.model.bo;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.tvt.model.bean.Service;
@@ -26,6 +27,10 @@ public class ServiceBOImpl implements IServiceBO<Service> {
 	@Override
 	public void delete(String serviceId) {
 		serviceDAO.delete(serviceId);
+	}
+
+	public Service searchById(String serviceId) throws SQLException {
+		return serviceDAO.searchById(serviceId);
 	}
 
 }
