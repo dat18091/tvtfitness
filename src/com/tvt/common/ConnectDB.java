@@ -5,22 +5,24 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectDB {
-	private static Connection con;
-	private static final String SQLSERVER_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	
-	private ConnectDB() {}
+	private static String url = "jdbc:sqlserver://localhost:1433;databaseName=gym";
+	private static String userName = "sa";
+	private static String password = "123";
+	private static String driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	static Connection connection;
 	
 	public static Connection getConnect() {
 		try {
-			Class.forName(SQLSERVER_DRIVER);
-			System.out.println("Saving driver...");
-			String urlSQLSERVER = String.format("jdbc:sqlserver://DESKTOP-SLU3ABU\\SQLEXPRESS:1433;"
-					+ "databaseName=gym;user=sa;password=123;");
-			con = DriverManager.getConnection(urlSQLSERVER);
-			System.out.println("Connect database is successful!");
-		} catch (ClassNotFoundException | SQLException e) {
+			Class.forName(driverName);
+			connection = DriverManager.getConnection(url, userName, password);
+		} catch (SQLException e) {
+			System.out.println("Connection successful");
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			System.out.println("Connection failed");
 			e.printStackTrace();
 		}
-		return con;
+		return connection;
 	}
 }

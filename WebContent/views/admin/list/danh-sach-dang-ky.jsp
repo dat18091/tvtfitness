@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/common/taglib.jsp"%>
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Admin Panel</title>
-<%@include file="/WEB-INF/common/admin/css-resources.jsp" %>
+<%@include file="/common/admin/css-resources.jsp" %>
 </head>
 
 <body>
 	<section id="container">
-		<%@include file="/WEB-INF/common/admin/header.jsp"%>
-		<%@include file="/WEB-INF/common/admin/sidebar.jsp"%>
+		<%@include file="/common/admin/header.jsp"%>
+		<%@include file="/common/admin/sidebar.jsp"%>
 		<!--main content start-->
 		<section id="main-content">
 			<section class="wrapper">
@@ -125,7 +125,7 @@
 		<!--main content end-->
 	</section>
 
-	<%@include file="/WEB-INF/common/admin/js-resources.jsp" %>
+	<%@include file="/common/admin/js-resources.jsp" %>
 </body>
 
 </html>

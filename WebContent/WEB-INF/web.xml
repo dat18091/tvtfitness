@@ -6,7 +6,6 @@
 	<display-name>tvtfitness.com</display-name>
 	<welcome-file-list>
 		<welcome-file>home-page</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- <welcome-file-list>
 		<welcome-file>admin-login</welcome-file>

@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/common/taglib.jsp" %>
+<%@ include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>TVT Fitness | Home</title>
-   	<%@include file="/WEB-INF/common/web/css-resources.jsp" %> 
+   	<%@include file="/common/web/css-resources.jsp" %> 
     
 </head>
 
 <body>
-    <%@include file="/WEB-INF/common/web/menu-section.jsp" %>
+    <%@include file="/common/web/menu-section.jsp" %>
 
     <!-- Hero Section Begin -->
     <section class="hero-section">
@@ -44,7 +44,7 @@
     </section>
     <!-- Hero Section End -->
 
-	<%@include file="/WEB-INF/common/web/choose-section.jsp" %>    
+	<%@include file="/common/web/choose-section.jsp" %>    
 
     <!-- Classes Section Begin -->
     <section class="classes-section spad">
@@ -309,7 +309,7 @@
     </section>
     <!-- Team Section End -->
 	
-	<%@include file="/WEB-INF/common/web/footer.jsp" %>
+	<%@include file="/common/web/footer.jsp" %>
    
     <!-- Search model Begin -->
     <div class="search-model">
@@ -323,7 +323,7 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
-    <%@include file="/WEB-INF/common/web/js-resources.jsp" %>
+    <%@include file="/common/web/js-resources.jsp" %>
 
 
 
