@@ -5,8 +5,14 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>tvtfitness.com</display-name>
 	<welcome-file-list>
-		<welcome-file>home-page</welcome-file>
+		<welcome-file>admin-home</welcome-file>
 	</welcome-file-list>
+	
+	
+	
+	
+	
+	
 	<!-- <welcome-file-list>
 		<welcome-file>admin-login</welcome-file>
 		<welcome-file>login.jsp</welcome-file>
