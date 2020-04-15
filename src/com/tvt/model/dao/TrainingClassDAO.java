@@ -16,11 +16,11 @@ import com.tvt.common.ConnectDB;
 public class TrainingClassDAO {
 	ConnectDB connectDB = new ConnectDB();
 	Connection conn;
-	
-	public void themLopTap(String classId, String className, String packageName, String memberName, String maxMember,
-			String timeStart, String timeEnd, String status) {
-		conn=ConnectDB.getConnect();
-		String sql = "Insert into CLASS (classId,className,packageId,empId,timeTable,maxMember,timeStart,timeEnd,status,branchId) Values (?,?,?,?,?,?,?,?,?,?)";
+
+	public void themLopTap(String classId, String className, String packageName, String memberName, String timeTable,
+			String maxMember, String timeStart, String timeEnd) {
+		conn = ConnectDB.getConnect();
+		String sql = "Insert into CLASS (classId,className,packageId,empId,timeTable,maxMember,timeStart,timeEnd,branchId) Values (?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, classId);
@@ -31,5 +31,5 @@ public class TrainingClassDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

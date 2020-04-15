@@ -14,7 +14,7 @@ import com.tvt.model.bo.TrainingClassBO;
 /**
  * Servlet implementation class ThemLopTap
  */
-@WebServlet("/them-lop-tap")
+@WebServlet("/them-lop-hoc")
 public class ThemLopTap extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -51,8 +51,8 @@ public class ThemLopTap extends HttpServlet {
 			String maxMember = request.getParameter("maxMember");
 			String timeStart = request.getParameter("timeStart");
 			String timeEnd = request.getParameter("timeEnd");
-			String status = request.getParameter("status");
-			trainingClassBO.themLopTap(classId,className,packageName,memberName,maxMember,timeStart,timeEnd,status);
+			trainingClassBO.themLopTap(classId, className, packageName, memberName, timeTable, maxMember, timeStart,
+					timeEnd);
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/them-lop-hoc.jsp");

@@ -22,7 +22,7 @@
 							<header class="panel-heading">Thêm Lớp Tập</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="${pageContext.request.contextPath}/them-lop-tap">
+									action="${pageContext.request.contextPath}/them-lop-hoc">
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã lớp học</label>
 										<div class="col-sm-6">
@@ -87,7 +87,7 @@
 											&nbsp; <input type="checkbox" id="vehicle6" name="timeTable"
 												value="7"> <label for="vehicle3">Thu 7</label>
 											&nbsp; <input type="checkbox" id="vehicle7" name="timeTable"
-												value="cn"> <label for="vehicle3">Chu nhat</label>
+												value="chu nhat"> <label for="vehicle3">Chu nhat</label>
 										</div>
 									</div>
 
@@ -95,8 +95,8 @@
 										<label class="col-sm-3 control-label">Số lượng học
 											viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="maxMember"
-												placeholder="Nhập số lượng học viên của lớp tập"
+											<input type="number" name="maxMember" min=3
+												placeholder="Số lượng học viên của lớp tập"
 												class="form-control">
 										</div>
 									</div>
@@ -104,48 +104,18 @@
 									<div class="form-group">
 										<!-- Category Product Parent -->
 										<label class="col-sm-3 control-label col-lg-3"
-											for="inputSuccess">Thời gian Bắt Đầu</label>
+											for="inputSuccess">Thời gian Buổi tập</label>
 										<div class="col-lg-6">
-											<select name="timeStart" class="form-control m-bot15">
-												<option value="{{ $parent->parent_id }}">07:00</option>
-												<option value="{{ $parent->parent_id }}">09:00</option>
-												<option value="{{ $parent->parent_id }}">13:00</option>
-												<option value="{{ $parent->parent_id }}">15:00</option>
-												<option value="{{ $parent->parent_id }}">17:00</option>
-												<option value="{{ $parent->parent_id }}">19:00</option>
-											</select>
+											<input type="time" id="inputSuccess1" name=timeStart>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<!-- Category Product Parent -->
 										<label class="col-sm-3 control-label col-lg-3"
-											for="inputSuccess">Thời gian Kết Thúc</label>
+											for="inputSuccess">Ngày Kết Thúc</label>
 										<div class="col-lg-6">
-											<select name="timeEnd" class="form-control m-bot15">
-												<option value="{{ $parent->parent_id }}">08:30</option>
-												<option value="{{ $parent->parent_id }}">10:30</option>
-												<option value="{{ $parent->parent_id }}">14:30</option>
-												<option value="{{ $parent->parent_id }}">16:30</option>
-												<option value="{{ $parent->parent_id }}">19:30</option>
-												<option value="{{ $parent->parent_id }}">21:30</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<!-- Category Product Parent -->
-										<label class="col-sm-3 control-label col-lg-3"
-											for="inputSuccess">Trạng thái lớp</label>
-										<div class="col-lg-6">
-											<select name="status" class="form-control m-bot15">
-												<option value="{{ $parent->parent_id }}">Đủ học
-													viên</option>
-												<option value="{{ $parent->parent_id }}">Thiếu học
-													viên</option>
-												<option value="{{ $parent->parent_id }}">Cơ sở vật
-													chất hỏng</option>
-											</select>
+											<input type="date" id="inputSuccess2" name="timeEnd">
 										</div>
 									</div>
 
