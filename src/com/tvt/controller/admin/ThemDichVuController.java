@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.tvt.model.bean.Service;
-import com.tvt.model.bo.ServiceBOImpl;
 
 /**
  * @author dat18
@@ -32,7 +31,6 @@ public class ThemDichVuController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ServiceBOImpl serviceBOImpl = new ServiceBOImpl();
 		
 		req.setCharacterEncoding("UTF-8");
 		String serviceId = (String) req.getParameter("serviceId");
@@ -52,7 +50,6 @@ public class ThemDichVuController extends HttpServlet {
 		} catch (Exception e) {
 		}
 		Service service = new Service(serviceId, serviceName, serviceType, imageUrl, serPrice);
-		serviceBOImpl.insert(service);
 		req.setAttribute("service", service);
 		resp.sendRedirect(req.getContextPath() + "/danh-sach-dich-vu");
 	}
