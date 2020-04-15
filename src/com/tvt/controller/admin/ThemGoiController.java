@@ -23,7 +23,7 @@ public class ThemGoiController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/insert/them-goi.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/insert/them-goi.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

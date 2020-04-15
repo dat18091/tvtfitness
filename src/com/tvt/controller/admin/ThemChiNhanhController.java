@@ -23,7 +23,7 @@ public class ThemChiNhanhController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/insert/them-chi-nhanh.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/insert/them-chi-nhanh.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

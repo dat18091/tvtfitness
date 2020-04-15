@@ -23,7 +23,7 @@ public class DanhSachGoiController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/list/danh-sach-goi.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/list/danh-sach-goi.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

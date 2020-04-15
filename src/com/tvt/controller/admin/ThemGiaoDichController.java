@@ -23,7 +23,7 @@ public class ThemGiaoDichController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/insert/insert/them-giao-dich.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/insert/insert/them-giao-dich.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

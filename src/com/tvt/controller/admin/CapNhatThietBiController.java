@@ -23,7 +23,7 @@ public class CapNhatThietBiController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/update/cap-nhat-thiet-bi.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/update/cap-nhat-thiet-bi.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

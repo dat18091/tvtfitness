@@ -23,7 +23,7 @@ public class ThemThietBiController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/insert/them-thiet-bi.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/insert/them-thiet-bi.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
