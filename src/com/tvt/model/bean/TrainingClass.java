@@ -12,8 +12,8 @@ import java.time.LocalDate;
 public class TrainingClass {
 	private String classId;
 	private String className;
-	private String packageId;
-	private String empId;
+	private String packageName;
+	private String empName;
 	private String schedule;
 	private int maxMember;
 	private LocalDate dateStart;
@@ -25,13 +25,13 @@ public class TrainingClass {
 
 	}
 
-	public TrainingClass(String classId, String className, String packageId, String empId, String schedule,
+	public TrainingClass(String classId, String className, String packageName, String empName, String schedule,
 			int maxMember, LocalDate dateStart, LocalDate dateEnd, String branchId, String status) {
 		super();
 		this.classId = classId;
 		this.className = className;
-		this.packageId = packageId;
-		this.empId = empId;
+		this.packageName = packageName;
+		this.empName = empName;
 		this.schedule = schedule;
 		this.maxMember = maxMember;
 		this.dateStart = dateStart;
@@ -57,19 +57,19 @@ public class TrainingClass {
 	}
 
 	public String getPackageId() {
-		return packageId;
+		return packageName;
 	}
 
-	public void setPackageId(String packageId) {
-		this.packageId = packageId;
+	public void setPackageId(String packageName) {
+		this.packageName = packageName;
 	}
 
 	public String getEmpId() {
-		return empId;
+		return empName;
 	}
 
-	public void setEmpId(String empId) {
-		this.empId = empId;
+	public void setEmpName(String empName) {
+		this.empName = empName;
 	}
 
 	public String getSchedule() {
