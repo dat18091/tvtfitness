@@ -30,8 +30,7 @@ public class ThemLopTap extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
@@ -39,24 +38,28 @@ public class ThemLopTap extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		TrainingClassBO trainingClassBO = new TrainingClassBO();
+		request.setCharacterEncoding("UTF-8");
+		
 		if ("submit".equals(request.getParameter("submit"))) {
 			String classId = request.getParameter("classId");
 			String className = request.getParameter("className");
-			String packageName = request.getParameter("packageName");
-			String memberName = request.getParameter("memberName");
-			String timeTable = request.getParameter("timeTable");
-			String maxMember = request.getParameter("maxMember");
-			String timeStart = request.getParameter("timeStart");
-			String timeEnd = request.getParameter("timeEnd");
-			trainingClassBO.themLopTap(classId, className, packageName, memberName, timeTable, maxMember, timeStart,
-					timeEnd);
+			String packageId = request.getParameter("packageId");
+			String empId = request.getParameter("empId");
+			String[] schedule = request.getParameterValues("schedule");//[07:00],[2],[3]
+			int maxMember = Integer.parseInt(request.getParameter("maxMember"));
+			String dateStart = request.getParameter("dateStart");//yyyy-mm-dd;
+			String dateEnd = request.getParameter("dateEnd");
+			String branchId = request.getParameter("branchId");
+			trainingClassBO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd, branchId);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/list/danh-sach-lop-hoc.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/them-lop-hoc.jsp");
+			dispatcher.forward(request, response);
 		}
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/them-lop-hoc.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }
