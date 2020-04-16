@@ -36,4 +36,9 @@ public class Branch {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	@Override
+	public String toString() {
+		return "Branch [branchId=" + branchId + ", branchName=" + branchName + ", address=" + address + "]";
+	}
+	
 }
