@@ -42,9 +42,7 @@
 						<table class="table table-striped b-t b-light">
 							<thead>
 								<tr>
-									<th style="width: 20px;"><label class="i-checks m-b-none">
-											<input type="checkbox"><i></i>
-									</label></th>
+									<th style="width: 20px;"></th>
 									<th>Mã thiết bị</th>
 									<th>Tên thiết bị</th>
 									<th>Đơn giá</th>

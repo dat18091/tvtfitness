@@ -22,20 +22,20 @@
 							<header class="panel-heading">Cập Nhật Chi Nhánh</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="{{URL::to('/save-brand-product')}}">
+									action="cap-nhat-chi-nhanh">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã chi nhánh</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập mã chi nhánh..." class="form-control">
+											<input type="text" name="branchId" value="${branch.getBranchId() }"
+											readonly="readonly" placeholder="Nhập mã chi nhánh..." class="form-control" >
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên chi nhánh</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="branchName" value="${branch.getBranchName() }"
 												placeholder="Nhập tên chi nhánh..." class="form-control">
 										</div>
 									</div>
@@ -43,25 +43,15 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Địa chỉ</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="address" value="${branch.getAddress() }"
 												placeholder="Nhập tên địa chỉ..." class="form-control">
-										</div>
-									</div>
-
-									<div class="form-group ">
-										<label for="ccomment"
-											class="control-label col-lg-3">Mô tả</label>
-										<div class="col-lg-6">
-											<textarea class="form-control"
-												name="brand_product_description" style="resize: none;"
-												rows="5" id="ccomment"></textarea>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
 											<button name="add_brand_product" class="btn btn-save"
 												type="submit">
-												<i class="glyphicon glyphicon-plus"></i> Update
+												<i class="glyphicon glyphicon-edit"></i> Update
 											</button>
 											<button name="cancel_brand_product" class="btn btn-cancel"
 												type="button">
