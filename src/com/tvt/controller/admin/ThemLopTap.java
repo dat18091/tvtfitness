@@ -40,8 +40,10 @@ public class ThemLopTap extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		TrainingClassBO trainingClassBO = new TrainingClassBO();
 		request.setCharacterEncoding("UTF-8");
+		TrainingClassBO trainingClassBO = new TrainingClassBO();
+
+		//Danh sach cac goi, nhan vien va chi nhanh.
 		
 		if ("submit".equals(request.getParameter("submit"))) {
 			String classId = request.getParameter("classId");

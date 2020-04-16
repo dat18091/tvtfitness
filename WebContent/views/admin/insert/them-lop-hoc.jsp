@@ -1,3 +1,7 @@
+<%@page import="com.tvt.model.bean.Branch"%>
+<%@page import="com.tvt.model.bean.Employee"%>
+<%@page import="com.tvt.model.bean.Package"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
@@ -46,11 +50,14 @@
 											for="inputSuccess">Gói</label>
 										<div class="col-lg-6">
 											<select name="packageId" class="form-control m-bot15">
-												<option value="P0001">Gói bình thường</option>
-												<option value="P0002">Gói 1 tháng</option>
-												<option value="P0003">Gói 3 tháng</option>
-												<option value="P0004">Gói 6 tháng</option>
-												<option value="P0005">Gói một năm</option>
+												<%
+													ArrayList<Package> listPackages = (ArrayList<Package>)request.getAttribute("listPackages");
+													for(Package goi: listPackages) {
+												%>
+												<option value="<%=goi.getPackageId()%>"><%=goi.getPackageName()%>></option>
+												<%
+													}
+												%>
 											</select>
 										</div>
 									</div>
@@ -60,9 +67,14 @@
 											for="inputSuccess">Mã Nhân viên</label>
 										<div class="col-lg-6">
 											<select name="empId" class="form-control m-bot15">
-												<option value="NV0001">Phuong</option>
-												<option value="NV0002">Dat</option>
-												<option value="NV0003">Quoc</option>
+												<%
+													ArrayList<Employee> listEmployees = (ArrayList<Employee>)request.getAttribute("listEmployees");
+													for(Employee employee: listEmployees) {
+												%>
+												<option value="<%=employee.getEmpId()%>"><%=employee.getEmpName()%>></option>
+												<%
+													}
+												%>
 											</select>
 										</div>
 									</div>
@@ -137,8 +149,14 @@
 											for="inputSuccess">Chi nhánh</label>
 										<div class="col-lg-6">
 											<select name="branchId" class="form-control m-bot15">
-												<option value="DN">Da Nang</option>
-												<option value="HCM">Ho Chi Minh</option>
+												<%
+													ArrayList<Branch> listBranchs = (ArrayList<Branch>)request.getAttribute("listBranchs");
+													for(Branch branch: listBranchs) {
+												%>
+												<option value="<%=branch.getBranchId()%>"><%=branch.getBranchName()%>></option>
+												<%
+													}
+												%>
 											</select>
 										</div>
 									</div>
