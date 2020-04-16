@@ -34,8 +34,6 @@ public class MemberDAO implements IDAOBase<Member> {
 			ResultSet rs = pstm.executeQuery();
 			List<Member> list = new ArrayList<Member>();
 			while (rs.next()) {
-				String maKH = rs.getString("MaKH");
-
 				String memberId = rs.getString("memberId");
 				String fullName = rs.getString("fullName");
 				LocalDate birthday = rs.getDate("birthday").toLocalDate();

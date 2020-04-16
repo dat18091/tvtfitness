@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tvt.model.bean.Account;
+import com.tvt.model.bean.Branch;
 import com.tvt.model.bean.Member;
+import com.tvt.model.bo.AccountBO;
+import com.tvt.model.bo.BranchBO;
 import com.tvt.model.bo.MemberBO;
 import com.tvt.utils.MyUtils;
 
@@ -30,8 +35,24 @@ public class ThemThanhVienController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/views/admin/insert/them-thanh-vien.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/insert/them-thanh-vien.jsp");
+		AccountBO accountBO = new AccountBO();
+		try {
+			ArrayList<Account> listAccount = accountBO.getListAccount();
+			req.setAttribute("listAccount", listAccount);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		BranchBO branchBO = new BranchBO();
+		try {
+			ArrayList<Branch> listBranch = branchBO.getListBranch();
+			req.setAttribute("listBranch", listBranch);
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		dispatcher.forward(req, resp);
 	}
 
@@ -54,21 +75,23 @@ public class ThemThanhVienController extends HttpServlet {
 
 		if (memberId == null || !myUtils.checkValid(memberId, "^TV[0-9]{5}$")) {
 			System.out.println("ERROR");
-		}
 
-		try {
-			memberBO.insertMember(member);
-		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
+		} else {
+			try {
+				memberBO.insertMember(member);
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 		}
 
 		req.setAttribute("member", member);
 
 		if ("submit".equals(req.getParameter("submit"))) {
+//			if (memberId != null || myUtils.checkValid(memberId, "^TV[0-9]{5}$"))
 			resp.sendRedirect(req.getContextPath() + "/danh-sach-thanh-vien");
 		} else {
-			RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/them-thanh-vien.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/insert/them-thanh-vien.jsp");
 			dispatcher.forward(req, resp);
 		}
 	}

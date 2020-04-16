@@ -56,55 +56,27 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TV0001</td>
-									<td>JohnDoe</td>
-									<th>1990-04-10</th>
-									<td>Nam</td>
-									<td>0252156525</td>
-									<td>TVT Quận 1</td>
-									<td>JohnDoe</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thanh-vien">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TV0002</td>
-									<td>Smith</td>
-									<th>1990-04-10</th>
-									<td>Nữ</td>
-									<td>0252156525</td>
-									<td>TVT Quận 1</td>
-									<td>Smith</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thanh-vien">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TV0003</td>
-									<td>Phạm Hương</td>
-									<th>1990-04-10</th>
-									<td>Nữ</td>
-									<td>0252156525</td>
-									<td>TVT Quận 1</td>
-									<td>huongpham</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thanh-vien">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
+								<c:forEach items="${listMember}" var="member">
+									<tr>
+										<td><label class="i-checks m-b-none"><input
+												type="checkbox" name="post[]"><i></i></label></td>
+										<td>${member.memberId}</td>
+										<td>${member.fullName}</td>
+										<th>${member.birthday}</th>
+										<td>${member.gender}</td>
+										<td>${member.numberPhone}</td>
+										<td>${member.branchId}</td>
+										<td>${member.accountId}</td>
+										<td><a class="btn btn-primary"
+											href="cap-nhat-thanh-vien?memberId=${member.memberId}"> <i
+												class="fa fa-edit"></i> Update
+										</a> &nbsp; <a class="btn btn-danger"
+											onclick="confirm('Are you sure delete this computer?')"
+											href="xoa-thanh-vien?memberId=${member.memberId}"> <i
+												class="fa fa-trash" aria-hidden="true"></i> Delete
+										</a></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -141,7 +113,7 @@
 		<!--main content end-->
 	</section>
 
-<%@include file="/common/admin/js-resources.jsp"%>
+	<%@include file="/common/admin/js-resources.jsp"%>
 </body>
 
 </html>

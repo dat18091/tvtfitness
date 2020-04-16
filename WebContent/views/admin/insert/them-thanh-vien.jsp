@@ -88,7 +88,7 @@
 													ArrayList<Branch> listBranch = (ArrayList<Branch>) request.getAttribute("listBranch");
 													for (Branch branch : listBranch) {
 												%>
-												<option value="<%=branch.getBranchId()%>"><%=branch.getBranchName()%><%=branch.getAddress()%></option>
+												<option value="<%=branch.getBranchId()%>"><%=branch.getBranchName()%></option>
 												<%
 													}
 												%>
@@ -106,7 +106,7 @@
 													ArrayList<Account> listAccount = (ArrayList<Account>) request.getAttribute("listAccount");
 													for (Account account : listAccount) {
 												%>
-												<option value="<%=account.getAccountId()%>"><%=account.getAccountName()%><%=account.getPassword()%><%=account.getAccountType()%><%=account.getAccountLevel()%></option>
+												<option value="<%=account.getAccountId()%>"><%=account.getAccountName()%></option>
 												<%
 													}
 												%>
