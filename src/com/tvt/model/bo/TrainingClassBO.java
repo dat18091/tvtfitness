@@ -13,10 +13,9 @@ public class TrainingClassBO {
 
 	TrainingClassDAO trainingClassDAO = new TrainingClassDAO();
 
-	public void themLopTap(String classId, String className, String packageName, String memberName, String timeTable,
-			String maxMember, String timeStart, String timeEnd) {
-		trainingClassDAO.themLopTap(classId, className, packageName, memberName, timeTable, maxMember, timeStart,
-				timeEnd);
+	public void insert(String classId, String className, String packageId, String empId, String[] schedule,
+			int maxMember, String dateStart, String dateEnd, String branchId) {
+		trainingClassDAO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd, branchId);
 	}
 
 }
