@@ -1,6 +1,7 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.tvt.model.bean.Branch;
+import com.tvt.model.bo.BranchBO;
 
 /**
  * @author dat18
@@ -23,13 +27,35 @@ public class CapNhatChiNhanhController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/update/cap-nhat-chi-nhanh.jsp");
-		dispatcher.forward(req, resp);
+			BranchBO bo= new BranchBO();
+			String id= req.getParameter("id");
+			Branch branch = new Branch();
+			try {
+				branch = bo.getBranch(id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/update/cap-nhat-chi-nhanh.jsp");
+			req.setAttribute("branch", branch);
+			dispatcher.forward(req, resp); 
+		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		req.setCharacterEncoding("UTF-8");
+		BranchBO bo= new BranchBO();
+		Branch branch = new Branch();
+		branch.setBranchId(req.getParameter("branchId"));
+		branch.setBranchName(req.getParameter("branchName"));
+		branch.setAddress(req.getParameter("address"));
+		try {
+			bo.updateBranch(branch);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		resp.sendRedirect("danh-sach-chi-nhanh");
 	}
 }
