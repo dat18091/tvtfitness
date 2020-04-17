@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
+<title>TVT Fitness | Thêm Dịch Vụ</title>
 <%@include file="/common/admin/css-resources.jsp" %>
 </head>
 
@@ -21,13 +21,13 @@
 						<section class="panel">
 							<header class="panel-heading">Thêm Dịch Vụ</header>
 							<div class="panel-body">
-								<form class="form-horizontal bucket-form" method="post"
-									action="${pageContext.request.contextPath}/them-dich-vu" enctype="multipart/form-data">
+								<form class="form-horizontal bucket-form" method="POST" enctype = "multipart/form-data"
+									action="${pageContext.request.contextPath}/them-dich-vu">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="serviceId" value="${service.serviceId}"
+											<input type="text" name="serviceId"
 												placeholder="Nhập mã dịch vụ..." class="form-control">
 										</div>
 									</div>
@@ -35,12 +35,12 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="serviceName" value="${service.serviceName}"
+											<input type="text" name="serviceName"
 												placeholder="Nhập tên dịch vụ..." class="form-control">
 										</div>
 									</div>
 									
-									<div class="form-group"><!-- Category Product Parent -->
+									<div class="form-group">
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại dịch vụ</label>
 				                        <div class="col-lg-6">
 				                            <select name="serviceType" class="form-control m-bot15">
@@ -52,17 +52,17 @@
 				                        </div>
 				                    </div>
 				                    
-				                    <div class="form-group"><!-- Product Image -->
+				                    <div class="form-group">
 				                        <label class="col-sm-3 control-label">Hình</label>
 				                        <div class="col-sm-6">
-				                            <input type="file" name="imageUrl" value="${service.imageUrl}" class="form-control">
+				                            <input type="file" size = "50" name="imageUrl" class="form-control">
 				                        </div>
 				                    </div>
 									
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Phí dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="price" value="${service.price}"
+											<input type="text" name="price"
 												placeholder="Nhập phí dịch vụ..." class="form-control">
 										</div>
 									</div>

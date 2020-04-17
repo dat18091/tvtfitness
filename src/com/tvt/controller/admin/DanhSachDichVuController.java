@@ -23,8 +23,11 @@ public class DanhSachDichVuController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getServletContext()
-				.getRequestDispatcher("/views/admin/list/danh-sach-dich-vu.jsp");
+		List<Service> serviceList = new ArrayList<Service>();
+		ServiceBOImpl serviceBOImpl = new ServiceBOImpl();
+		serviceList = serviceBOImpl.getAll();
+		req.setAttribute("serviceList", serviceList);
+		RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/views/admin/list/danh-sach-dich-vu.jsp");
 		dispatcher.forward(req, resp);
 	}
 

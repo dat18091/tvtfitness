@@ -21,22 +21,22 @@
 						<section class="panel">
 							<header class="panel-heading">Cập Nhật Dịch Vụ</header>
 							<div class="panel-body">
-								<form class="form-horizontal bucket-form" method="post"
-									action="{{URL::to('/save-brand-product')}}">
+								<form class="form-horizontal bucket-form" method="POST"
+									action="${pageContext.request.contextPath}/cap-nhat-dich-vu">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập mã dịch vụ..." class="form-control">
+											<input type="text" name="serviceId" value="${service.getServiceId()}" 
+											style="color:#FF0000;}" readonly="readonly" class="form-control">
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập tên dịch vụ..." class="form-control">
+											<input type="text" name="serviceName"
+												value="${service.getServiceName()}" class="form-control">
 										</div>
 									</div>
 									
@@ -54,25 +54,25 @@
 				                    </div>
 									
 									<div class="form-group">
+				                        <label class="col-sm-3 control-label">Hình</label>
+				                        <div class="col-sm-6">
+				                            <input type="file" name="imageUrl" value="${service.getImageUrl()}" class="form-control">
+				                        </div>
+				                    </div>
+									
+									<div class="form-group">
 										<label class="col-sm-3 control-label">Phí dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập phí dịch vụ..." class="form-control">
+											<input type="text" name="price" value="${service.getPrice()}" class="form-control">
 										</div>
 									</div>
 									
 									<div class="form-group">
-										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
-												type="submit">
-												<i class="glyphicon glyphicon-plus"></i> Update
-											</button>
-											<button name="cancel_brand_product" class="btn btn-cancel"
-												type="button">
-												<i class="glyphicon glyphicon-remove"></i> Cancel
-											</button>
-										</div>
-									</div>
+                                    	<div class="col-lg-offset-3 col-lg-6">
+                                        	<input type="submit" class="btn btn-primary" value="Update"/>
+                                            <a href="danh-sach-dich-vu" class="btn btn-danger">Cancel</a>
+                                       	</div>
+                                    </div>
 								</form>
 							</div>
 						</section>

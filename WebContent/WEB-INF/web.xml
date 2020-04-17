@@ -7,8 +7,13 @@
 	<welcome-file-list>
 		<welcome-file>home-page</welcome-file>
 	</welcome-file-list>
-	<!-- <welcome-file-list>
-		<welcome-file>admin-login</welcome-file>
-		<welcome-file>login.jsp</welcome-file>
-	</welcome-file-list>  -->
+	<!-- <welcome-file-list> <welcome-file>admin-login</welcome-file> <welcome-file>login.jsp</welcome-file> 
+		</welcome-file-list> -->
+	<context-param>
+		<description>Location to store uploaded file</description>
+		<param-name>file-upload</param-name>
+		<param-value>
+         c:\apache-tomcat-5.5.29\webapps\data\
+      </param-value>
+	</context-param>
 </web-app>
