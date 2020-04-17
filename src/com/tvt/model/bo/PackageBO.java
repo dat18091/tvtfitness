@@ -27,5 +27,15 @@ public class PackageBO implements IPackageBO<Package>{
 	public void delete(String packageId) {
 		packageDAO.delete(packageId);
 	}
+
+	@Override
+	public void update(Package package1) {
+		packageDAO.update(package1);
+	}
+
+	@Override
+	public Package searchById(String packageId) throws Exception {
+		return packageDAO.searchById(packageId);
+	}
 	
 }

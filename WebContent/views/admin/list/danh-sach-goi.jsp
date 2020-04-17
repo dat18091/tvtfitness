@@ -62,7 +62,7 @@
 									<td>${packagelist.packageType}</td>
 									<td>${packagelist.price}</td>
 									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-goi">
+										<a class="btn btn-primary" href="cap-nhat-goi?packageId=${packagelist.packageId}">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
 										<a class="btn btn-danger" onclick="return confirm('Are you sure delete this package?')" href="xoa-goi?packageId=${packagelist.packageId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>

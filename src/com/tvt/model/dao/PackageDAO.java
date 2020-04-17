@@ -48,9 +48,18 @@ public class PackageDAO implements IDAOBase<Package>{
 	}
 
 	@Override
-	public void update(Package object) {
-		// TODO Auto-generated method stub
-		
+	public void update(Package package1) {
+		String query = "UPDATE PACKAGE SET packageName = ?, packageType = ?, price = ? WHERE packageId = ?";
+		try {
+			PreparedStatement preparedStatement = con.prepareStatement(query);
+			preparedStatement.setString(1, package1.getPackageName());
+			preparedStatement.setString(2, package1.getPackageType());
+			preparedStatement.setFloat(3, package1.getPrice());
+			preparedStatement.setString(4, package1.getPackageId());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -63,6 +72,28 @@ public class PackageDAO implements IDAOBase<Package>{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/**
+	 * @param packageId
+	 * @return
+	 * @throws SQLException
+	 * hiển thị thông tin lên form cập nhật
+	 */
+	public Package searchById(String packageId) throws SQLException {
+		String query = "SELECT * FROM PACKAGE WHERE packageId = ?";
+		PreparedStatement preparedStatement = con.prepareStatement(query);
+		preparedStatement.setString(1, packageId);
+		ResultSet resultSet = preparedStatement.executeQuery();
+		while (resultSet.next()) {
+			String packageName = resultSet.getNString("packageName");
+			String packageType = resultSet.getNString("packageType");
+			float price = resultSet.getFloat("price");
+			Package service = new Package(packageId, packageName, packageType, price);
+			return service;
+		}
+		return null;
 	}
 
 }

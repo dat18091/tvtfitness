@@ -12,4 +12,8 @@ public interface IPackageBO<T> {
 	public void insert(T object);
 	
 	public void delete(String object);
+	
+	public void update(T object);
+	
+	public T searchById(String object) throws Exception;
 }
