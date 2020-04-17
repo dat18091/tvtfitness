@@ -86,7 +86,7 @@
 									<td>
 										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-giao-dich">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
+										<a class="btn btn-danger" onclick="return confirm('Are you sure delete this computer?');" href="delete-computer?computerId=${computer.computerId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 									</td>
 								</tr>

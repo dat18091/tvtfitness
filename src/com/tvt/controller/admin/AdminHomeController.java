@@ -21,11 +21,9 @@ public class AdminHomeController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//t thay đổi cái dòng ni ok chưa đờ heo 
-	//thấy ko vại chời à ok 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/admin-home.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/admin-home.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

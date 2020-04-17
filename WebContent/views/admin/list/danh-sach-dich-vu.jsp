@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
+<title>TVT Fitness | Danh Sách Dịch Vụ</title>
 <%@include file="/common/admin/css-resources.jsp" %>
 </head>
 
@@ -65,9 +65,9 @@
 									<td><img width="50px" height="50px" src="<c:url value="/resources/uploads/${servicelist.imageUrl}" />"></td>
 									<td>${servicelist.price}</td>
 									<td>
-										<a class="btn btn-primary" href="cap-nhat-dich-vu?serviceId=${service.serviceId}">
+										<a class="btn btn-primary" href="cap-nhat-dich-vu?serviceId=${servicelist.serviceId}">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="xoa-dich-vu?serviceId=${servicelist.serviceId}">
+										<a class="btn btn-danger" onclick="return confirm('Are you sure delete this service?');" href="xoa-dich-vu?serviceId=${servicelist.serviceId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 									</td>
 								</tr>
