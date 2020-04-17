@@ -74,8 +74,8 @@
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Số điện thoại</label>
 											<div class="col-sm-6">
-												<input type="text" name="phoneNumber"
-													value="${member.phoneNumber}"
+												<input type="text" name="numberPhone"
+													value="${member.numberPhone}"
 													placeholder="Nhập ngày tháng năm sinh..."
 													class="form-control">
 											</div>
@@ -119,8 +119,8 @@
 
 										<div class="form-group">
 											<div class="col-lg-offset-3 col-lg-6">
-												<button name="add_brand_product" class="btn btn-save"
-													type="submit">
+												<button name="submit" class="btn btn-save"
+													type="submit" value="submit">
 													<i class="glyphicon glyphicon-plus"></i> Update
 												</button>
 												<button name="cancel_brand_product" class="btn btn-cancel"

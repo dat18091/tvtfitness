@@ -96,6 +96,24 @@ public class CapNhatThanhVienController extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		AccountBO accountBO = new AccountBO();
+		try {
+			ArrayList<Account> listAccount = accountBO.getListAccount();
+			req.setAttribute("listAccount", listAccount);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		BranchBO branchBO = new BranchBO();
+		try {
+			ArrayList<Branch> listBranch = branchBO.getListBranch();
+			req.setAttribute("listBranch", listBranch);
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
 		req.setAttribute("member", member);
 
 		if ("submit".equals(req.getParameter("submit"))) {

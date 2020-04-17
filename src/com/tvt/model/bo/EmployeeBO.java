@@ -23,7 +23,7 @@ public class EmployeeBO {
 		return employeeDAO.getAll();
 	}
 
-	public void deleteMember(String empId) throws SQLException {
+	public void deleteEmployee(String empId) throws SQLException {
 		employeeDAO.delete(empId);
 	}
 

@@ -1,3 +1,6 @@
+<%@page import="com.tvt.model.bean.Account"%>
+<%@page import="com.tvt.model.bean.Branch"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
@@ -22,12 +25,12 @@
 							<header class="panel-heading">Thêm Nhân Viên</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="">
+									action="${pageContext.request.contextPath}/them-nhan-vien">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã nhân viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="empId" value = "${employee.empId }"
 												placeholder="Nhập mã nhân viên..." class="form-control">
 										</div>
 									</div>
@@ -35,7 +38,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên nhân viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="empName" value="${employee.empName }"
 												placeholder="Nhập họ tên nhân viên..." class="form-control">
 										</div>
 									</div>
@@ -43,7 +46,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Số điện thoại</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="numberPhone" value="${employee.numberPhone }"
 												placeholder="Nhập số điện thoại của nhân viên..."
 												class="form-control">
 										</div>
@@ -52,7 +55,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Ngày sinh</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="birthday" value="${employee.birthday }"
 												placeholder="Nhập ngày tháng năm sinh của nhân viên..."
 												class="form-control">
 										</div>
@@ -62,7 +65,7 @@
 										<!-- Product Image -->
 										<label class="col-sm-3 control-label">Hình ảnh</label>
 										<div class="col-sm-6">
-											<input type="file" name="product_image" class="form-control">
+											<input type="file" name="imgUrl" class="form-control">
 										</div>
 									</div>
 

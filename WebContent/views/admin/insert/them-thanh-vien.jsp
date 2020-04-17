@@ -116,8 +116,8 @@
 
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
-												type="submit">
+											<button name="submit" class="btn btn-save"
+												type="submit" value="submit">
 												<i class="glyphicon glyphicon-plus"></i> Save
 											</button>
 											<button name="cancel_brand_product" class="btn btn-cancel"

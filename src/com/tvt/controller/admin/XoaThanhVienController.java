@@ -1,11 +1,15 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.tvt.model.bo.MemberBO;
 
 /**
  * Servlet implementation class XoaThanhVienController
@@ -26,8 +30,18 @@ public class XoaThanhVienController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+		String memberId = (String) request.getParameter("memberId");
+
+		MemberBO memberBO = new MemberBO();
+
+		try {
+			memberBO.deleteMember(memberId);
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		response.sendRedirect(request.getContextPath() + "/danh-sach-thanh-vien");
 	}
 
 	/**

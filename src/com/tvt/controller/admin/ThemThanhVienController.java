@@ -88,8 +88,8 @@ public class ThemThanhVienController extends HttpServlet {
 		req.setAttribute("member", member);
 
 		if ("submit".equals(req.getParameter("submit"))) {
-//			if (memberId != null || myUtils.checkValid(memberId, "^TV[0-9]{5}$"))
-			resp.sendRedirect(req.getContextPath() + "/danh-sach-thanh-vien");
+			if (memberId != null || myUtils.checkValid(memberId, "^TV[0-9]{5}$"))
+				resp.sendRedirect(req.getContextPath() + "/danh-sach-thanh-vien");
 		} else {
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/insert/them-thanh-vien.jsp");
 			dispatcher.forward(req, resp);

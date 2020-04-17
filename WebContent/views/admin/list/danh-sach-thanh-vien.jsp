@@ -70,8 +70,7 @@
 										<td><a class="btn btn-primary"
 											href="cap-nhat-thanh-vien?memberId=${member.memberId}"> <i
 												class="fa fa-edit"></i> Update
-										</a> &nbsp; <a class="btn btn-danger"
-											onclick="confirm('Are you sure delete this computer?')"
+										</a> &nbsp; <a class="btn btn-danger btn_delete"
 											href="xoa-thanh-vien?memberId=${member.memberId}"> <i
 												class="fa fa-trash" aria-hidden="true"></i> Delete
 										</a></td>
@@ -115,5 +114,14 @@
 
 	<%@include file="/common/admin/js-resources.jsp"%>
 </body>
-
+<script>
+	$(".btn_delete").on('click', function(event) {
+		if (confirm("Are you sure you want to delete?")) {
+			return true;
+		} else {
+			event.preventDefault();
+			return false;
+		}
+	});
+</script>
 </html>

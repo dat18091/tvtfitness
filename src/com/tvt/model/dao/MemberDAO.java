@@ -149,7 +149,7 @@ public class MemberDAO implements IDAOBase<Member> {
 		PreparedStatement pstm = null;
 		try {
 			conn = com.tvt.common.ConnectDB.getConnect();
-			String sql = "select memberId, fullName, birthday, gender, numberPhone, branchId, accountId where memberId = ?";
+			String sql = "select memberId, fullName, birthday, gender, numberPhone, branchId, accountId from MEMBER where memberId = ?";
 
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1, memberId);

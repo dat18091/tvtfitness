@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tvt.model.bo.MemberBO;
+import com.tvt.model.bo.EmployeeBO;
 
 /**
- * Servlet implementation class XoaThanhVienServlet
+ * Servlet implementation class XoaNhanVien
  */
-@WebServlet("/xoa-thanh-vien")
-public class XoaThanhVienServlet extends HttpServlet {
+@WebServlet("/xoa-nhan-vien")
+public class XoaNhanVien extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public XoaThanhVienServlet() {
+	public XoaNhanVien() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -32,18 +32,18 @@ public class XoaThanhVienServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String memberId = (String) request.getParameter("memberId");
+		String empId = (String) request.getParameter("empId");
 
-		MemberBO memberBO = new MemberBO();
+		EmployeeBO employeeBO = new EmployeeBO();
 
 		try {
-			memberBO.deleteMember(memberId);
+			employeeBO.deleteEmployee(empId);
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 
-		response.sendRedirect(request.getContextPath() + "/danh-sach-thanh-vien");
+		response.sendRedirect(request.getContextPath() + "/danh-sach-nhan-vien");
 	}
 
 	/**

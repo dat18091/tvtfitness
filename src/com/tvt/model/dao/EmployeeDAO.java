@@ -151,7 +151,7 @@ public class EmployeeDAO implements IDAOBase<Employee> {
 		PreparedStatement pstm = null;
 		try {
 			conn = com.tvt.common.ConnectDB.getConnect();
-			String sql = "select empId, empName, numberPhone, birthday, imgUrl, branchId, accountId where empId = ?";
+			String sql = "select empId, empName, numberPhone, birthday, imgUrl, branchId, accountId from EMPLOYEE where empId = ?";
 
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1, empId);
