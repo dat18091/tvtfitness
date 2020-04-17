@@ -23,4 +23,7 @@ public class ConnectDB {
 		}
 		return connection;
 	}
+	public static void main(String[] args) {
+		ConnectDB.getConnect();
+	}
 }

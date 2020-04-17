@@ -1,25 +1,21 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tvt.model.bean.Package;
 import com.tvt.model.bo.PackageBO;
 
 /**
  * @author DAO
  *
  */
-@WebServlet(urlPatterns = {"/danh-sach-goi"})
-public class DanhSachGoiController extends HttpServlet {
+@WebServlet(urlPatterns = {"/xoa-goi"})
+public class XoaGoiController extends HttpServlet {
 
 	/**
 	 * 
@@ -28,20 +24,15 @@ public class DanhSachGoiController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String packageId = (String) req.getParameter("packageId");
 		PackageBO packageBO = new PackageBO();
-		List<Package> packageList = new ArrayList<Package>();
-		try {
-		packageList = packageBO.getAll();
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		req.setAttribute("packageList", packageList);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/list/danh-sach-goi.jsp");
-		dispatcher.forward(req, resp);
+		packageBO.delete(packageId);
+		resp.sendRedirect(req.getContextPath() + "/danh-sach-goi");
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
 	}
 }
