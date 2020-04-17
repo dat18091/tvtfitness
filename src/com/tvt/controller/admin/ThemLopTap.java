@@ -1,6 +1,8 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tvt.model.bean.Branch;
+import com.tvt.model.bo.BranchBO;
 import com.tvt.model.bo.TrainingClassBO;
 
 /**
@@ -39,11 +43,25 @@ public class ThemLopTap extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		TrainingClassBO trainingClassBO = new TrainingClassBO();
 
-		//Danh sach cac goi, nhan vien va chi nhanh.
+		request.setCharacterEncoding("UTF-8");
+		
+		TrainingClassBO trainingClassBO = new TrainingClassBO();
+		
+		BranchBO branchBO = new BranchBO();
+		
+		//Danh sach cac goi, nhan vien va chi nhanh.//Do 3 dua chua lam cho phuong
+		List<Branch> listBranchs = null;
+		try {
+			listBranchs = branchBO.getAllBranch();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("listBranchs", listBranchs);
+//		ArrayList<Package> listPackages = new ArrayList<Package>();
+//		request.setAttribute("listPackages", listPackages);
+//		ArrayList<Employee> listEmployees = new ArrayList<Employee>();
+//		request.setAttribute("listEmployees", listEmployees);
 		
 		if ("submit".equals(request.getParameter("submit"))) {
 			String classId = request.getParameter("classId");

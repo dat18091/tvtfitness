@@ -140,5 +140,31 @@ public class BranchDao {
 		return branch;
 		
 	}
+	
+	public List<Branch> getAllBranch() throws SQLException {
+        List<Branch> branchs = new ArrayList<Branch>();
+        conn = ConnectDB.getConnect();
+        PreparedStatement pst = null;
+        try {
+            pst = conn.prepareStatement("select * from BRANCH");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Branch branch = new Branch();
+                branch.setBranchId(rs.getString("branchId"));
+                branch.setBranchName(rs.getNString("branchName"));
+                branch.setAddress(rs.getNString("address"));
+                branchs.add(branch);
+            }
+        } finally {
+            if (pst != null) {
+                pst.close();
+                conn.close();
+            }
+
+ 
+
+        }
+        return branchs;
+    }
 
 }
