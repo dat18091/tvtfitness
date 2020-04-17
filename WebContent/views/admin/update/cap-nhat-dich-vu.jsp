@@ -22,13 +22,13 @@
 							<header class="panel-heading">Cập Nhật Dịch Vụ</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="POST"
-									action="${pageContext.request.contextPath}/cap-nhat-dich-vu" enctype="multipart/form-data">
+									action="${pageContext.request.contextPath}/cap-nhat-dich-vu">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="serviceId" value="${service.serviceId}" disabled="disabled" 
-											style=":disabled{property: value;}" class="form-control">
+											<input type="text" name="serviceId" value="${service.getServiceId()}" 
+											style="color:#FF0000;}" readonly="readonly" class="form-control">
 										</div>
 									</div>
 									
@@ -36,7 +36,7 @@
 										<label class="col-sm-3 control-label">Tên dịch vụ</label>
 										<div class="col-sm-6">
 											<input type="text" name="serviceName"
-												value="${service.serviceName}" class="form-control">
+												value="${service.getServiceName()}" class="form-control">
 										</div>
 									</div>
 									
@@ -52,24 +52,24 @@
 				                        </div>
 				                    </div>
 									
-									<div class="form-group"><!-- Product Image -->
+									<div class="form-group">
 				                        <label class="col-sm-3 control-label">Hình</label>
 				                        <div class="col-sm-6">
-				                            <input type="file" name="imageUrl" value="${service.imageUrl}" class="form-control">
+				                            <input type="file" name="imageUrl" value="${service.getImageUrl()}" class="form-control">
 				                        </div>
 				                    </div>
 									
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Phí dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="price" value="${service.price}" class="form-control">
+											<input type="text" name="price" value="${service.getPrice()}" class="form-control">
 										</div>
 									</div>
 									
 									<div class="form-group">
                                     	<div class="col-lg-offset-3 col-lg-6">
                                         	<input type="submit" class="btn btn-primary" value="Update"/>
-                                            <a href="list-service" class="btn btn-danger">Cancel</a>
+                                            <a href="danh-sach-dich-vu" class="btn btn-danger">Cancel</a>
                                        	</div>
                                     </div>
 								</form>

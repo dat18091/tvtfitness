@@ -7,13 +7,13 @@ import java.util.List;
  *
  */
 public interface IServiceBO<T> {
-	
 	public List<T> getAll();
 	
 	public void insert(T object);
 	
-	public void update(T object);
-	
 	public void delete(String object);
 	
+	public T searchById(String object) throws Exception;
+	
+	public void update(T object);
 }

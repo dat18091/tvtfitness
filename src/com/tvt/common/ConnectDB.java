@@ -16,13 +16,17 @@ public class ConnectDB {
 		try {
 			Class.forName(driverName);
 			connection = DriverManager.getConnection(url, userName, password);
-		} catch (SQLException e) {
 			System.out.println("Connection successful");
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			System.out.println("Connection failed");
 			e.printStackTrace();
 		}
 		return connection;
+	}
+	
+	public static void main(String[] args) {
+		ConnectDB.getConnect();
 	}
 }

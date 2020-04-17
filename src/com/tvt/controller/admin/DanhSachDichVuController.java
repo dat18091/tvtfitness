@@ -32,7 +32,7 @@ public class DanhSachDichVuController extends HttpServlet {
 		ServiceBOImpl serviceBOImpl = new ServiceBOImpl();
 		serviceList = serviceBOImpl.getAll();
 		req.setAttribute("serviceList", serviceList);
-		RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/WEB-INF/views/admin/list/danh-sach-dich-vu.jsp");
+		RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher("/views/admin/list/danh-sach-dich-vu.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
