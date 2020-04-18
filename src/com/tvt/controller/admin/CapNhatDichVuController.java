@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +18,17 @@ import com.tvt.model.bo.ServiceBOImpl;
  *
  */
 @WebServlet(urlPatterns = { "/cap-nhat-dich-vu" })
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+maxFileSize = 1024 * 1024 * 10, // 10MB
+maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class CapNhatDichVuController extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	public static final String SAVE_DIRECTORY = "uploads";
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServiceBOImpl serviceBOImpl = new ServiceBOImpl();
@@ -57,7 +62,7 @@ public class CapNhatDichVuController extends HttpServlet {
 		String[] type = req.getParameterValues("serviceType");
 		for (int i = 0; i < type.length; i++) {
 			serviceType += type[i];
-		}
+		}        
 		String imageUrl = (String) req.getParameter("imageUrl");
 		String price = req.getParameter("price");
 		float sprice = 0;
