@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Admin Panel</title>
-<%@include file="/common/admin/css-resources.jsp" %>
+<%@include file="/common/admin/css-resources.jsp"%>
 </head>
 
 <body>
@@ -56,58 +56,27 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>NV0001</td>
-									<td>Huỳnh Thị Hường</td>
-									<td>0337560999</td>
-									<td>1996-03-04</td>
-									<td><img alt="" width="50px" height="50px" src="<c:url value="/resources/admin/images/huynhthihuong.jpg" />"></td>
-									<td>TVT Quận 1</td>
-									<td>huongthi</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-nhan-vien">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>NV0002</td>
-									<td>Nguyễn Hoàng Yến</td>
-									<td>0337560999</td>
-									<td>1996-03-04</td>
-									<td><img alt="" width="50px" height="50px" src="<c:url value="/resources/admin/images/huynhthihuong.jpg" />"></td>
-									<td>TVT Quận 1</td>
-									<td>huongthi</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-nhan-vien">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>NV0003</td>
-									<td>Huỳnh Thị Hường</td>
-									<td>0337560999</td>
-									<td>1996-03-04</td>
-									<td><img alt="" width="50px" height="50px" src="<c:url value="/resources/admin/images/huynhthihuong.jpg" />"></td>
-									<td>TVT Quận 1</td>
-									<td>huongthi</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-nhan-vien">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								
+								<c:forEach items="${listEmployee}" var="employee">
+									<tr>
+										<td><label class="i-checks m-b-none"><input
+												type="checkbox" name="post[]"><i></i></label></td>
+										<td>${employee.empId}</td>
+										<td>${employee.empName}</td>
+										<td>${employee.numberPhone}</td>
+										<td>${employee.birthday}</td>
+										<td><img alt="" width="50px" height="50px"
+											src="<c:url value="/resources/uploads/${employee.img}" />"></td>
+										<td>${employee.branchId}</td>
+										<td>${employee.accountId}</td>
+										<td><a class="btn btn-primary"
+											href="cap-nhat-nhan-vien?empId=${employee.empId}"> <i
+												class="fa fa-edit"></i> Update
+										</a> &nbsp; <a class="btn btn-danger btn_delete"
+											href="xoa-nhan-vien?empId=${employee.empId}"> <i
+												class="fa fa-trash" aria-hidden="true"></i> Delete
+										</a></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -144,7 +113,16 @@
 		<!--main content end-->
 	</section>
 
-	<%@include file="/common/admin/js-resources.jsp" %>
+	<%@include file="/common/admin/js-resources.jsp"%>
 </body>
-
+<script>
+	$(".btn_delete").on('click', function(event) {
+		if (confirm("Are you sure you want to delete?")) {
+			return true;
+		} else {
+			event.preventDefault();
+			return false;
+		}
+	});
+</script>
 </html>

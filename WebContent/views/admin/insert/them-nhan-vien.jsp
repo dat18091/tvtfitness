@@ -25,12 +25,13 @@
 							<header class="panel-heading">Thêm Nhân Viên</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
+									enctype="multipart/form-data"
 									action="${pageContext.request.contextPath}/them-nhan-vien">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã nhân viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="empId" value = "${employee.empId }"
+											<input type="text" name="empId" value="${employee.empId }"
 												placeholder="Nhập mã nhân viên..." class="form-control">
 										</div>
 									</div>
@@ -38,7 +39,8 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên nhân viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="empName" value="${employee.empName }"
+											<input type="text" name="empName"
+												value="${employee.empName }"
 												placeholder="Nhập họ tên nhân viên..." class="form-control">
 										</div>
 									</div>
@@ -46,7 +48,8 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Số điện thoại</label>
 										<div class="col-sm-6">
-											<input type="text" name="numberPhone" value="${employee.numberPhone }"
+											<input type="text" name="numberPhone"
+												value="${employee.numberPhone }"
 												placeholder="Nhập số điện thoại của nhân viên..."
 												class="form-control">
 										</div>
@@ -55,7 +58,8 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Ngày sinh</label>
 										<div class="col-sm-6">
-											<input type="text" name="birthday" value="${employee.birthday }"
+											<input type="text" name="birthday"
+												value="${employee.birthday }"
 												placeholder="Nhập ngày tháng năm sinh của nhân viên..."
 												class="form-control">
 										</div>
@@ -65,7 +69,8 @@
 										<!-- Product Image -->
 										<label class="col-sm-3 control-label">Hình ảnh</label>
 										<div class="col-sm-6">
-											<input type="file" name="imgUrl" class="form-control">
+											<input type="file" name="imgUrl" value="${employee.img}"
+												class="form-control">
 										</div>
 									</div>
 
@@ -74,11 +79,15 @@
 										<label class="col-sm-3 control-label col-lg-3"
 											for="inputSuccess">Chi nhánh</label>
 										<div class="col-lg-6">
-											<select name="category_product_parent"
-												class="form-control m-bot15">
-												<option value="{{ $parent->parent_id }}">TVT Quận 1</option>
-												<option value="{{ $parent->parent_id }}">TVT Quận
-													Bình Thạnh</option>
+											<select name="branch" class="form-control m-bot15">
+												<%
+													ArrayList<Branch> listBranch = (ArrayList<Branch>) request.getAttribute("listBranch");
+													for (Branch branch : listBranch) {
+												%>
+												<option value="<%=branch.getBranchId()%>"><%=branch.getBranchName()%></option>
+												<%
+													}
+												%>
 											</select>
 										</div>
 									</div>
@@ -88,18 +97,23 @@
 										<label class="col-sm-3 control-label col-lg-3"
 											for="inputSuccess">Tài khoản</label>
 										<div class="col-lg-6">
-											<select name="category_product_parent"
-												class="form-control m-bot15">
-												<option value="{{ $parent->parent_id }}">huongpham</option>
-												<option value="{{ $parent->parent_id }}">lyduc</option>
+											<select name="account" class="form-control m-bot15">
+												<%
+													ArrayList<Account> listAccount = (ArrayList<Account>) request.getAttribute("listAccount");
+													for (Account account : listAccount) {
+												%>
+												<option value="<%=account.getAccountId()%>"><%=account.getAccountName()%></option>
+												<%
+													}
+												%>
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
-												type="submit" name="submit" value="submit">
+											<button name="submit" class="btn btn-save" type="submit"
+												value="submit">
 												<i class="glyphicon glyphicon-plus"></i> Save
 											</button>
 											<button name="cancel_brand_product" class="btn btn-cancel"

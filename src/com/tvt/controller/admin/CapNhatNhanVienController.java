@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,12 +26,16 @@ import com.tvt.model.bo.EmployeeBO;
  *
  */
 @WebServlet(urlPatterns = "/cap-nhat-nhan-vien")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+		maxFileSize = 1024 * 1024 * 10, // 10MB
+		maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class CapNhatNhanVienController extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static final String SAVE_DIRECTORY = "uploads";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -77,6 +82,7 @@ public class CapNhatNhanVienController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		String empId = (String) req.getParameter("empId");
 		String empName = (String) req.getParameter("empName");
 		String numberPhone = (String) req.getParameter("numberPhone");
@@ -95,7 +101,7 @@ public class CapNhatNhanVienController extends HttpServlet {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
+
 		AccountBO accountBO = new AccountBO();
 		try {
 			ArrayList<Account> listAccount = accountBO.getListAccount();
@@ -113,9 +119,9 @@ public class CapNhatNhanVienController extends HttpServlet {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
+
 		req.setAttribute("employee", employee);
-		
+
 		if ("submit".equals(req.getParameter("submit"))) {
 			resp.sendRedirect(req.getContextPath() + "/danh-sach-nhan-vien");
 		} else {
