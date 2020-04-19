@@ -50,6 +50,9 @@ public class ServiceDAO implements IDAOBase<Service> {
 			preparedStatement.setNString(4, service.getImageUrl());
 			preparedStatement.setFloat(5, service.getPrice());
 			preparedStatement.executeUpdate();
+//			if(result == 0) {
+//				
+//			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
