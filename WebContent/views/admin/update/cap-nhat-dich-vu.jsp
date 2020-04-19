@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
+<title>TVT Fitness | Cập Nhật Dịch Vụ</title>
 <%@include file="/common/admin/css-resources.jsp" %>
 </head>
 

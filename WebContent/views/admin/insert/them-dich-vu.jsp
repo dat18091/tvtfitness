@@ -55,7 +55,7 @@
 				                    <div class="form-group">
 				                        <label class="col-sm-3 control-label">Hình</label>
 				                        <div class="col-sm-6">
-				                            <input type="file" size = "50" name="imageUrl" class="form-control">
+				                            <input type="file" name="imageUrl" class="form-control">
 				                        </div>
 				                    </div>
 									
