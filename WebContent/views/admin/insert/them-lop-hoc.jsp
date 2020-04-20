@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,9 @@
 											for="inputSuccess">Gói</label>
 										<div class="col-lg-6">
 											<select name="packageId" class="form-control m-bot15">
-											
+												<c:forEach items="${listGoi}" var="goi">
+													<option value="${goi.packageId}">${goi.packageName}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
@@ -55,7 +58,9 @@
 											for="inputSuccess">Mã Nhân viên</label>
 										<div class="col-lg-6">
 											<select name="empId" class="form-control m-bot15">
-												
+												<c:forEach items="${listEmp}" var="emp">
+													<option value="${emp.empId}">${emp.empName}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
@@ -123,7 +128,7 @@
 										<div class="col-lg-6">
 											<select name="branchId" class="form-control m-bot15">
 												<c:forEach items="${listBranch}" var="branch">
-												<option value="">${branch.branchName}</option>
+													<option value="${branch.branchId}">${branch.branchName}</option>
 												</c:forEach>
 											</select>
 										</div>

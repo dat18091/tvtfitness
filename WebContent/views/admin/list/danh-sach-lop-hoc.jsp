@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin Panel</title>
-	<%@include file="/common/admin/css-resources.jsp" %>
+<title>Admin Panel</title>
+<%@include file="/common/admin/css-resources.jsp"%>
 </head>
 
 <body>
@@ -45,80 +45,36 @@
 									<th style="width: 20px;"><label class="i-checks m-b-none">
 											<input type="checkbox"><i></i>
 									</label></th>
-									<th>Mã lớp</th>
-									<th>Tên lớp</th>
-									<th>Gói</th>
+									<th>Mã lớp tập</th>
+									<th>Tên lớp tập</th>
+									<th>Gói tập</th>
 									<th>Nhân viên</th>
 									<th>Thời gian biểu</th>
-									<th>Số lượng</th>
-									<th>Bắt đầu</th>
-									<th>Kết thúc</th>
+									<th>Số học viên tối đa</th>
+									<th>Ngày bắt đầu</th>
+									<th>Ngày kết thúc</th>
 									<th>Trạng thái</th>
 									<th>Chi nhánh</th>
 									<th style="width: 250px;">Chức năng</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>LH0001</td>
-									<td>Tập Tăng Cân</td>
-									<td>Gói VIP</td>
-									<td>Lý Hải</td>
-									<td>07:00</td>
-									<td>20</td>
-									<td>07:00</td>
-									<td>08:30</td>
-									<td>Đủ học viên</td>
-									<td>TVT Quận 1</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-lop-hoc">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>LH0002</td>
-									<td>Tập Tăng Cân</td>
-									<td>Gói VIP</td>
-									<td>Lý Hải</td>
-									<td>07:00</td>
-									<td>20</td>
-									<td>07:00</td>
-									<td>08:30</td>
-									<td>Đủ học viên</td>
-									<td>TVT Quận 1</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-lop-hoc}">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>LH0003</td>
-									<td>Tập Tăng Cân</td>
-									<td>Gói VIP</td>
-									<td>Lý Hải</td>
-									<td>07:00</td>
-									<td>20</td>
-									<td>07:00</td>
-									<td>08:30</td>
-									<td>Đủ học viên</td>
-									<td>TVT Quận 1</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-lop-hoc">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
+								<c:forEach items="${listTrainingClass}" var="lop">
+									<tr>
+										<td><label class="i-checks m-b-none"><input
+												type="checkbox" name="post[]"><i></i></label></td>
+										<td>${lop.classId}</td>
+										<td>${lop.className}</td>
+										<td>${lop.packageId}</td>
+										<td>${lop.empId}</td>
+										<td>${lop.schedule}</td>
+										<td>${lop.maxMember}</td>
+										<td>${lop.dateStart}</td>
+										<td>${lop.dateEnd}</td>
+										<td>${lop.status}</td>
+										<td>${lop.branchId}</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -155,7 +111,7 @@
 		<!--main content end-->
 	</section>
 
-	<%@include file="/common/admin/js-resources.jsp" %>
+	<%@include file="/common/admin/js-resources.jsp"%>
 </body>
 
 </html>

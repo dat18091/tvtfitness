@@ -14,7 +14,7 @@ import com.tvt.model.bean.Service;
  * @author dat18
  *
  */
-public class ServiceDAO implements IDAOBase<Service> {
+public class ServiceDAO implements IDAOBase1<Service> {
 	private Connection con = ConnectDB.getConnect();
 
 	@Override
