@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tvt.model.bo.TrainingClassBO;
+import com.tvt.model.bo.RegisterClassBo;
 
 /**
- * Servlet implementation class XoaLopTap
+ * Servlet implementation class XoaDangKiLopTap
  */
-@WebServlet("/xoa-lop-hoc")
-public class XoaLopTap extends HttpServlet {
+@WebServlet("/xoa-dang-ky-lop-tap")
+public class XoaDangKiLopTap extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public XoaLopTap() {
+    public XoaDangKiLopTap() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,11 +35,13 @@ public class XoaLopTap extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TrainingClassBO trainingClassBO = new TrainingClassBO();
+		RegisterClassBo registerClassBo = new RegisterClassBo();
 		String classId = request.getParameter("classId");
+		String memberId = request.getParameter("memberId");
 		
-		trainingClassBO.deleteById(classId);
-		response.sendRedirect(request.getContextPath()+"/danh-sach-lop-hoc");
+		registerClassBo.delete(classId, memberId);
+		
+		response.sendRedirect(request.getContextPath()+"/danh-sach-dang-ky-lop");
 	}
 
 }

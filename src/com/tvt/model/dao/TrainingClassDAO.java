@@ -86,4 +86,78 @@ public class TrainingClassDAO {
 		return listClasses;
 	}
 
+	public void update(String classId, String className, String packageId, String empId, String[] schedule,
+			int maxMember, String dateStart, String dateEnd, String branchId) {
+		conn = ConnectDB.getConnect();
+		String sql = "UPDATE CLASS SET className = ?, packageId = ?, empId = ?, schedule = ?, maxMember = ?, dateStart = ?, dateEnd = ?,branchId = ? WHERE classId = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setNString(1, className);
+			pstm.setString(2, packageId);
+			pstm.setString(3, empId);
+
+			String s = schedule[0];
+			for (int i = 1; i < schedule.length; i++) {
+				s += "," + schedule[i];
+			}
+			pstm.setNString(4, s);
+
+			pstm.setInt(5, maxMember);
+			pstm.setDate(6, Date.valueOf(dateStart));
+			pstm.setDate(7, Date.valueOf(dateStart));
+			pstm.setString(8, branchId);
+			pstm.setString(9, classId);
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public TrainingClass searchById(String classId) {
+		conn = ConnectDB.getConnect();
+		String sql = String.format(
+				"SELECT classId, className, packageName, empName, schedule, maxMember, dateStart, dateEnd, status, branchName"
+						+ " FROM CLASS a, BRANCH b, EMPLOYEE c, PACKAGE d "
+						+ "WHERE a.classId = %s AND a.branchId = b.branchId AND a.empId = c.empId AND a.packageId = d.packageId",
+				classId);
+		ResultSet resultSet = null;
+		try {
+			Statement statement = conn.createStatement();
+			resultSet = statement.executeQuery(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		TrainingClass trainingClass = new TrainingClass();
+		try {
+			if (resultSet.next()) {
+				trainingClass.setClassId(resultSet.getString("classId"));
+				trainingClass.setClassName(resultSet.getNString("className"));
+				trainingClass.setPackageId(resultSet.getNString("packageName"));
+				trainingClass.setEmpId(resultSet.getNString("empName"));
+				trainingClass.setSchedule(resultSet.getNString("schedule"));
+				trainingClass.setMaxMember(resultSet.getInt("maxMember"));
+				trainingClass.setDateStart(resultSet.getDate("dateStart").toLocalDate());
+				trainingClass.setDateEnd(resultSet.getDate("dateEnd").toLocalDate());
+				trainingClass.setStatus(resultSet.getNString("status"));
+				trainingClass.setBranchId(resultSet.getNString("branchName"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return trainingClass;
+	}
+
+	public void deleteById(String classId) {
+		conn = ConnectDB.getConnect();
+		String sql = "DELETE FROM CLASS where classId = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, classId);
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

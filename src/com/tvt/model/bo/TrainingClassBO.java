@@ -25,4 +25,17 @@ public class TrainingClassBO {
 		return trainingClassDAO.getAll();
 	}
 
+	public void update(String classId, String className, String packageId, String empId, String[] schedule,
+			int maxMember, String dateStart, String dateEnd, String branchId) {
+		trainingClassDAO.update(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd, branchId);
+	}
+
+	public TrainingClass searchById(String classId) {
+		return trainingClassDAO.searchById(classId);
+	}
+
+	public void deleteById(String classId) {
+		trainingClassDAO.deleteById(classId);
+	}
+
 }

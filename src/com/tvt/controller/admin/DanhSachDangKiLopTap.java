@@ -1,25 +1,29 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tvt.model.bo.TrainingClassBO;
+import com.tvt.model.bean.RegisterClass;
+import com.tvt.model.bo.RegisterClassBo;
 
 /**
- * Servlet implementation class XoaLopTap
+ * Servlet implementation class DanhSachDangKiLopTap
  */
-@WebServlet("/xoa-lop-hoc")
-public class XoaLopTap extends HttpServlet {
+@WebServlet("/danh-sach-dang-ky-lop")
+public class DanhSachDangKiLopTap extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public XoaLopTap() {
+    public DanhSachDangKiLopTap() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,11 +39,13 @@ public class XoaLopTap extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TrainingClassBO trainingClassBO = new TrainingClassBO();
-		String classId = request.getParameter("classId");
+		request.setCharacterEncoding("UTF-8");
+		RegisterClassBo registerClassBo = new RegisterClassBo();
+		List<RegisterClass> listRegisterClasses = registerClassBo.getAll();
+		request.setAttribute("listRegisterClass", listRegisterClasses);
 		
-		trainingClassBO.deleteById(classId);
-		response.sendRedirect(request.getContextPath()+"/danh-sach-lop-hoc");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/list/danh-sach-dang-ky-lop.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

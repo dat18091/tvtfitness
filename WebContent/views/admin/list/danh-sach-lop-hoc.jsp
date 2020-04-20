@@ -73,6 +73,16 @@
 										<td>${lop.dateEnd}</td>
 										<td>${lop.status}</td>
 										<td>${lop.branchId}</td>
+										<td>
+											<a class="btn btn-primary"
+												href="cap-nhat-lop-hoc?classId=${lop.classId}">
+												<i class="fa fa-edit"></i> Update
+											</a> &nbsp; <a class="btn btn-danger"
+												onclick="return confirm('Are you sure delete this service?');"
+												href="xoa-lop-hoc?classId=${lop.classId}"">
+												<i class="fa fa-trash" aria-hidden="true"></i> Delete
+											</a>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>

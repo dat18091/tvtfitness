@@ -49,11 +49,11 @@
 									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
+											<button name="submit" value="submit" class="btn btn-save"
 												type="submit">
 												<i class="glyphicon glyphicon-edit"></i> Update
 											</button>
-											<button name="cancel_brand_product" class="btn btn-cancel"
+											<button name="cancel" value="cancel" class="btn btn-cancel"
 												type="button">
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
