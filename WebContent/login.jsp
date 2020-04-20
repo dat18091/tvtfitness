@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin Login</title>
+	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -27,13 +27,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="w3layouts-main">
 			<h2>TVT FITNESS</h2>
 			
-			<form action="${pageContext.request.contextPath}/admin-home" method="post">
-				<input type="text" class="text" name="admin_email" placeholder="Enter your email...">
+			<form action="${pageContext.request.contextPath}/login" method="post">
+				<input type="text" class="text" name="userName" placeholder="Enter your username...">
 				<input type="password" class="text" name="admin_password" placeholder="Enter your password...">
-				<span><input type="checkbox" />Remember Me</span>
-				<h6><a href="#">Forgot Password?</a></h6>
+				<span><input name="rememberMe" type="checkbox" />Remember Me</span>
+				<!--<h6><a href="">Forgot Password?</a></h6>-->
 				<div class="clearfix"></div>
-				<input type="submit" value="Sign In" name="login">
+				<input type="submit" value="Sign In" name="submit">
 				<button class="btn facebook"><i class="fa fa-facebook-square"></i> Facebook</button>
 				<button class="btn google"><i class="fa fa-google-plus-square"></i> Google+</button>
 				<button class="btn yahoo"><i class="fa fa-yahoo" aria-hidden="true"></i> Yahoo!</button>

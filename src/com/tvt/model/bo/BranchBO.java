@@ -33,5 +33,9 @@ public class BranchBO {
 	public Branch getBranch(String id) throws SQLException {
 		return branchDao.getBranch(id);
 	}
+	
+	public List<Branch> getAllBranch() throws SQLException{
+        return branchDao.getAllBranch();
+    }
 
 }

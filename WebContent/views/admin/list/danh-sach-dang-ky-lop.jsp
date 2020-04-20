@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Admin Panel</title>
-<%@include file="/common/admin/css-resources.jsp" %>
+<%@include file="/common/admin/css-resources.jsp"%>
 </head>
 
 <body>
@@ -47,55 +47,33 @@
 									</label></th>
 									<th>Lớp học</th>
 									<th>Mã thành viên</th>
-									<th>Tên thành viên</th>
-									<th>Trạng thái phí</th>
+									<th>Ngày đăng kí lớp tập</th>
+									<th>Thanh toán phí</th>
 									<th style="width: 250px;">Chức năng</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>Tập tăng cân</td>
-									<td>TV0001</td>
-									<td>Nguyễn Thị Chi</td>
-									<td>Đã thanh toán hết</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>Tập tăng cân</td>
-									<td>TV0002</td>
-									<td>Nguyễn Thanh Thảo</td>
-									<td>Đã thanh toán hết</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>Tập tăng cân</td>
-									<td>TV0003</td>
-									<td>Nguyễn Hoàng Yến</td>
-									<td>Đã thanh toán hết</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
+
+								<c:forEach items="${listRegisterClass}" var="lop">
+									<tr>
+										<td><label class="i-checks m-b-none"><input
+												type="checkbox" name="post[]"><i></i></label></td>
+										<td>${lop.classId}</td>
+										<td>${lop.memberId}</td>
+										<td>${lop.registerDate}</td>
+										<td>${lop.payStatus}</td>
+										<td>
+											<a class="btn btn-primary"
+											href="cap-nhat-dang-ky-lop?classId=${lop.classId}&memberId=${lop.memberId}"> <i
+												class="fa fa-edit"></i> Update</a> &nbsp; 
+											<a class="btn btn-danger"
+											onclick="return confirm('Are you sure delete this service?');"
+											href="xoa-dang-ky-lop-tap?classId=${lop.classId}&memberId=${lop.memberId}"> <i
+											class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+										</td>
+									</tr>
+								</c:forEach>
+
 							</tbody>
 						</table>
 					</div>
@@ -132,7 +110,7 @@
 		<!--main content end-->
 	</section>
 
-	<%@include file="/common/admin/js-resources.jsp" %>
+	<%@include file="/common/admin/js-resources.jsp"%>
 </body>
 
 </html>

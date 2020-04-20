@@ -10,28 +10,29 @@ package com.tvt.model.bean;
 import java.time.LocalDate;
 
 public class TrainingClass {
+	
 	private String classId;
 	private String className;
-	private String packageName;
-	private String empName;
+	private String packageId;
+	private String empId;
 	private String schedule;
 	private int maxMember;
 	private LocalDate dateStart;
 	private LocalDate dateEnd;
 	private String branchId;
 	private String status;
-
+	
 	public TrainingClass() {
-
+		
 	}
 
-	public TrainingClass(String classId, String className, String packageName, String empName, String schedule,
+	public TrainingClass(String classId, String className, String packageId, String empId, String schedule,
 			int maxMember, LocalDate dateStart, LocalDate dateEnd, String branchId, String status) {
 		super();
 		this.classId = classId;
 		this.className = className;
-		this.packageName = packageName;
-		this.empName = empName;
+		this.packageId = packageId;
+		this.empId = empId;
 		this.schedule = schedule;
 		this.maxMember = maxMember;
 		this.dateStart = dateStart;
@@ -57,19 +58,19 @@ public class TrainingClass {
 	}
 
 	public String getPackageId() {
-		return packageName;
+		return packageId;
 	}
 
-	public void setPackageId(String packageName) {
-		this.packageName = packageName;
+	public void setPackageId(String packageId) {
+		this.packageId = packageId;
 	}
 
 	public String getEmpId() {
-		return empName;
+		return empId;
 	}
 
-	public void setEmpName(String empName) {
-		this.empName = empName;
+	public void setEmpId(String empId) {
+		this.empId = empId;
 	}
 
 	public String getSchedule() {
@@ -119,4 +120,6 @@ public class TrainingClass {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
 }

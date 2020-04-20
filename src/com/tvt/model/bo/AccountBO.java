@@ -23,5 +23,5 @@ public class AccountBO {
 	public boolean deleteAccount(String accountId) throws SQLException {
 		return accountDao.delete(accountId);
 	}
-
+	
 }
