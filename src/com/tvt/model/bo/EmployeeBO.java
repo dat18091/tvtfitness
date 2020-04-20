@@ -19,8 +19,8 @@ public class EmployeeBO {
 		employeeDAO.insert(employee);
 	}
 
-	public List<Employee> getAll() throws SQLException {
-		return employeeDAO.getAll();
+	public List<Employee> getAll(int start, int total) throws SQLException {
+		return employeeDAO.getAll(start, total);
 	}
 
 	public void deleteEmployee(String empId) throws SQLException {

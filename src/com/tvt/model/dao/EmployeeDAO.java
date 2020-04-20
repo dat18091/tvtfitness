@@ -14,56 +14,12 @@ import java.util.List;
 
 import com.tvt.model.bean.Employee;
 
+
 /**
  * @author Quoc
  *
  */
 public class EmployeeDAO implements IDAOBase<Employee> {
-
-	@Override
-	public List<Employee> getAll() throws SQLException {
-		// TODO Auto-generated method stub
-		Connection conn = null;
-		PreparedStatement pstm = null;
-		try {
-			conn = com.tvt.common.ConnectDB.getConnect();
-
-			String sql = "select empId, empName, numberPhone, birthday, imgUrl, branchId, accountId from EMPLOYEE";
-
-			pstm = conn.prepareStatement(sql);
-
-			ResultSet rs = pstm.executeQuery();
-			List<Employee> list = new ArrayList<Employee>();
-			while (rs.next()) {
-				String empId = rs.getString("empId");
-				String empName = rs.getString("empName");
-				String numberPhone = rs.getString("numberPhone");
-				LocalDate birthday = rs.getDate("birthday").toLocalDate();
-				String imgUrl = rs.getString("imgUrl");
-				String branchId = rs.getString("branchId");
-				String accountId = rs.getString("accountId");
-
-				Employee employee = new Employee();
-				employee.setEmpId(empId);
-				employee.setEmpName(empName);
-				employee.setNumberPhone(numberPhone);
-				employee.setBirthday(birthday);
-				employee.setImg(imgUrl);
-				employee.setBranchId(branchId);
-				employee.setAccountId(accountId);
-				list.add(employee);
-			}
-
-			return list;
-		} finally {
-			if (pstm == null) {
-				pstm.close();
-			}
-			if (conn == null) {
-				conn.close();
-			}
-		}
-	}
 
 	@Override
 	public void insert(Employee employee) throws SQLException {
@@ -180,4 +136,77 @@ public class EmployeeDAO implements IDAOBase<Employee> {
 		}
 	}
 
+	@Override
+	public List<Employee> getAll(int start, int total) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		try {
+			conn = com.tvt.common.ConnectDB.getConnect();
+			String sql = "select * from EMPLOYEE order by empId offset ? rows fetch next ? rows only";
+
+			pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, start);
+			pstm.setInt(2, total);
+
+			ResultSet rs = pstm.executeQuery();
+			List<Employee> list = new ArrayList<Employee>();
+			while (rs.next()) {
+				String empId = rs.getString("empId");
+				String empName = rs.getString("empName");
+				String numberPhone = rs.getString("numberPhone");
+				LocalDate birthday = rs.getDate("birthday").toLocalDate();
+				String imgUrl = rs.getString("imgUrl");
+				String branchId = rs.getString("branchId");
+				String accountId = rs.getString("accountId");
+
+				Employee employee = new Employee();
+				employee.setEmpId(empId);
+				employee.setEmpName(empName);
+				employee.setNumberPhone(numberPhone);
+				employee.setBirthday(birthday);
+				employee.setImg(imgUrl);
+				employee.setBranchId(branchId);
+				employee.setAccountId(accountId);
+				list.add(employee);
+			}
+
+			return list;
+		} finally {
+			if (pstm == null) {
+				pstm.close();
+			}
+			if (conn == null) {
+				conn.close();
+			}
+		}
+	}
+
+	public int getCount() throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		int count = 0;
+		try {
+			conn = com.tvt.common.ConnectDB.getConnect();
+			ArrayList<Employee> list = new ArrayList<>();
+			String sql = "select count(empId) from EMPLOYEE";
+
+			pstm = conn.prepareStatement(sql);
+			rs = pstm.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			if (pstm == null) {
+				pstm.close();
+			}
+			if (conn == null) {
+				conn.close();
+			}
+		}
+		return count;
+	}
 }

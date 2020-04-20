@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tvt.model.bean.Employee;
 import com.tvt.model.bo.EmployeeBO;
+import com.tvt.model.dao.EmployeeDAO;
 
 /**
  * @author dat18
@@ -29,13 +30,51 @@ public class DanhSachNhanVienController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Employee> list = null;
+
+		String spageid = req.getParameter("page");
+		int pageid = 1;
+		int numberRecordPerPage = 5;
+		int totalRecord = 0;
+		int totalPage = 0;
+
+		if (spageid != null) {
+			try {
+				pageid = Integer.parseInt(spageid);
+			} catch (NumberFormatException e) {
+				pageid = 1;
+			}
+		}
+
+		try {
+			totalRecord = new EmployeeDAO().getCount();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		totalPage = totalRecord / numberRecordPerPage;
+		int skipRecord = (pageid - 1) * numberRecordPerPage;
+
+		int numberOfPage = 0;
+		if (totalRecord % numberRecordPerPage == 0) {
+			numberOfPage = totalRecord / numberRecordPerPage;
+		} else {
+			numberOfPage = totalRecord / numberRecordPerPage + 1;
+		}
+
 		try {
 			EmployeeBO employeeBO = new EmployeeBO();
-			list = employeeBO.getAll();
+			list = employeeBO.getAll(skipRecord, numberRecordPerPage);
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+
+		req.setAttribute("total", totalRecord);
+
+		req.setAttribute("page", pageid);
+
+		req.setAttribute("limited", numberRecordPerPage);
 
 		req.setAttribute("listEmployee", list);
 
