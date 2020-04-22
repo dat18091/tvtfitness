@@ -8,11 +8,11 @@ import com.tvt.model.bean.Branch;
 import com.tvt.model.dao.BranchDao;
 
 public class BranchBO {
-	
-	private BranchDao branchDao= new BranchDao();
 
-	public List<Branch> getBranchs(int start,int recordPerPage){
-		return branchDao.getBrandList(start,recordPerPage);
+	private BranchDao branchDao = new BranchDao();
+
+	public List<Branch> getBranchs(int start, int recordPerPage) {
+		return branchDao.getBrandList(start, recordPerPage);
 	}
 
 	public boolean insertBrand(Branch branch) throws SQLException {
@@ -22,25 +22,25 @@ public class BranchBO {
 	public boolean updateBranch(Branch branch) throws SQLException {
 		return branchDao.updateBranch(branch);
 	}
-	
-	public boolean deleteBranch(String branchId){
+
+	public boolean deleteBranch(String branchId) {
 		return branchDao.deleteBranch(branchId);
 	}
 
-	public int numberOfRecord(){
+	public int numberOfRecord() {
 		return branchDao.numberOfRecords();
 	}
-	
-	public Branch getBranch(String id){
+
+	public Branch getBranch(String id) {
 		return branchDao.getBranch(id);
 	}
-	
-	public List<Branch> getAllBranch(){
+
+	public List<Branch> getAllBranch() {
 		return branchDao.getAllBranch();
 	}
-	
-	public List<String> getBranchNames(){
-		return getAllBranch().stream().map(x-> x.getBranchName()).collect(Collectors.toList());
+
+	public List<String> getBranchNames() {
+		return getAllBranch().stream().map(x -> x.getBranchName()).collect(Collectors.toList());
 	}
 
 	public int startPosition(int currentPage, int recordPerPage) {

@@ -55,12 +55,21 @@
 									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
+<<<<<<< HEAD
 											<button name="action" class="btn btn-save" type="submit"
 												value="Update">
 												<i class="glyphicon glyphicon-edit"></i> Update
 											</button>
 											<button name="action" class="btn btn-cancel" type="button"
 												value="Cancel" onclick="history.go(-1);">
+=======
+											<button name="submit" value="submit" class="btn btn-save"
+												type="submit">
+												<i class="glyphicon glyphicon-edit"></i> Update
+											</button>
+											<button name="cancel" value="cancel" class="btn btn-cancel"
+												type="button">
+>>>>>>> fc59997f9d9251aae7b322b8ed91b2908b1534f9
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
 										</div>

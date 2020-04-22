@@ -1,6 +1,8 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tvt.model.bean.Branch;
+import com.tvt.model.bean.Employee;
+import com.tvt.model.bean.Package;
+import com.tvt.model.bo.BranchBO;
+import com.tvt.model.bo.EmployeeBO;
+import com.tvt.model.bo.PackageBO;
 import com.tvt.model.bo.TrainingClassBO;
 
 /**
@@ -39,9 +47,30 @@ public class ThemLopTap extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
 		
 		TrainingClassBO trainingClassBO = new TrainingClassBO();
-		request.setCharacterEncoding("UTF-8");
+		
+		BranchBO branchBO = new BranchBO();
+		PackageBO packageBO = new PackageBO();
+		EmployeeBO employeeBO = new EmployeeBO();
+		
+		//Danh sach cac goi, nhan vien va chi nhanh.
+		List<Branch> listBranchs = null;
+		List<Package> listPackage = null;
+		List<Employee> listEmployee = null;
+		
+		try {
+			listBranchs = branchBO.getAllBranch();
+			listPackage = packageBO.getAll();
+			listEmployee = employeeBO.getAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("listBranch", listBranchs);
+		request.setAttribute("listGoi", listPackage);
+		request.setAttribute("listEmp", listEmployee);
 		
 		if ("submit".equals(request.getParameter("submit"))) {
 			String classId = request.getParameter("classId");
@@ -54,8 +83,7 @@ public class ThemLopTap extends HttpServlet {
 			String dateEnd = request.getParameter("dateEnd");
 			String branchId = request.getParameter("branchId");
 			trainingClassBO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd, branchId);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/list/danh-sach-lop-hoc.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/danh-sach-lop-hoc");
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/them-lop-hoc.jsp");
 			dispatcher.forward(request, response);

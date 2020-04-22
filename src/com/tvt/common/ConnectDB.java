@@ -20,8 +20,8 @@ public class ConnectDB {
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("connection falure");
-			e.printStackTrace();
-		}
+		} 
 		return connection;
 	}
+
 }

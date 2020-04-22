@@ -23,7 +23,7 @@ public class HomePageController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispatcher = req.getRequestDispatcher("views/web/home-page.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/web/home-page.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

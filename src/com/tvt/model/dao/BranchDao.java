@@ -176,7 +176,6 @@ public class BranchDao {
 		return branch;
 		
 	}
-
 	public List<Branch> getAllBranch(){
 		List<Branch> branchs = new ArrayList<Branch>();
 		conn = ConnectDB.getConnect();

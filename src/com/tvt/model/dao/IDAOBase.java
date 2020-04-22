@@ -1,5 +1,6 @@
 package com.tvt.model.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -8,12 +9,13 @@ import java.util.List;
  */
 public interface IDAOBase<T> {
 	
-	List<T> getAll();
+	List<T> getAll() throws SQLException;
 	
-	void insert(T object);
+	void insert(T object) throws SQLException;
 	
-	void update(T object);
+	void update(T object) throws SQLException;
 	
-	void delete(String object);
+	void delete(String object) throws SQLException;
 	
+	T find(String object) throws SQLException;
 }

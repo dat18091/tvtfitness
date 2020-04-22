@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/common/taglib.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +23,7 @@
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
 									action="${pageContext.request.contextPath}/them-lop-hoc">
-									
+
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã lớp tập</label>
 										<div class="col-sm-6">
@@ -46,11 +46,9 @@
 											for="inputSuccess">Gói</label>
 										<div class="col-lg-6">
 											<select name="packageId" class="form-control m-bot15">
-												<option value="P0001">Gói bình thường</option>
-												<option value="P0002">Gói 1 tháng</option>
-												<option value="P0003">Gói 3 tháng</option>
-												<option value="P0004">Gói 6 tháng</option>
-												<option value="P0005">Gói một năm</option>
+												<c:forEach items="${listGoi}" var="goi">
+													<option value="${goi.packageId}">${goi.packageName}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
@@ -60,9 +58,9 @@
 											for="inputSuccess">Mã Nhân viên</label>
 										<div class="col-lg-6">
 											<select name="empId" class="form-control m-bot15">
-												<option value="NV0001">Phuong</option>
-												<option value="NV0002">Dat</option>
-												<option value="NV0003">Quoc</option>
+												<c:forEach items="${listEmp}" var="emp">
+													<option value="${emp.empId}">${emp.empName}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
@@ -78,28 +76,20 @@
 												<option value="15:00">15:00</option>
 												<option value="17:00">17:00</option>
 												<option value="19:00">19:00</option>
-											</select><br>
-											<input type="checkbox" id="vehicle1" name="schedule"
-												value="2">
-											<label for="vehicle1">Thứ 2</label>
-											<input type="checkbox" id="vehicle2" name="schedule"
-												value="3">
-											<label for="vehicle2">Thứ 3</label>
-											<input type="checkbox" id="vehicle3" name="schedule"
-												value="4">
-											<label for="vehicle3">Thứ 4</label>
-											<input type="checkbox" id="vehicle4" name="schedule"
-												value="5">
-											<label for="vehicle4">Thứ 5</label>
-											<input type="checkbox" id="vehicle5" name="schedule"
-												value="6">
-											<label for="vehicle5">Thứ 6</label>
-											<input type="checkbox" id="vehicle6" name="schedule"
-												value="7">
-											<label for="vehicle6">Thứ 7</label>
-											<input type="checkbox" id="vehicle7" name="schedule"
-												value="cn">
-											<label for="vehicle7">Chủ nhật</label>
+											</select><br> <input type="checkbox" id="vehicle1"
+												name="schedule" value="2"> <label for="vehicle1">Thứ
+												2</label> <input type="checkbox" id="vehicle2" name="schedule"
+												value="3"> <label for="vehicle2">Thứ 3</label> <input
+												type="checkbox" id="vehicle3" name="schedule" value="4">
+											<label for="vehicle3">Thứ 4</label> <input type="checkbox"
+												id="vehicle4" name="schedule" value="5"> <label
+												for="vehicle4">Thứ 5</label> <input type="checkbox"
+												id="vehicle5" name="schedule" value="6"> <label
+												for="vehicle5">Thứ 6</label> <input type="checkbox"
+												id="vehicle6" name="schedule" value="7"> <label
+												for="vehicle6">Thứ 7</label> <input type="checkbox"
+												id="vehicle7" name="schedule" value="cn"> <label
+												for="vehicle7">Chủ nhật</label>
 										</div>
 									</div>
 
@@ -137,15 +127,17 @@
 											for="inputSuccess">Chi nhánh</label>
 										<div class="col-lg-6">
 											<select name="branchId" class="form-control m-bot15">
-												<option value="DN">Da Nang</option>
-												<option value="HCM">Ho Chi Minh</option>
+												<c:forEach items="${listBranch}" var="branch">
+													<option value="${branch.branchId}">${branch.branchName}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
 
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button class="btn btn-save" type="submit" value="submit" name="submit">
+											<button class="btn btn-save" type="submit" value="submit"
+												name="submit">
 												<i class="glyphicon glyphicon-plus"></i> Add
 											</button>
 											<button name="cancel" class="btn btn-cancel" type="button">
