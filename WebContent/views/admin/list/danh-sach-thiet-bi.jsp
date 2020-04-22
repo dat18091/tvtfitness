@@ -46,70 +46,39 @@
 									<th>Mã thiết bị</th>
 									<th>Tên thiết bị</th>
 									<th>Đơn giá</th>
-									<th>Chi nhánh</th>
+									<th>Mã Chi nhánh</th>
 									<th>Loại thiết bị</th>
 									<th>Ngày nhập</th>
-									<th>Bảo hành</th>
+									<th>Thời hạn bảo hành</th>
 									<th>Trạng thái</th>
+									<th>Hình ảnh</th>
 									<th style="width: 250px;">Chức năng</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TB0001</td>
-									<td>Khung tập gánh đùi Elip OLY109</td>
-									<th>19900000</th>
-									<td>TVT Quận 1</td>
-									<td>Thiết bị gym</td>
-									<td>2020-04-10</td>
-									<td>12 tháng</td>
-									<td>Mới nhập về còn mới</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thiet-bi">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TB0002</td>
-									<td>Ghế banh đẩy ngực trên Elip YL-28F</td>
-									<th>8400000</th>
-									<td>TVT Quận Bình Thạnh</td>
-									<td>Ghế tập gym</td>
-									<td>2020-04-10</td>
-									<td>12 tháng</td>
-									<td>Mới nhập về còn mới</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thiet-bi">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TB0003</td>
-									<td>Ghế tạ đa năng Elip Power Max 9in1</td>
-									<th>8500000</th>
-									<td>TVT Quận 1</td>
-									<td>Thiết bị gym</td>
-									<td>2020-04-10</td>
-									<td>12 tháng</td>
-									<td>Mới nhập về còn mới</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-thiet-bi">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								
-								</tr>
+								<c:forEach items="${list}" var="element">
+									<tr>
+										<td><label class="i-checks m-b-none"><input
+												type="checkbox" name="post[]"><i></i></label></td>
+										<td scope="row">${element.getEquipmentId()}</td>
+										<td scope="row">${element.getEquipmentName()}</td>
+										<td scope="row">${element.getCost()}</td>
+										<td scope="row">${element.getBranchId()}</td>
+										<td scope="row">${element.getEquipmentType()}</td>
+										<td scope="row">${element.getImportDate()}</td>
+										<td scope="row">${element.getWarrantyDate()}</td>
+										<td scope="row">${element.getStatus()}</td>
+										<td scope="row"><img class="img-thumbnail" width="100px" src="resources/uploads/${element.getImageUrl()}"></td>
+										<td><a class="btn btn-primary"
+											href="cap-nhat-thiet-bi?id=${element.getEquipmentId()}">
+												<i class="fa fa-edit"></i> Update
+										</a> &nbsp; <a class="btn btn-danger"
+											onclick="return confirm('Are you sure delete this computer?')"
+											href="xoa-thiet-bi?id=${element.getEquipmentId()}">
+												<i class="fa fa-trash" aria-hidden="true"></i> Delete
+										</a></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -118,17 +87,34 @@
 
 							<div class="col-sm-5 text-center">
 								<small class="text-muted inline m-t-sm m-b-sm">showing
-									20-30 of 50 items</small>
+									${start+1 } - ${end } of ${rows } items</small>
 							</div>
 							<div class="col-sm-7 text-right text-center-xs">
-								<ul class="pagination pagination-sm m-t-none m-b-none">
-									<li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-									<li><a href="">1</a></li>
-									<li><a href="">2</a></li>
-									<li><a href="">3</a></li>
-									<li><a href="">4</a></li>
-									<li><a href=""><i class="fa fa-chevron-right"></i></a></li>
-								</ul>
+							<ul class="pagination pagination-sm m-t-none m-b-none">
+								<c:if test="${currentPage != 1}">
+										<li class="page-item"><a class="page-link"
+											href="danh-sach-thiet-bi?currentPage=${currentPage-1}">Previous</a></li>
+									</c:if>
+
+									<c:forEach begin="1" end="${noOfPages}" var="i">
+										<c:choose>
+											<c:when test="${currentPage eq i}">
+												<li class="page-item active"><a class="page-link">
+														${i} <span class="sr-only">(current)</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link"
+													href="danh-sach-thiet-bi?currentPage=${i}">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+
+									<c:if test="${currentPage lt noOfPages}">
+										<li class="page-item"><a class="page-link"
+											href="danh-sach-thiet-bi?currentPage=${currentPage+1}">Next</a></li>
+									</c:if>
+									</ul>
 							</div>
 						</div>
 					</footer>

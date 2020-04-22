@@ -1,26 +1,25 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tvt.model.bo.BranchBO;
+import com.tvt.model.bo.EquipmentBO;
 
 /**
- * Servlet implementation class DeleteBranchServlet
+ * Servlet implementation class DeleteEquipmentServlet
  */
-@WebServlet("/xoa-chi-nhanh")
-public class DeleteBranchServlet extends HttpServlet {
+@WebServlet("/xoa-thiet-bi")
+public class DeleteEquipmentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteBranchServlet() {
+    public DeleteEquipmentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,10 +28,10 @@ public class DeleteBranchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BranchBO bo= new BranchBO();
 		String id= request.getParameter("id");
-		bo.deleteBranch(id);
-		response.sendRedirect("danh-sach-chi-nhanh");
+		EquipmentBO bo= new EquipmentBO();
+		bo.deleteEquipment(id);
+		response.sendRedirect("danh-sach-thiet-bi");
 	}
 
 	/**

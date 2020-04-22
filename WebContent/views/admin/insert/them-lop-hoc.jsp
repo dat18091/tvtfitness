@@ -19,130 +19,136 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<section class="panel">
-							<header class="panel-heading">Thêm Lớp Học</header>
+							<header class="panel-heading">Thêm Lớp Tập</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="">
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label">Mã lớp học</label>
-										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập mã lớp học..." class="form-control">
-										</div>
-									</div>
+									action="${pageContext.request.contextPath}/them-lop-hoc">
 									
 									<div class="form-group">
-										<label class="col-sm-3 control-label">Tên lớp học</label>
+										<label class="col-sm-3 control-label">Mã lớp tập</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập tên lớp muốn học..." class="form-control">
+											<input type="text" name="classId" placeholder="TC0001"
+												class="form-control">
 										</div>
 									</div>
 
-									<div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Gói</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Gói VIP</option>
-				                                   <option value="{{ $parent->parent_id }}">Gói 1 tháng</option>
-				                                   <option value="{{ $parent->parent_id }}">Gói nửa năm</option>
-				                                   <option value="{{ $parent->parent_id }}">Gói 1 năm</option>
-				                                   <option value="{{ $parent->parent_id }}">Gói bình thường</option>
-				                            </select>
-				                        </div>
-				                    </div>
-									
-									<div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Nhân viên</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Hoàng Hải</option>
-				                                   <option value="{{ $parent->parent_id }}">Thành Đông</option>
-				                                   <option value="{{ $parent->parent_id }}">Quang Hiếu</option>
-				                            </select>
-				                        </div>
-				                    </div>
-				                    
-				                    <div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Thời gian Biểu</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">07:00</option>
-				                                   <option value="{{ $parent->parent_id }}">09:00</option>
-				                                   <option value="{{ $parent->parent_id }}">13:00</option>
-				                                   <option value="{{ $parent->parent_id }}">15:00</option>
-				                                   <option value="{{ $parent->parent_id }}">17:00</option>
-				                                   <option value="{{ $parent->parent_id }}">19:00</option>
-				                            </select>
-				                        </div>
-				                    </div>
-				                    
-				                    <div class="form-group">
-										<label class="col-sm-3 control-label">Số lượng học viên</label>
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Tên lớp tập</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập số lượng học viên..." class="form-control">
+											<input type="text" name="className" placeholder="Tên lớp tập"
+												class="form-control">
 										</div>
 									</div>
-				                    
-				                    <div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Thời gian Bắt Đầu</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">07:00</option>
-				                                   <option value="{{ $parent->parent_id }}">09:00</option>
-				                                   <option value="{{ $parent->parent_id }}">13:00</option>
-				                                   <option value="{{ $parent->parent_id }}">15:00</option>
-				                                   <option value="{{ $parent->parent_id }}">17:00</option>
-				                                   <option value="{{ $parent->parent_id }}">19:00</option>
-				                            </select>
-				                        </div>
-				                    </div>
-				                    
-				                    <div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Thời gian Kết Thúc</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">08:30</option>
-				                                   <option value="{{ $parent->parent_id }}">10:30</option>
-				                                   <option value="{{ $parent->parent_id }}">14:30</option>
-				                                   <option value="{{ $parent->parent_id }}">16:30</option>
-				                                   <option value="{{ $parent->parent_id }}">19:30</option>
-				                                   <option value="{{ $parent->parent_id }}">21:30</option>
-				                            </select>
-				                        </div>
-				                    </div>
-									
-									<div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Trạng thái lớp</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Đủ học viên</option>
-				                                   <option value="{{ $parent->parent_id }}">Thiếu học viên</option>
-				                                   <option value="{{ $parent->parent_id }}">Cơ sở vật chất hỏng</option>
-				                            </select>
-				                        </div>
-				                    </div>
-									
-									<div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chi nhánh</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">TVT Quận 1</option>
-				                                   <option value="{{ $parent->parent_id }}">TVT Quận Bình Thạn</option>
-				                            </select>
-				                        </div>
-				                    </div>
-									
+
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Gói</label>
+										<div class="col-lg-6">
+											<select name="packageId" class="form-control m-bot15">
+												<option value="P0001">Gói bình thường</option>
+												<option value="P0002">Gói 1 tháng</option>
+												<option value="P0003">Gói 3 tháng</option>
+												<option value="P0004">Gói 6 tháng</option>
+												<option value="P0005">Gói một năm</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Mã Nhân viên</label>
+										<div class="col-lg-6">
+											<select name="empId" class="form-control m-bot15">
+												<option value="NV0001">Phuong</option>
+												<option value="NV0002">Dat</option>
+												<option value="NV0003">Quoc</option>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Thời gian Biểu</label>
+										<div class="col-lg-6">
+											<select name="schedule" class="form-control m-bot15">
+												<option value="07:00">07:00</option>
+												<option value="09:00">09:00</option>
+												<option value="15:00">15:00</option>
+												<option value="17:00">17:00</option>
+												<option value="19:00">19:00</option>
+											</select><br>
+											<input type="checkbox" id="vehicle1" name="schedule"
+												value="2">
+											<label for="vehicle1">Thứ 2</label>
+											<input type="checkbox" id="vehicle2" name="schedule"
+												value="3">
+											<label for="vehicle2">Thứ 3</label>
+											<input type="checkbox" id="vehicle3" name="schedule"
+												value="4">
+											<label for="vehicle3">Thứ 4</label>
+											<input type="checkbox" id="vehicle4" name="schedule"
+												value="5">
+											<label for="vehicle4">Thứ 5</label>
+											<input type="checkbox" id="vehicle5" name="schedule"
+												value="6">
+											<label for="vehicle5">Thứ 6</label>
+											<input type="checkbox" id="vehicle6" name="schedule"
+												value="7">
+											<label for="vehicle6">Thứ 7</label>
+											<input type="checkbox" id="vehicle7" name="schedule"
+												value="cn">
+											<label for="vehicle7">Chủ nhật</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Số lượng học
+											viên</label>
+										<div class="col-sm-6">
+											<input type="number" name="maxMember" min=3
+												placeholder="Số lượng học viên của lớp tập"
+												class="form-control">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Thời gian bắt đầu khóa tập</label>
+										<div class="col-lg-6">
+											<input type="date" id="inputSuccess1" name=dateStart>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Thời gian kết thúc khóa tập</label>
+										<div class="col-lg-6">
+											<input type="date" id="inputSuccess2" name=dateEnd>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Chi nhánh</label>
+										<div class="col-lg-6">
+											<select name="branchId" class="form-control m-bot15">
+												<option value="DN">Da Nang</option>
+												<option value="HCM">Ho Chi Minh</option>
+											</select>
+										</div>
+									</div>
+
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
-												type="submit">
-												<i class="glyphicon glyphicon-plus"></i> Save
+											<button class="btn btn-save" type="submit" value="submit" name="submit">
+												<i class="glyphicon glyphicon-plus"></i> Add
 											</button>
-											<button name="cancel_brand_product" class="btn btn-cancel"
-												type="button">
+											<button name="cancel" class="btn btn-cancel" type="button">
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
 										</div>
@@ -152,15 +158,7 @@
 						</section>
 					</div>
 				</div>
-
 			</section>
-			<!-- footer -->
-			<!--<div class="footer">
-                <div class="wthree-copyright">
-                    <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-                </div>
-            </div>-->
-			<!-- / footer -->
 		</section>
 		<!--main content end-->
 	</section>

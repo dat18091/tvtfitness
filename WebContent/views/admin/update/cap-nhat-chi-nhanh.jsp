@@ -23,38 +23,44 @@
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
 									action="cap-nhat-chi-nhanh">
-
+									<div class="form-group">
+										<label class="col-sm-12" id="notification"
+											style="text-align: center;"></label>
+									</div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã chi nhánh</label>
 										<div class="col-sm-6">
-											<input type="text" name="branchId" value="${branch.getBranchId() }"
-											readonly="readonly" placeholder="Nhập mã chi nhánh..." class="form-control" >
+											<input type="text" name="branchId"
+												value="${branch.getBranchId() }" readonly="readonly"
+												placeholder="Nhập mã chi nhánh..." class="form-control">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên chi nhánh</label>
 										<div class="col-sm-6">
-											<input type="text" name="branchName" value="${branch.getBranchName() }"
+											<input type="text" name="branchName"
+												value="${branch.getBranchName() }"
 												placeholder="Nhập tên chi nhánh..." class="form-control">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Địa chỉ</label>
 										<div class="col-sm-6">
-											<input type="text" name="address" value="${branch.getAddress() }"
+											<input type="text" name="address"
+												value="${branch.getAddress() }"
 												placeholder="Nhập tên địa chỉ..." class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
-												type="submit">
+											<button name="action" class="btn btn-save" type="submit"
+												value="Update">
 												<i class="glyphicon glyphicon-edit"></i> Update
 											</button>
-											<button name="cancel_brand_product" class="btn btn-cancel"
-												type="button">
+											<button name="action" class="btn btn-cancel" type="button"
+												value="Cancel" onclick="history.go(-1);">
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
 										</div>
@@ -77,7 +83,13 @@
 		<!--main content end-->
 	</section>
 
-<%@include file="/common/admin/js-resources.jsp"%>
+	<%@include file="/common/admin/js-resources.jsp"%>
+	<script type="text/javascript">
+		if(${error != null}){
+			$("#notification").text("${error}");
+    		$("#notification").css("color", "red");
+		}
+</script>
 </body>
 
 </html>

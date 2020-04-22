@@ -53,12 +53,12 @@
 									</div>
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
-												type="submit">
+											<button name="action" class="btn btn-save"
+												type="submit" value="Submit">
 												<i class="glyphicon glyphicon-plus"></i> Save
 											</button>
-											<button name="cancel_brand_product" class="btn btn-cancel"
-												type="button">
+											<button class="btn btn-cancel"
+												type="button"  onclick="history.go(-1);">
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
 										</div>
@@ -98,7 +98,7 @@
 	        } else {
 	            $("#notification").text("")
 	        }
-	    });
+		});
 </script>
 </body>
 

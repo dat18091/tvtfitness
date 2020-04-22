@@ -23,7 +23,7 @@ public class Equipment {
 	}
 
 	public Equipment(String equipmentId, String equipmentName, String equipmentType, String imageUrl,
-			LocalDate importDate, LocalDate warrantyDate, String status, float cost, String branchId) {
+			LocalDate importDate,LocalDate warrantyDate, String status, float cost, String branchId) {
 		super();
 		this.equipmentId = equipmentId;
 		this.equipmentName = equipmentName;

@@ -5,7 +5,7 @@ package com.tvt.model.bean;
  *
  */
 public class Account {
-	private String accountId;
+	private int accountId;
 	private String accountName;
 	private String password;
 	private String accountType;
@@ -14,7 +14,7 @@ public class Account {
 	public Account() {
 	}
 
-	public Account(String accountId, String accountName, String password, String accountType, String accountLevel) {
+	public Account(int accountId, String accountName, String password, String accountType, String accountLevel) {
 		super();
 		this.accountId = accountId;
 		this.accountName = accountName;
@@ -23,11 +23,11 @@ public class Account {
 		this.accountLevel = accountLevel;
 	}
 
-	public String getAccountId() {
+	public int getAccountId() {
 		return accountId;
 	}
 
-	public void setAccountId(String accountId) {
+	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
 

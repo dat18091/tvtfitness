@@ -13,7 +13,7 @@ import com.tvt.model.bean.Branch;
 public class BranchDao {
 	private Connection conn;
 
-	public List<Branch> getBrandList(int start, int recordPerPage) throws SQLException {
+	public List<Branch> getBrandList(int start, int recordPerPage){
 		List<Branch> branchs = new ArrayList<Branch>();
 		conn = ConnectDB.getConnect();
 		PreparedStatement pst = null;
@@ -29,10 +29,19 @@ public class BranchDao {
 				branch.setAddress(rs.getNString("address"));
 				branchs.add(branch);
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			if (pst != null) {
-				pst.close();
-				conn.close();
+				try {
+					pst.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 
 		}
@@ -81,7 +90,7 @@ public class BranchDao {
 		return false;
 	}
 
-	public boolean deleteBranch(String branchId) throws SQLException {
+	public boolean deleteBranch(String branchId){
 		PreparedStatement pst = null;
 		conn = ConnectDB.getConnect();
 		int row = 0;
@@ -90,9 +99,18 @@ public class BranchDao {
 			pst.setString(1, branchId);
 			row = pst.executeUpdate();
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
-			pst.close();
-			conn.close();
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		if (row > 0) {
 			return true;
@@ -100,7 +118,7 @@ public class BranchDao {
 		return false;
 	}
 
-	public int numberOfRecords() throws SQLException {
+	public int numberOfRecords(){
 		conn = ConnectDB.getConnect();
 		PreparedStatement pst = null;
 		int row = 0;
@@ -111,15 +129,24 @@ public class BranchDao {
 				row = rs.getInt(1);
 			}
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
-			pst.close();
-			conn.close();
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		return row;
 
 	}
 
-	public Branch getBranch(String id) throws SQLException {
+	public Branch getBranch(String id){
 		PreparedStatement pst = null;
 		conn = ConnectDB.getConnect();
 		Branch branch = new Branch();
@@ -133,12 +160,51 @@ public class BranchDao {
 				branch.setAddress(rs.getNString("address"));
 				
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
-			pst.close();
-			conn.close();
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		return branch;
 		
+	}
+
+	public List<Branch> getAllBranch(){
+		List<Branch> branchs = new ArrayList<Branch>();
+		conn = ConnectDB.getConnect();
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("select * from BRANCH");
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				Branch branch = new Branch();
+				branch.setBranchId(rs.getString("branchId"));
+				branch.setBranchName(rs.getNString("branchName"));
+				branch.setAddress(rs.getNString("address"));
+				branchs.add(branch);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		return branchs;
 	}
 
 }

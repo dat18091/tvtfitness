@@ -49,56 +49,28 @@
 									<th>Tên tài khoản</th>
 									<th>Mật khẩu</th>
 									<th>Phân quyền</th>
-									<th>Loại tài khoản</th>
 									<th style="width: 250px;">Chức năng</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TK0001</td>
-									<td>admin</td>
-									<td>123456</td>
-									<td>Administrator</td>
-									<td>Administrator</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-tai-khoan">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TK0002</td>
-									<td>datdeptrai</td>
-									<td>123456</td>
-									<td>Gymer</td>
-									<td>Gold</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-tai-khoan">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>TK0003</td>
-									<td>hoanghauhinh</td>
-									<td>123456</td>
-									<td>Employee</td>
-									<td>Employee</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-tai-khoan">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
+								<c:forEach items="${list}" var="element">
+									<tr>
+										<td><label class="i-checks m-b-none"><input
+												type="checkbox" name="post[]"><i></i></label></td>
+										<td scope="row">${element.getAccountId()}</td>
+										<td scope="row">${element.getAccountName()}</td>
+										<td scope="row">${element.getPassword()}</td>
+										<td scope="row">${element.getAccountType()}</td>
+										<td><a class="btn btn-primary"
+											href="cap-nhat-tai-khoan?id=${element.getAccountId()}">
+												<i class="fa fa-edit"></i> Update
+										</a> &nbsp; <a class="btn btn-danger"
+											onclick="return confirm('Are you sure delete this computer?')"
+											href="xoa-tai-khoan?id=${element.getAccountId()}">
+												<i class="fa fa-trash" aria-hidden="true"></i> Delete
+										</a></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -107,16 +79,33 @@
 
 							<div class="col-sm-5 text-center">
 								<small class="text-muted inline m-t-sm m-b-sm">showing
-									20-30 of 50 items</small>
+									${start+1 } - ${end } of ${rows } items</small>
 							</div>
 							<div class="col-sm-7 text-right text-center-xs">
 								<ul class="pagination pagination-sm m-t-none m-b-none">
-									<li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-									<li><a href="">1</a></li>
-									<li><a href="">2</a></li>
-									<li><a href="">3</a></li>
-									<li><a href="">4</a></li>
-									<li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+									<c:if test="${currentPage != 1}">
+										<li class="page-item"><a class="page-link"
+											href="danh-sach-tai-khoan?currentPage=${currentPage-1}">Previous</a></li>
+									</c:if>
+
+									<c:forEach begin="1" end="${noOfPages}" var="i">
+										<c:choose>
+											<c:when test="${currentPage eq i}">
+												<li class="page-item active"><a class="page-link">
+														${i} <span class="sr-only">(current)</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link"
+													href="danh-sach-tai-khoan?currentPage=${i}">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+
+									<c:if test="${currentPage lt noOfPages}">
+										<li class="page-item"><a class="page-link"
+											href="danh-sach-tai-khoan?currentPage=${currentPage+1}">Next</a></li>
+									</c:if>
 								</ul>
 							</div>
 						</div>

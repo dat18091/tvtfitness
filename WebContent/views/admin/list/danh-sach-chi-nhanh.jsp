@@ -79,10 +79,10 @@
 									${start+1 } - ${end } of ${rows } items</small>
 							</div>
 							<div class="col-sm-7 text-right text-center-xs">
-								<ul class="pagination pagination-sm m-t-none m-b-none">
+								 
 									<c:if test="${currentPage != 1}">
 										<li class="page-item"><a class="page-link"
-											href="danhsachmay?currentPage=${currentPage-1}">Previous</a></li>
+											href="danh-sach-chi-nhanh?currentPage=${currentPage-1}">Previous</a></li>
 									</c:if>
 
 									<c:forEach begin="1" end="${noOfPages}" var="i">
@@ -94,14 +94,14 @@
 											</c:when>
 											<c:otherwise>
 												<li class="page-item"><a class="page-link"
-													href="danhsachmay?currentPage=${i}">${i}</a></li>
+													href="danh-sach-chi-nhanh?currentPage=${i}">${i}</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 
 									<c:if test="${currentPage lt noOfPages}">
 										<li class="page-item"><a class="page-link"
-											href="danhsachmay?currentPage=${currentPage+1}">Next</a></li>
+											href="danh-sach-chi-nhanh?currentPage=${currentPage+1}">Next</a></li>
 									</c:if>
 								</ul>
 							</div>

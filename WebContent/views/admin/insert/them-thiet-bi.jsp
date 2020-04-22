@@ -22,12 +22,12 @@
 							<header class="panel-heading">Thêm Thiết Bị</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="{{URL::to('/save-brand-product')}}">
+									action="them-thiet-bi" enctype="multipart/form-data">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã Thiết Bị</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="equipmentId" required="required"
 												placeholder="Nhập mã thiết bị..." class="form-control">
 										</div>
 									</div>
@@ -35,38 +35,48 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên thiết bị</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="equipmentName"
 												placeholder="Nhập tên thiết bị..." class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Giá</label>
+										<div class="col-sm-6">
+											<input type="text" name="cost"
+												placeholder="Giá..." class="form-control">
 										</div>
 									</div>
 									
 									<div class="form-group"><!-- Category Product Parent -->
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chi nhánh</label>
 				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">TVT Quận 1</option>
-				                                   <option value="{{ $parent->parent_id }}">TVT Quận Bình Thạnh</option>
+				                            <select name="brandName" class="form-control m-bot15">
+				                            	<c:forEach items="${list }" var="element" >
+				                            	<option value="${element }">${element }</option>
+				                            	</c:forEach>
 				                            </select>
 				                        </div>
 				                    </div>
 									
 									<div class="form-group"><!-- Category Product Parent -->
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại thiết bị</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Thiết bị gym</option>
-				                                   <option value="{{ $parent->parent_id }}">Ghế tập gym</option>
-				                                   <option value="{{ $parent->parent_id }}">Giàn tạ đa năng</option>
-				                                   <option value="{{ $parent->parent_id }}">Thiết bị công viên</option>
-				                                   <option value="{{ $parent->parent_id }}">Phụ kiện</option>
-				                            </select>
-				                        </div>
+				                        <div class="col-sm-6">
+				                        <input type="text" name="equipmentType"
+												placeholder="Loại thiết bị..." class="form-control">
+												</div>
 				                    </div>
+				                    <div class="form-group">
+										<label class="col-sm-3 control-label">Hình ảnh</label>
+										<div class="col-sm-6">
+											<input type="file" name="imageUrl"
+												placeholder="Nhập ngày nhập thiết bị..." class="form-control">
+										</div>
+									</div>
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Ngày nhập</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="date" name="importDate"
 												placeholder="Nhập ngày nhập thiết bị..." class="form-control">
 										</div>
 									</div>
@@ -74,17 +84,16 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Thời hạn bảo hành</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="date" name="warrantyDate"
 												placeholder="Nhập thời gian bảo hành thiết bị..." class="form-control">
 										</div>
 									</div>
 									
 									<div class="form-group ">
-										<label for="ccomment"
-											class="control-label col-lg-3">Trạng thái</label>
+										<label class="control-label col-lg-3">Trạng thái</label>
 										<div class="col-lg-6">
 											<textarea class="form-control"
-												name="brand_product_description" style="resize: none;"
+												name="status" style="resize: none;"
 												rows="5" id="ccomment"></textarea>
 										</div>
 									</div>
@@ -96,7 +105,7 @@
 												<i class="glyphicon glyphicon-plus"></i> Save
 											</button>
 											<button name="cancel_brand_product" class="btn btn-cancel"
-												type="button">
+												type="button" onclick="history.go(-1);">
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
 										</div>

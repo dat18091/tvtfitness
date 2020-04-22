@@ -1,26 +1,25 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tvt.model.bo.BranchBO;
+import com.tvt.model.bo.AccountBO;
 
 /**
- * Servlet implementation class DeleteBranchServlet
+ * Servlet implementation class DeleteAccountServler
  */
-@WebServlet("/xoa-chi-nhanh")
-public class DeleteBranchServlet extends HttpServlet {
+@WebServlet("/xoa-tai-khoan")
+public class DeleteAccountServler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteBranchServlet() {
+    public DeleteAccountServler() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,10 +28,10 @@ public class DeleteBranchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BranchBO bo= new BranchBO();
-		String id= request.getParameter("id");
-		bo.deleteBranch(id);
-		response.sendRedirect("danh-sach-chi-nhanh");
+		int id= Integer.parseInt(request.getParameter("id"));
+		AccountBO bo= new AccountBO();
+		bo.deleteAccount(id);
+		response.sendRedirect("danh-sach-tai-khoan");
 	}
 
 	/**
