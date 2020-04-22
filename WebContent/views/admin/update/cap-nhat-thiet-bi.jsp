@@ -89,7 +89,7 @@
 										<div class="col-lg-6">
 											<textarea class="form-control"
 												name="status" style="resize: none;"
-												rows="5" id="ccomment"></textarea>
+												rows="5" id="ccomment">${equipment.getStatus()}</textarea>
 										</div>
 									</div>
 									

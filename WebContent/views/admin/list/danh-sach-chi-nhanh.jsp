@@ -79,7 +79,7 @@
 									${start+1 } - ${end } of ${rows } items</small>
 							</div>
 							<div class="col-sm-7 text-right text-center-xs">
-								 
+								<ul class="pagination pagination-sm m-t-none m-b-none"> 
 									<c:if test="${currentPage != 1}">
 										<li class="page-item"><a class="page-link"
 											href="danh-sach-chi-nhanh?currentPage=${currentPage-1}">Previous</a></li>

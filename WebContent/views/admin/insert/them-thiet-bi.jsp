@@ -50,7 +50,7 @@
 									<div class="form-group"><!-- Category Product Parent -->
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Chi nhánh</label>
 				                        <div class="col-lg-6">
-				                            <select name="brandName" class="form-control m-bot15">
+				                            <select name="branchName" class="form-control m-bot15">
 				                            	<c:forEach items="${list }" var="element" >
 				                            	<option value="${element }">${element }</option>
 				                            	</c:forEach>

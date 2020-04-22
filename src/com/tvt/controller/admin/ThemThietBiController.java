@@ -59,14 +59,13 @@ public class ThemThietBiController extends HttpServlet {
 		Equipment equipment= new Equipment();
 		equipment.setEquipmentId(req.getParameter("equipmentId"));
 		equipment.setEquipmentName(req.getParameter("equipmentName"));
-		equipment.setBranchId(getBranchId(req.getParameter("branchId")));
+		equipment.setBranchId(getBranchId(req.getParameter("branchName")));
 		equipment.setEquipmentType(req.getParameter("equipmentType"));
 		equipment.setImportDate(parseString(req.getParameter("importDate")));
 		equipment.setWarrantyDate(parseString(req.getParameter("warrantyDate")));
 		equipment.setImageUrl(getSubmittedFileName(filePart));
 		equipment.setStatus(req.getParameter("status"));
 		equipment.setCost(Float.parseFloat(req.getParameter("cost")));
-		equipment.setBranchId(getBranchId(req.getParameter("branchName")));
 		try {
 			bo.insertEquipment(equipment);
 			resp.sendRedirect("danh-sach-thiet-bi");

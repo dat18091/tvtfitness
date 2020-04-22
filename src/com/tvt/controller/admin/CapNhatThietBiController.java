@@ -50,7 +50,6 @@ public class CapNhatThietBiController extends HttpServlet {
 		Equipment equipment = new Equipment();
 		equipment.setEquipmentId(req.getParameter("equipmentId"));
 		equipment.setEquipmentName(req.getParameter("equipmentName"));
-		equipment.setBranchId(getBranchId(req.getParameter("branchId")));
 		equipment.setEquipmentType(req.getParameter("equipmentType"));
 		equipment.setImportDate(parseString(req.getParameter("importDate")));
 		equipment.setWarrantyDate(parseString(req.getParameter("warrantyDate")));

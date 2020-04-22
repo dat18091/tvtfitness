@@ -61,6 +61,7 @@
 											</button>
 											<button name="action" class="btn btn-cancel" type="button"
 												value="Cancel" onclick="history.go(-1);">
+												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
 										</div>
 									</div>
