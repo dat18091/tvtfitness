@@ -29,7 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			<form action="${pageContext.request.contextPath}/login" method="post">
 				<input type="text" class="text" name="userName" placeholder="Enter your username...">
-				<input type="password" class="text" name="admin_password" placeholder="Enter your password...">
+				<input type="password" class="text" name="password" placeholder="Enter your password...">
 				<span><input name="rememberMe" type="checkbox" />Remember Me</span>
 				<!--<h6><a href="">Forgot Password?</a></h6>-->
 				<div class="clearfix"></div>
