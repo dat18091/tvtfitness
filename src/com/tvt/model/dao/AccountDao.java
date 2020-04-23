@@ -1,9 +1,11 @@
 package com.tvt.model.dao;
 
+import java.lang.reflect.Parameter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -222,5 +224,37 @@ public class AccountDao {
 		return account;
 
 	}
+	
+	public Account getAccount(String userName, String password) {
+		conn = ConnectDB.getConnect();
+		Account account= new Account();
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement("select * from ACCOUNT where accountName= ? AND password = ?");
+			pst.setString(1, userName);
+			pst.setString(2, password);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {	
+				account.setAccountId(rs.getInt("accountId"));
+				account.setAccountName(rs.getString("accountName"));
+				account.setPassword(rs.getString("password"));
+				account.setAccountType(rs.getString("accountType"));	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return account;
+
+	}
+	
 
 }

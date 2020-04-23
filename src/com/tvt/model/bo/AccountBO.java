@@ -54,5 +54,9 @@ public class AccountBO {
 		}
 		return end;
 	}
-
+	
+	public Account getAccount(String userName, String password) {
+		return accountDao.getAccount(userName, password);
+	}
+	
 }
