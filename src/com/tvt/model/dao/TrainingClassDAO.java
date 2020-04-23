@@ -127,9 +127,10 @@ public class TrainingClassDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		TrainingClass trainingClass = new TrainingClass();
+		TrainingClass trainingClass = null;
 		try {
 			if (resultSet.next()) {
+				trainingClass = new TrainingClass();
 				trainingClass.setClassId(resultSet.getString("classId"));
 				trainingClass.setClassName(resultSet.getNString("className"));
 				trainingClass.setPackageId(resultSet.getNString("packageName"));
