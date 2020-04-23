@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class ConnectDB {
 
 	private static String url = "jdbc:sqlserver://localhost:1433;databaseName=gym";
-	private static String userName = "hien";
-	private static String password = "1234";
+	private static String userName = "sa";
+	private static String password = "123";
 	private static String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	static Connection connection;
 
@@ -16,7 +16,6 @@ public class ConnectDB {
 		try {
 			Class.forName(driverName);
 			connection = DriverManager.getConnection(url, userName, password);
-
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("connection falure");

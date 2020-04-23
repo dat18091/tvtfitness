@@ -33,6 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<span><input name="rememberMe" type="checkbox" />Remember Me</span>
 				<!--<h6><a href="">Forgot Password?</a></h6>-->
 				<div class="clearfix"></div>
+				<p style="color: red">${loginFailed}</p>
 				<input type="submit" value="Sign In" name="submit">
 				<button class="btn facebook"><i class="fa fa-facebook-square"></i> Facebook</button>
 				<button class="btn google"><i class="fa fa-google-plus-square"></i> Google+</button>
