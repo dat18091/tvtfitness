@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tvt.model.bean.Member;
 import com.tvt.model.bo.MemberBO;
-import com.tvt.model.dao.EmployeeDAO;
 import com.tvt.model.dao.MemberDAO;
 
 /**
@@ -33,7 +32,6 @@ public class DanhSachThanhVienController extends HttpServlet {
 		List<Member> list = null;
 
 		String search = req.getParameter("search");
-		String sortName = req.getParameter("sortName");
 		String sortBy = req.getParameter("sortBy");
 
 		String spageid = req.getParameter("page");
@@ -69,7 +67,7 @@ public class DanhSachThanhVienController extends HttpServlet {
 
 		try {
 			MemberBO memberBO = new MemberBO();
-			list = memberBO.getAll(skipRecord, numberRecordPerPage, search, sortName, sortBy);
+			list = memberBO.getAll(skipRecord, numberRecordPerPage, search, sortBy);
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();

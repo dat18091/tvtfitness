@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IDAOBase<T> {
 	
-	List<T> getAll(int start, int total, String search, String sortName, String sortBy) throws SQLException;
+	List<T> getAll(int start, int total, String search, String sortBy) throws SQLException;
 	
 	void insert(T object) throws SQLException;
 	

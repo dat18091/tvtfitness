@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tvt.model.bean.Employee;
 import com.tvt.model.bean.Member;
 
 /**
@@ -136,22 +135,14 @@ public class MemberDAO implements IDAOBase<Member> {
 	}
 
 	@Override
-	public List<Member> getAll(int start, int total, String search, String sortName, String sortBy)
-			throws SQLException {
+	public List<Member> getAll(int start, int total, String search, String sortBy) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		try {
 			conn = com.tvt.common.ConnectDB.getConnect();
 
-			if (sortName != null && sortBy != null) {
-				String sql = "select * from MEMBER order by " + sortName + " " + sortBy + "";
-				pstm = conn.prepareStatement(sql);
-
-				pstm.setString(1, sortName);
-				pstm.setString(2, sortBy);
-			}
-
 			if (search != null && !"".equals(search)) {
+
 				String sql = "select * from MEMBER where (memberId like ? or fullName like ?) order by memberId offset ? rows fetch next ? rows only";
 
 				String se1 = "%" + search + "%";
@@ -161,7 +152,13 @@ public class MemberDAO implements IDAOBase<Member> {
 				pstm.setString(2, se1);
 				pstm.setInt(3, start);
 				pstm.setInt(4, total);
+			} else if (sortBy != null) {
+
+				String sql = "select * from MEMBER order by memberId " + sortBy + "";
+				pstm = conn.prepareStatement(sql);
+
 			} else {
+
 				String sql = "select * from MEMBER order by memberId offset ? rows fetch next ? rows only";
 
 				pstm = conn.prepareStatement(sql);
@@ -192,7 +189,9 @@ public class MemberDAO implements IDAOBase<Member> {
 			}
 
 			return list;
-		} finally {
+		} finally
+
+		{
 			if (pstm == null) {
 				pstm.close();
 			}

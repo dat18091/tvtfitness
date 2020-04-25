@@ -22,9 +22,9 @@
 						<div class="panel-heading">Danh Sách Thành Viên</div>
 						<div class="row w3-res-tb">
 							<div class="col-sm-5 m-b-xs">
-								<select class="input-sm form-control w-sm inline v-middle">
-									<option value="0">Giam Dan</option>
-									<option value="1">Tang Dan</option>
+								<select name="sortBy" class="input-sm form-control w-sm inline v-middle">
+									<option value="desc">Giam Dan</option>
+									<option value="asc">Tang Dan</option>
 								</select>
 								<button class="btn btn-sm btn-default">Apply</button>
 							</div>
