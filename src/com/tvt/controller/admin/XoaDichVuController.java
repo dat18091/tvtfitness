@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tvt.model.bo.ServiceBOImpl;
+
 /**
  * @author dat18
  *
@@ -22,6 +24,9 @@ public class XoaDichVuController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ServiceBOImpl serviceBOImpl = new ServiceBOImpl();
+		String serviceId = (String) req.getParameter("serviceId");
+		serviceBOImpl.delete(serviceId);
 		resp.sendRedirect(req.getContextPath() + "/danh-sach-dich-vu");
 	}
 

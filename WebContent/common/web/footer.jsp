@@ -66,7 +66,7 @@
                     <div class="fs-widget">
                         <h4>Support</h4>
                         <ul>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="login">Login</a></li>
                             <li><a href="#">My account</a></li>
                             <li><a href="#">Subscribe</a></li>
                             <li><a href="#">Contact</a></li>

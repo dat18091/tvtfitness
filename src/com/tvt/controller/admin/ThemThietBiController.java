@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.tvt.model.bean.Branch;
@@ -39,6 +40,11 @@ public class ThemThietBiController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+        if (session.getAttribute("thongTinTaiKhoan") == null) {
+            resp.sendRedirect(req.getContextPath()+"/login");
+            return;
+        }
 		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/insert/them-thiet-bi.jsp");
 		List<String> brandNames = branchs.stream().map(x -> x.getBranchName()).collect(Collectors.toList());
 		req.setAttribute("list", brandNames);

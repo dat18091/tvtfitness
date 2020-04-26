@@ -1,8 +1,10 @@
 package com.tvt.controller.admin;
 
+import java.io.File;
 //import java.io.File;
 import java.io.IOException;
 //import java.util.List;
+import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 //import org.apache.commons.fileupload.FileItem;
 //import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 //import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import javax.servlet.http.Part;
+
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.tvt.model.bean.Service;
 import com.tvt.model.bo.ServiceBOImpl;
@@ -33,6 +38,7 @@ public class ThemDichVuController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 //	private static final String SAVE_DIR = "uploads";
+	private static final int UPLOAD_DIRECTORY = 0;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -68,8 +74,31 @@ public class ThemDichVuController extends HttpServlet {
 		for (int i = 0; i < type.length; i++) {
 			serviceType += type[i];
 		}
+
 		String imageUrl = (String) req.getParameter("imageUrl");
 
+		String fileName = "";
+		if(ServletFileUpload.isMultipartContent(req)){
+            try {
+                Collection<Part> collection = req.getParts();
+        		for (Part part : collection) {
+        			if ("imageUrl".equals(part.getName())) {
+        				fileName = new File(getNewFileName(extractFileName(part))).getName();
+        				part.write(UPLOAD_DIRECTORY + File.separator + fileName);
+        				break;
+        			}
+        		}
+            
+               //File uploaded successfully
+               req.setAttribute("message", "File Uploaded Successfully");
+            } catch (Exception ex) {
+               req.setAttribute("message", "File Upload Failed due to " + ex);
+            }          
+          
+        }else{
+            req.setAttribute("message", "Sorry this Servlet only handles file upload request");
+        }
+		
 		String price = req.getParameter("price");
 		float serPrice = 0;
 		try {
@@ -85,4 +114,25 @@ public class ThemDichVuController extends HttpServlet {
 		req.setAttribute("service", service);
 		resp.sendRedirect(req.getContextPath() + "/danh-sach-dich-vu");
 	}
+	 private String extractFileName(Part part) {
+	        String contentDisp = part.getHeader("content-disposition");
+	        String[] items = contentDisp.split(";");
+	        for (String s : items) {
+	            if (s.trim().startsWith("filename")) {
+	                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+	            }
+	        }
+	        return "";
+	    }
+	 
+	 private String getNewFileName(String originalFileName) {
+	        String[] name = originalFileName.split("\\.");
+	        StringBuilder sb = new StringBuilder();
+	        sb.append(name[0]);
+	        sb.append("_");
+	        sb.append(System.currentTimeMillis());
+	        sb.append(".");
+	        sb.append(name[1]);
+	        return sb.toString();
+	    }
 }

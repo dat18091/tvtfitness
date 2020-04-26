@@ -28,7 +28,7 @@
 										<label class="col-sm-3 control-label">Mã dịch vụ</label>
 										<div class="col-sm-6">
 											<input type="text" name="serviceId"
-												placeholder="Nhập mã dịch vụ..." class="form-control">
+												placeholder="Nhập mã dịch vụ..." class="form-control" required>
 										</div>
 									</div>
 									
@@ -36,7 +36,7 @@
 										<label class="col-sm-3 control-label">Tên dịch vụ</label>
 										<div class="col-sm-6">
 											<input type="text" name="serviceName"
-												placeholder="Nhập tên dịch vụ..." class="form-control">
+												placeholder="Nhập tên dịch vụ..." class="form-control" required>
 										</div>
 									</div>
 									
@@ -70,7 +70,7 @@
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
 											<input type="submit" class="btn btn-primary" value="Submit" />
-											<a href="list-computer" class="btn btn-danger">Cancel</a>
+											<a href="danh-sach-dich-vu" class="btn btn-danger">Cancel</a>
 										</div>
 									</div>
 								</form>
