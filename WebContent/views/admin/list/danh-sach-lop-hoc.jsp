@@ -9,6 +9,7 @@
 </head>
 
 <body>
+	<form action="${pageContext.request.contextPath}/danh-sach-lop-hoc" method="get">
 	<section id="container">
 		<%@include file="/common/admin/header.jsp"%>
 		<%@include file="/common/admin/sidebar.jsp"%>
@@ -20,11 +21,10 @@
 					<div class="panel-heading">Danh Sách Lớp Học</div>
 					<div class="row w3-res-tb">
 						<div class="col-sm-5 m-b-xs">
-							<select class="input-sm form-control w-sm inline v-middle">
-								<option value="0">Bulk action</option>
-								<option value="1">Delete selected</option>
-								<option value="2">Bulk edit</option>
-								<option value="3">Export</option>
+							<select class="input-sm form-control w-sm inline v-middle" name="sort">
+								<option>Choose</option>
+								<option value="ASC">Tăng Dần Theo Mã</option>
+								<option value="DESC">Giảm Dần Theo Mã</option>
 							</select>
 							<button class="btn btn-sm btn-default">Apply</button>
 						</div>
@@ -32,7 +32,7 @@
 						<div class="col-sm-3">
 							<div class="input-group">
 								<input type="text" class="input-sm form-control"
-									placeholder="Search"> <span class="input-group-btn">
+									placeholder="Search" name="search"> <span class="input-group-btn">
 									<button class="btn btn-sm btn-default" type="button">Go!</button>
 								</span>
 							</div>
@@ -93,18 +93,36 @@
 
 							<div class="col-sm-5 text-center">
 								<small class="text-muted inline m-t-sm m-b-sm">showing
-									20-30 of 50 items</small>
+									${start+1 } - ${end } of ${rows } items</small>
 							</div>
 							<div class="col-sm-7 text-right text-center-xs">
-								<ul class="pagination pagination-sm m-t-none m-b-none">
-									<li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-									<li><a href="">1</a></li>
-									<li><a href="">2</a></li>
-									<li><a href="">3</a></li>
-									<li><a href="">4</a></li>
-									<li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+								<ul class="pagination pagination-sm m-t-none m-b-none"> 
+									<c:if test="${currentPage != 1}">
+										<li class="page-item"><a class="page-link"
+											href="danh-sach-lop-hoc?currentPage=${currentPage-1}">Previous</a></li>
+									</c:if>
+
+									<c:forEach begin="1" end="${noOfPages}" var="i">
+										<c:choose>
+											<c:when test="${currentPage eq i}">
+												<li class="page-item active"><a class="page-link">
+														${i} <span class="sr-only">(current)</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link"
+													href="danh-sach-lop-hoc?currentPage=${i}">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+
+									<c:if test="${currentPage lt noOfPages}">
+										<li class="page-item"><a class="page-link"
+											href="danh-sach-lop-hoc?currentPage=${currentPage+1}">Next</a></li>
+									</c:if>
 								</ul>
 							</div>
+							
 						</div>
 					</footer>
 				</div>
@@ -120,7 +138,7 @@
 		</section>
 		<!--main content end-->
 	</section>
-
+	</form>
 	<%@include file="/common/admin/js-resources.jsp"%>
 </body>
 

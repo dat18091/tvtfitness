@@ -11,6 +11,7 @@ import java.time.LocalDate;
 
 public class RegisterClass {
 
+	private int registerClassId;
 	private String memberId;
 	private String classId;
 	private LocalDate registerDate;
@@ -20,12 +21,22 @@ public class RegisterClass {
 
 	}
 
-	public RegisterClass(String memberId, String classId, LocalDate registerDate, String payStatus) {
+	public RegisterClass(int registerClassId, String memberId, String classId, LocalDate registerDate,
+			String payStatus) {
 		super();
+		this.registerClassId = registerClassId;
 		this.memberId = memberId;
 		this.classId = classId;
 		this.registerDate = registerDate;
 		this.payStatus = payStatus;
+	}
+
+	public int getRegisterClassId() {
+		return registerClassId;
+	}
+
+	public void setRegisterClassId(int registerClassId) {
+		this.registerClassId = registerClassId;
 	}
 
 	public String getMemberId() {

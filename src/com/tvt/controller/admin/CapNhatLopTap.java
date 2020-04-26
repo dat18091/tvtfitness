@@ -91,7 +91,7 @@ public class CapNhatLopTap extends HttpServlet {
 					branchId);
 			response.sendRedirect(request.getContextPath() + "/danh-sach-lop-hoc");
 		} else if ("cancel".equals(request.getParameter("cancel"))) {
-			response.sendRedirect(request.getContextPath()+"/danh-sach-lop-tap");
+			response.sendRedirect(request.getContextPath()+"/danh-sach-lop-hoc");
 		} else {
 			request.setAttribute("classId", classId);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/update/cap-nhat-lop-hoc.jsp");

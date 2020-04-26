@@ -27,16 +27,16 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã lớp tập</label>
 										<div class="col-sm-6">
-											<input type="text" name="classId" value="${lopTap.classId}" readonly="readonly"
-												class="form-control">
+											<input type="text" name="classId" value="${lopTap.classId}"
+												readonly="readonly" class="form-control">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên lớp tập</label>
 										<div class="col-sm-6">
-											<input type="text" name="className" value="${lopTap.className}"
-												class="form-control">
+											<input type="text" name="className"
+												value="${lopTap.className}" class="form-control">
 										</div>
 									</div>
 
@@ -47,7 +47,7 @@
 										<div class="col-lg-6">
 											<select name="packageId" class="form-control m-bot15">
 												<c:forEach items="${listGoi}" var="goi">
-													<option value="${goi.packageId}">${goi.packageName}</option>
+													<option value="${goi.packageId}" <c:if test="${goi.packageId == lopTap.packageId}">selected="selected"</c:if> >${goi.packageName}</option>
 												</c:forEach>
 											</select>
 										</div>
@@ -98,8 +98,7 @@
 											viên</label>
 										<div class="col-sm-6">
 											<input type="number" name="maxMember" min=3
-												value="${lopTap.maxMember}"
-												class="form-control">
+												value="${lopTap.maxMember}" class="form-control">
 										</div>
 									</div>
 
@@ -108,7 +107,8 @@
 										<label class="col-sm-3 control-label col-lg-3"
 											for="inputSuccess">Thời gian bắt đầu khóa tập</label>
 										<div class="col-lg-6">
-											<input type="date" id="inputSuccess1" name=dateStart value="${lopTap.dateStart}">
+											<input type="date" id="inputSuccess1" name=dateStart
+												value="${lopTap.dateStart}">
 										</div>
 									</div>
 
@@ -117,10 +117,11 @@
 										<label class="col-sm-3 control-label col-lg-3"
 											for="inputSuccess">Thời gian kết thúc khóa tập</label>
 										<div class="col-lg-6">
-											<input type="date" id="inputSuccess2" name=dateEnd value="${lopTap.dateEnd}">
+											<input type="date" id="inputSuccess2" name=dateEnd
+												value="${lopTap.dateEnd}">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<!-- Category Product Parent -->
 										<label class="col-sm-3 control-label col-lg-3"
@@ -128,9 +129,9 @@
 										<div class="col-lg-6">
 											<select name="status" class="form-control m-bot15">
 												<option value="Còn chỗ">Còn chỗ</option>
-												<option value="Đã hết chỗ">Đã hết chỗ</option>
-												<option value="Đã kết thúc">Đã kết thúc</option>
-												<option value="Đã hủy">Đã hủy</option>
+												<option value="Đã hết chỗ" <c:if test="${lopTap.status == 'Đã hết chỗ' }">selected="selected"</c:if> >Đã hết chỗ</option>
+												<option value="Đã kết thúc" <c:if test="${lopTap.status == 'Đã kết thúc' }">selected="selected"</c:if> >Đã kết thúc</option>
+												<option value="Đã hủy" <c:if test="${lopTap.status == 'Đã hủy' }">selected="selected"</c:if> >Đã hủy</option>
 											</select>
 										</div>
 									</div>
@@ -147,7 +148,7 @@
 											</select>
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
 											<button name="submit" value="submit" class="btn btn-save"

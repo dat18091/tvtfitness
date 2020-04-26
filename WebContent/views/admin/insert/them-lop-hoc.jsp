@@ -110,6 +110,7 @@
 											for="inputSuccess">Thời gian bắt đầu khóa tập</label>
 										<div class="col-lg-6">
 											<input type="date" id="inputSuccess1" name=dateStart>
+											<p style="color: red">${errorDate}</p>
 										</div>
 									</div>
 

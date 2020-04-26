@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.tvt.common.ValidateUtils;
 import com.tvt.model.bean.TrainingClass;
 import com.tvt.model.bo.RegisterClassBo;
 import com.tvt.model.bo.TrainingClassBO;
@@ -44,17 +46,29 @@ public class DangKiLopTap extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		// kiem tra da dang nhap chua
+		HttpSession session = request.getSession();
+		if (session.getAttribute("thongTinTaiKhoan") == null) {
+			response.sendRedirect(request.getContextPath() + "/login");
+			return;
+		}
+		ValidateUtils utils = new ValidateUtils();
+		
 		request.setCharacterEncoding("UTF-8");
 		RegisterClassBo registerClassBo = new RegisterClassBo();
 		TrainingClassBO trainingClassBO = new TrainingClassBO();
 		List<TrainingClass> listClass = trainingClassBO.getAll();
 		request.setAttribute("listClass", listClass);
-
+		
 		if ("submit".equals(request.getParameter("submit"))) {
 			String memberId = request.getParameter("memberId");
 			String classId = request.getParameter("classId");
 			String registerDate = request.getParameter("registerDate");
+			if (utils.checkDate(registerDate)) {
+				request.setAttribute("error", "Ngày đăng ký không được nhỏ hơn ngày hiện tại");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/dang-ky-lop-hoc.jsp");
+				dispatcher.forward(request, response);
+			}
 			String payStatus = request.getParameter("payStatus");
 			registerClassBo.insert(memberId, classId, registerDate, payStatus);
 			response.sendRedirect(request.getContextPath() + "/danh-sach-dang-ky-lop");

@@ -20,8 +20,9 @@ public class MemberBO {
 		memberDAO.insert(member);
 	}
 
-	public List<Member> getAll() throws SQLException {
-		return memberDAO.getAll();
+	public List<Member> getAll(int start, int total, String search, String sortBy)
+			throws SQLException {
+		return memberDAO.getAll(start, total, search, sortBy);
 	}
 
 	public void deleteMember(String memberId) throws SQLException {
@@ -34,5 +35,9 @@ public class MemberBO {
 
 	public void edit(Member member) throws SQLException {
 		memberDAO.update(member);
+	}
+	
+	public List<Member> getAll() throws SQLException {
+		return memberDAO.getAll();
 	}
 }
