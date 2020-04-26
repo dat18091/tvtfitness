@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
+<title>TVT Fitness | Thêm Gói Tập</title>
 <%@include file="/common/admin/css-resources.jsp" %>
 </head>
 
@@ -22,12 +22,12 @@
 							<header class="panel-heading">Thêm Gói</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="{{URL::to('/save-brand-product')}}">
+									action="${pageContext.request.contextPath}/them-goi">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã gói</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="packageId"
 												placeholder="Nhập mã gói..." class="form-control">
 										</div>
 									</div>
@@ -35,18 +35,18 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên gói</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="packageName"
 												placeholder="Nhập tên gói..." class="form-control">
 										</div>
 									</div>
 									
-									<div class="form-group"><!-- Category Product Parent -->
+									<div class="form-group">
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại gói</label>
 				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Gói tập vô thời hạn</option>
-				                                   <option value="{{ $parent->parent_id }}">Gói tập 1 tháng</option>
-				                                   <option value="{{ $parent->parent_id }}">Gói bình thường</option>
+				                            <select name="packageType" class="form-control m-bot15">
+				                                   <option value="Gói tập vô thời hạn">Gói tập vô thời hạn</option>
+				                                   <option value="Gói tập 1 tháng">Gói tập 1 tháng</option>
+				                                   <option value="Gói tập bình thường">Gói bình thường</option>
 				                            </select>
 				                        </div>
 				                    </div>
@@ -54,7 +54,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Chi phí gói</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
+											<input type="text" name="price"
 												placeholder="Nhập phí của gói..." class="form-control">
 										</div>
 									</div>

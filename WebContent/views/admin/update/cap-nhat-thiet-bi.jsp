@@ -28,7 +28,7 @@
 										<label class="col-sm-3 control-label">Mã Thiết Bị</label>
 										<div class="col-sm-6">
 											<input type="text" name="equipmentId" value="${equipment.getEquipmentId() }"
-												placeholder="Nhập mã thiết bị..." class="form-control">
+												placeholder="Nhập mã thiết bị..." class="form-control" required>
 										</div>
 									</div>
 									
@@ -36,7 +36,7 @@
 										<label class="col-sm-3 control-label">Tên thiết bị</label>
 										<div class="col-sm-6">
 											<input type="text" name="equipmentName" value="${equipment.getEquipmentName() }"
-												placeholder="Nhập tên thiết bị..." class="form-control">
+												placeholder="Nhập tên thiết bị..." class="form-control" required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -50,7 +50,7 @@
 									<div class="form-group"><!-- Category Product Parent -->
 				                        <label class="col-sm-3 control-label col-lg-3" for="branchName">Chi nhánh</label>
 				                        <div class="col-lg-6">
-				                            <select name="branchName" id="branchName" class="form-control m-bot15">
+				                            <select name="branchName" id="branchName" class="form-control m-bot15" required>
 				                            	<c:forEach var="element" items="${list }">
 				                            	<option value="${element }">${element }</option>
 				                            	</c:forEach>
@@ -63,7 +63,7 @@
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại thiết bị</label>
 				                        <div class="col-lg-6">
 				                            <input type="text" name="equipmentType" value="${equipment.getEquipmentType() }"
-												placeholder="Loại thiết bị..." class="form-control">
+												placeholder="Loại thiết bị..." class="form-control" required>
 				                        </div>
 				                    </div>
 
@@ -71,7 +71,7 @@
 										<label class="col-sm-3 control-label">Ngày nhập</label>
 										<div class="col-sm-6">
 											<input type="date" name="importDate" value="${equipment.getImportDate() }"
-												placeholder="Nhập ngày nhập thiết bị..." class="form-control">
+												placeholder="Nhập ngày nhập thiết bị..." class="form-control" required>
 										</div>
 									</div>
 									
@@ -79,7 +79,7 @@
 										<label class="col-sm-3 control-label">Thời hạn bảo hành</label>
 										<div class="col-sm-6">
 											<input type="date" name="warrantyDate"  value="${equipment.getWarrantyDate() }"
-												placeholder="Nhập thời gian bảo hành thiết bị..." class="form-control">
+												placeholder="Nhập thời gian bảo hành thiết bị..." class="form-control" required>
 										</div>
 									</div>
 									

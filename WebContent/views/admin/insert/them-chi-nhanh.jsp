@@ -32,7 +32,7 @@
 										<label class="col-sm-3 control-label">Mã chi nhánh</label>
 										<div class="col-sm-6">
 											<input type="text" name="brandId" id="branchId"
-												placeholder="Nhập mã chi nhánh..." class="form-control">
+												placeholder="Nhập mã chi nhánh..." class="form-control" required>
 										</div>
 									</div>
 
@@ -40,7 +40,7 @@
 										<label class="col-sm-3 control-label">Tên chi nhánh</label>
 										<div class="col-sm-6">
 											<input type="text" name="branchName"
-												placeholder="Nhập tên chi nhánh..." class="form-control">
+												placeholder="Nhập tên chi nhánh..." class="form-control" required>
 										</div>
 									</div>
 
@@ -48,7 +48,7 @@
 										<label class="col-sm-3 control-label">Địa chỉ</label>
 										<div class="col-sm-6">
 											<input type="text" name="address"
-												placeholder="Nhập tên địa chỉ..." class="form-control">
+												placeholder="Nhập tên địa chỉ..." class="form-control" required>
 										</div>
 									</div>
 									<div class="form-group">

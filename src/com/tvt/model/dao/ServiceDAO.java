@@ -29,7 +29,7 @@ public class ServiceDAO implements IDAOBase1<Service> {
 				service.setServiceId(resultSet.getString("serviceId"));
 				service.setServiceName(resultSet.getNString("serviceName"));
 				service.setServiceType(resultSet.getNString("serviceType"));
-				service.setImageUrl(resultSet.getNString("imageUrl"));
+				service.setImageUrl(resultSet.getString("imgUrl"));
 				service.setPrice(resultSet.getFloat("price"));
 				serviceList.add(service);
 			}
@@ -41,13 +41,13 @@ public class ServiceDAO implements IDAOBase1<Service> {
 
 	@Override
 	public void insert(Service service) {
-		String query = "INSERT INTO SERVICE(serviceId, serviceName, serviceType, imageUrl, price) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO SERVICE(serviceId, serviceName, serviceType, imgUrl, price) VALUES (?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement preparedStatement = con.prepareStatement(query);
 			preparedStatement.setString(1, service.getServiceId());
 			preparedStatement.setNString(2, service.getServiceName());
 			preparedStatement.setNString(3, service.getServiceType());
-			preparedStatement.setNString(4, service.getImageUrl());
+			preparedStatement.setString(4, service.getImageUrl());
 			preparedStatement.setFloat(5, service.getPrice());
 			preparedStatement.executeUpdate();
 //			if(result == 0) {
@@ -60,14 +60,14 @@ public class ServiceDAO implements IDAOBase1<Service> {
 
 	@Override
 	public void update(Service service) {
-		String query = "update SERVICE set serviceName = ?, serviceType = ?, imageUrl = ?, price = ? where serviceId = ?";
+		String query = "update SERVICE set serviceName = ?, serviceType = ?, imgUrl = ?, price = ? where serviceId = ?";
 		
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = con.prepareStatement(query);
 			preparedStatement.setNString(1, service.getServiceName());
 			preparedStatement.setNString(2, service.getServiceType());
-			preparedStatement.setNString(3, service.getImageUrl());
+			preparedStatement.setString(3, service.getImageUrl());
 			preparedStatement.setFloat(4, service.getPrice());
 			preparedStatement.setString(5, service.getServiceId());
 			preparedStatement.executeUpdate();
@@ -96,7 +96,7 @@ public class ServiceDAO implements IDAOBase1<Service> {
 		while (resultSet.next()) {
 			String serviceName = resultSet.getNString("serviceName");
 			String serviceType = resultSet.getNString("serviceType");
-			String imageUrl = resultSet.getNString("imageUrl");
+			String imageUrl = resultSet.getString("imgUrl");
 			float price = resultSet.getFloat("price");
 			Service service = new Service(serviceId, serviceName, serviceType, imageUrl, price);
 			return service;

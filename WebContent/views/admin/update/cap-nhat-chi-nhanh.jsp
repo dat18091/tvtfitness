@@ -41,7 +41,7 @@
 										<div class="col-sm-6">
 											<input type="text" name="branchName"
 												value="${branch.getBranchName() }"
-												placeholder="Nhập tên chi nhánh..." class="form-control">
+												placeholder="Nhập tên chi nhánh..." class="form-control" required>
 										</div>
 									</div>
 
@@ -50,7 +50,7 @@
 										<div class="col-sm-6">
 											<input type="text" name="address"
 												value="${branch.getAddress() }"
-												placeholder="Nhập tên địa chỉ..." class="form-control">
+												placeholder="Nhập tên địa chỉ..." class="form-control" required>
 										</div>
 									</div>
 									<div class="form-group">

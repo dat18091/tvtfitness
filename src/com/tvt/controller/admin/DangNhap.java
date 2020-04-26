@@ -50,7 +50,7 @@ public class DangNhap extends HttpServlet {
 			String password = request.getParameter("password");
 			Account getAccount = accountBO.getAccount(userName, password);
 			// Check Login
-			if (getAccount == null) {
+			if (getAccount.getAccountId()==0) {
 				request.setAttribute("loginFailed", "Tai khoan hoac mat khau khong dung");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 				dispatcher.forward(request, response);

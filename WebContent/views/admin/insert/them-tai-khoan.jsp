@@ -30,7 +30,7 @@
 										<label class="col-sm-3 control-label">Tên tài khoản</label>
 										<div class="col-sm-6">
 											<input type="text" name="accountName"
-												placeholder="Nhập tên tài khoản..." class="form-control">
+												placeholder="Nhập tên tài khoản..." class="form-control" required>
 										</div>
 									</div>
 									
@@ -38,14 +38,14 @@
 										<label class="col-sm-3 control-label">Mật khẩu</label>
 										<div class="col-sm-6">
 											<input type="text" name="password"
-												placeholder="Nhập mật khẩu..." class="form-control">
+												placeholder="Nhập mật khẩu..." class="form-control" required>
 										</div>
 									</div>
 
 									<div class="form-group"><!-- Category Product Parent -->
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Phân quyền</label>
 				                        <div class="col-lg-6">
-				                            <select name="accountType" class="form-control m-bot15">
+				                            <select name="accountType" class="form-control m-bot15" required>
 				                                   <option value="Administrator" >Administrator</option>
 				                                   <option value="User">User</option>			                                   				                          
 				                            </select>

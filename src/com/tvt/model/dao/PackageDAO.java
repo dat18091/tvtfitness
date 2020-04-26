@@ -9,8 +9,10 @@ import java.util.List;
 import com.tvt.model.bean.Package;
 import com.tvt.common.ConnectDB;
 
-public class PackageDAO implements IDAOBase1<Package>{
+
+public class PackageDAO implements IDAOBase<Package>{
 	private Connection con = ConnectDB.getConnect();
+
 	@Override
 	public List<Package> getAll() {
 		List<Package> packagesList = new ArrayList<Package>();
@@ -46,7 +48,6 @@ public class PackageDAO implements IDAOBase1<Package>{
 			e.printStackTrace();
 		}
 	}
-
 	@Override
 	public void update(Package package1) {
 		String query = "UPDATE PACKAGE SET packageName = ?, packageType = ?, price = ? WHERE packageId = ?";
@@ -61,7 +62,6 @@ public class PackageDAO implements IDAOBase1<Package>{
 			e.printStackTrace();
 		}
 	}
-
 	@Override
 	public void delete(String packageId) {
 		String query = "DELETE FROM PACKAGE WHERE packageId = ?";
@@ -81,7 +81,7 @@ public class PackageDAO implements IDAOBase1<Package>{
 	 * @throws SQLException
 	 * hiển thị thông tin lên form cập nhật
 	 */
-	public Package searchById(String packageId) throws SQLException {
+	public Package getAllById(String packageId) throws SQLException {
 		String query = "SELECT * FROM PACKAGE WHERE packageId = ?";
 		PreparedStatement preparedStatement = con.prepareStatement(query);
 		preparedStatement.setString(1, packageId);
@@ -93,6 +93,12 @@ public class PackageDAO implements IDAOBase1<Package>{
 			Package service = new Package(packageId, packageName, packageType, price);
 			return service;
 		}
+		return null;
+	}
+
+	@Override
+	public Package find(String object) throws SQLException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -40,15 +40,14 @@
 										</div>
 									</div>
 									
-									<div class="form-group"><!-- Category Product Parent -->
+									<div class="form-group">
 				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Loại dịch vụ</label>
 				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Tập với HLV Nữ</option>
-				                                   <option value="{{ $parent->parent_id }}">Tập với HLV Nam</option>
-				                                   <option value="{{ $parent->parent_id }}">Chế độ luyện tập chuyên nghiệp</option>
-				                                   <option value="{{ $parent->parent_id }}">Mua thiết bị</option>
-				                                   <option value="{{ $parent->parent_id }}">Ăn uống</option>
+				                            <select name="serviceType" class="form-control m-bot15">
+				                                   <option value="Tập với HLV Nữ">Tập với HLV Nữ</option>
+				                                   <option value="Tập luyện chuyên nghiệp">Tập luyện chuyên nghiệp</option>
+				                                   <option value="Mua thiết bị">Mua thiết bị</option>
+				                                   <option value="Ăn uống">Ăn uống</option>
 				                            </select>
 				                        </div>
 				                    </div>
