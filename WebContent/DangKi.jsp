@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Đăng kí</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -27,19 +27,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="w3layouts-main">
 			<h2>TVT FITNESS</h2>
 			
-			<form action="${pageContext.request.contextPath}/login" method="post">
+			<form action="${pageContext.request.contextPath}/dang-ki" method="get">
 				<input type="text" class="text" name="userName" placeholder="Enter your username...">
 				<input type="password" class="text" name="password" placeholder="Enter your password...">
-				<span><input name="rememberMe" type="checkbox" />Remember Me</span>
+				<input type="text" class="text" name="tenNguoiDung" placeholder="Enter your Full Name...">
+				<input type="date" class="text" name="birthday" >
+				<input type="tel" class="text" name="tel" placeholder="Enter your Phone Number...">
+				<input type="text" class="text" name="gioiTinh" placeholder="Enter your gender...">
 				<!--<h6><a href="">Forgot Password?</a></h6>-->
 				<div class="clearfix"></div>
 				<p style="color: red">${loginFailed}</p>
-				<input type="submit" value="Sign In" name="submit">
+				<input type="submit" name="submit" value="Apply">
 				<button class="btn facebook"><i class="fa fa-facebook-square"></i> Facebook</button>
 				<button class="btn google"><i class="fa fa-google-plus-square"></i> Google+</button>
 				<button class="btn yahoo"><i class="fa fa-yahoo" aria-hidden="true"></i> Yahoo!</button>
 			</form>
-			<p>Don't Have an Account ?<a href="dang-ki">Create an account</a></p>
 		</div>
 	</div>
 		<!-- //font-awesome icons -->
