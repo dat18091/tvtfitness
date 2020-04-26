@@ -22,7 +22,7 @@
 							<header class="panel-heading">Cập Nhật Lớp Học</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="${pageContext.request.contextPath}/cap-nhat-lop-hoc">
+									action="cap-nhat-lop-hoc">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã lớp tập</label>

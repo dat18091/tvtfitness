@@ -22,7 +22,7 @@
 							<header class="panel-heading">Cập Nhật Đăng Ký Lớp Học</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
+									action="cap-nhat-dang-ky-lop">
 
 									<div class="form-group">
 										<!-- Category Product Parent -->

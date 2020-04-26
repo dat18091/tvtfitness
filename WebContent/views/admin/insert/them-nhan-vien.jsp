@@ -1,6 +1,6 @@
 <%@page import="com.tvt.model.bean.Account"%>
 <%@page import="com.tvt.model.bean.Branch"%>
-<%@ page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="com.tvt.model.bean.Account"%>
 <%@page import="com.tvt.model.bean.Branch"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList" %>
 <%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -49,7 +49,7 @@
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Ngày sinh</label>
 											<div class="col-sm-6">
-												<input type="text" name="birthday"
+												<input type="date" name="birthday"
 													value="${member.birthday}"
 													placeholder="Nhập ngày tháng năm sinh..."
 													class="form-control">
@@ -76,8 +76,9 @@
 											<div class="col-sm-6">
 												<input type="text" name="numberPhone"
 													value="${member.numberPhone}"
-													placeholder="Nhập ngày tháng năm sinh..."
+													placeholder="Nhập số điện thoại..."
 													class="form-control">
+													 
 											</div>
 										</div>
 

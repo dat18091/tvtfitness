@@ -22,7 +22,7 @@
 							<header class="panel-heading">Đăng Ký Dịch Vụ</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="get"
-									action="${pageContext.request.contextPath}/dang-ky-dich-vu">
+									action="dang-ky-dich-vu">
 
 
 									<div class="form-group">

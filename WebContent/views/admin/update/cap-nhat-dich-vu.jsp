@@ -22,7 +22,7 @@
 							<header class="panel-heading">Cập Nhật Dịch Vụ</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="POST"
-									action="${pageContext.request.contextPath}/cap-nhat-dich-vu">
+									action="cap-nhat-dich-vu">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã dịch vụ</label>

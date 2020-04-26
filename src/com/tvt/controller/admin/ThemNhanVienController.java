@@ -1,7 +1,7 @@
 package com.tvt.controller.admin;
 
-import java.io.IOException;
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,11 +22,9 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.tvt.model.bean.Account;
 import com.tvt.model.bean.Branch;
 import com.tvt.model.bean.Employee;
-import com.tvt.model.bean.Member;
 import com.tvt.model.bo.AccountBO;
 import com.tvt.model.bo.BranchBO;
 import com.tvt.model.bo.EmployeeBO;
-import com.tvt.model.bo.MemberBO;
 import com.tvt.utils.MyUtils;
 
 /**
@@ -41,17 +39,17 @@ public class ThemNhanVienController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIRECTORY = "D:\\PC\\Documents\\EclipseProjects\\tvtfitness\\WebContent\\resources\\uploads";
+	private final String UPLOAD_DIRECTORY = "D:\\eclipse\\final\\tvtfitness\\WebContent\\resources\\uploads";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("views/admin/insert/them-nhan-vien.jsp");
 		AccountBO accountBO = new AccountBO();
-		ArrayList<Account> listAccount = (ArrayList<Account>)accountBO.getAllAccounts();
+		ArrayList<Account> listAccount = (ArrayList<Account>) accountBO.getAllAccounts();
 		req.setAttribute("listAccount", listAccount);
 
 		BranchBO branchBO = new BranchBO();
-		ArrayList<Branch> listBranch = (ArrayList<Branch>)branchBO.getAllBranch();
+		ArrayList<Branch> listBranch = (ArrayList<Branch>) branchBO.getAllBranch();
 		req.setAttribute("listBranch", listBranch);
 		dispatcher.forward(req, resp);
 	}
@@ -67,7 +65,7 @@ public class ThemNhanVienController extends HttpServlet {
 		String numberPhone = (String) req.getParameter("numberPhone");
 		LocalDate birthday = LocalDate.parse(req.getParameter("birthday"), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 //		String img = (String) req.getParameter("imgUrl");
-
+		// cái ni là input fie vô
 		String fileName = "";
 		if (ServletFileUpload.isMultipartContent(req)) {
 			try {
@@ -112,6 +110,7 @@ public class ThemNhanVienController extends HttpServlet {
 		}
 	}
 
+	
 	private String getNewFileName(String originalFileName) {
 		// TODO Auto-generated method stub
 		String[] name = originalFileName.split("\\.");

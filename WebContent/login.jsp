@@ -26,18 +26,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="log-w3">
 		<div class="w3layouts-main">
 			<h2>TVT FITNESS</h2>
-			
-			<form action="${pageContext.request.contextPath}/login" method="post">
-				<input type="text" class="text" name="userName" placeholder="Enter your username...">
-				<input type="password" class="text" name="password" placeholder="Enter your password...">
-				<span><input name="rememberMe" type="checkbox" />Remember Me</span>
-				<!--<h6><a href="">Forgot Password?</a></h6>-->
+			<form action="login" method="post">
+				<input type="text" class="text" name="userName"
+					placeholder="Enter your username..."> <input
+					type="password" class="text" name="password"
+					placeholder="Enter your password..."> <span><input
+					name="rememberMe" type="checkbox" />Remember Me</span>
+					<!--<h6><a href="">Forgot Password?</a></h6>-->
 				<div class="clearfix"></div>
 				<p style="color: red">${loginFailed}</p>
 				<input type="submit" value="Sign In" name="submit">
-				<button class="btn facebook"><i class="fa fa-facebook-square"></i> Facebook</button>
-				<button class="btn google"><i class="fa fa-google-plus-square"></i> Google+</button>
-				<button class="btn yahoo"><i class="fa fa-yahoo" aria-hidden="true"></i> Yahoo!</button>
+				<button class="btn facebook">
+					<i class="fa fa-facebook-square"></i> Facebook
+				</button>
+				<button class="btn google">
+					<i class="fa fa-google-plus-square"></i> Google+
+				</button>
+				<button class="btn yahoo">
+					<i class="fa fa-yahoo" aria-hidden="true"></i> Yahoo!
+				</button>
+			
 			</form>
 			<p>Don't Have an Account ?<a href="registration.html">Create an account</a></p>
 		</div>

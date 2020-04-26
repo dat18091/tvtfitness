@@ -55,7 +55,7 @@ public class ThemThanhVienController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String memberId = (String) req.getParameter("memberId");
 		String fullName = (String) req.getParameter("fullName");
-		LocalDate birthday = LocalDate.parse(req.getParameter("birthday"), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		LocalDate birthday = LocalDate.parse(req.getParameter("birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		String gender = (String) req.getParameter("sex");
 		String numberPhone = (String) req.getParameter("numberPhone");
 		String branchId = (String) req.getParameter("branch");

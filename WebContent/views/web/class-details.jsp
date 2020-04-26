@@ -18,8 +18,8 @@
                     <div class="breadcrumb-text">
                         <h2>Classes detail</h2>
                         <div class="bt-option">
-                            <a href="${pageContext.request.contextPath}/home-page">Home</a>
-                            <a href="${pageContext.request.contextPath}/class-details">Classes</a>
+                            <a href="home-page">Home</a>
+                            <a href="class-details">Classes</a>
                             <span>Body building</span>
                         </div>
                     </div>

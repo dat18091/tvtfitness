@@ -22,7 +22,7 @@
 							<header class="panel-heading">Thêm Lớp Tập</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="${pageContext.request.contextPath}/them-lop-hoc">
+									action="them-lop-hoc">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã lớp tập</label>

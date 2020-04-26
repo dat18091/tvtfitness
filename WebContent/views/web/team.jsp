@@ -18,7 +18,7 @@
                     <div class="breadcrumb-text">
                         <h2>Our Team</h2>
                         <div class="bt-option">
-                            <a href="${ pageContext.request.contextPath }/home-page">Home</a>
+                            <a href="home-page">Home</a>
                             <span>Our team</span>
                         </div>
                     </div>

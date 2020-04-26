@@ -1,25 +1,27 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tvt.model.bo.MemberBO;
+
 /**
- * Servlet implementation class DanhSachDangKyDichVu
+ * Servlet implementation class DeleteMemberServlet
  */
-@WebServlet("/danh-sach-dang-ky-dich-vu")
-public class DanhSachDangKyDichVu extends HttpServlet {
+@WebServlet("/xoa-thanh-vien")
+public class DeleteMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DanhSachDangKyDichVu() {
+    public DeleteMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,10 +29,15 @@ public class DanhSachDangKyDichVu extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/list/danh-sach-dang-ky-dich-vu.jsp");
-		dispatcher.forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		MemberBO memberBO = new MemberBO();
+		String memberId = (String) request.getParameter("memberId");
+		try {
+			memberBO.deleteMember(memberId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		response.sendRedirect(request.getContextPath() + "/danh-sach-thanh-vien");
 	}
 
 	/**

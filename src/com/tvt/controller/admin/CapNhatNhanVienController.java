@@ -76,7 +76,7 @@ public class CapNhatNhanVienController extends HttpServlet {
 		String empId = (String) req.getParameter("empId");
 		String empName = (String) req.getParameter("empName");
 		String numberPhone = (String) req.getParameter("numberPhone");
-		LocalDate birthday = LocalDate.parse(req.getParameter("birthday"), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		LocalDate birthday = LocalDate.parse(req.getParameter("birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		String img = (String) req.getParameter("imgUrl");
 		String branchId = (String) req.getParameter("branch");
 		String accountId = (String) req.getParameter("account");

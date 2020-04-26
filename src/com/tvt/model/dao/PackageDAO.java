@@ -13,7 +13,6 @@ import com.tvt.common.ConnectDB;
 public class PackageDAO implements IDAOBase<Package>{
 	private Connection con = ConnectDB.getConnect();
 
-	@Override
 	public List<Package> getAll() {
 		List<Package> packagesList = new ArrayList<Package>();
 		String query = "SELECT * FROM PACKAGE";
@@ -98,6 +97,12 @@ public class PackageDAO implements IDAOBase<Package>{
 
 	@Override
 	public Package find(String object) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Package> getAll(int start, int total, String search, String sortBy) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

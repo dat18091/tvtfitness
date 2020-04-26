@@ -22,13 +22,14 @@
 							<header class="panel-heading">Thêm Dịch Vụ</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="POST" enctype = "multipart/form-data"
-									action="${pageContext.request.contextPath}/them-dich-vu">
+									action="them-dich-vu">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã dịch vụ</label>
 										<div class="col-sm-6">
 											<input type="text" name="serviceId"
 												placeholder="Nhập mã dịch vụ..." class="form-control" required>
+											<span>Mã dịch vụ phải có định dạng là DVxxxx</span>
 										</div>
 									</div>
 									

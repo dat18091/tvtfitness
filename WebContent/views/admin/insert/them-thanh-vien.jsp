@@ -33,6 +33,7 @@
 										<div class="col-sm-6">
 											<input type="text" name="memberId" value="${member.memberId}"
 												placeholder="Nhập mã thành viên..." class="form-control">
+											
 										</div>
 									</div>
 
@@ -47,7 +48,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Ngày sinh</label>
 										<div class="col-sm-6">
-											<input type="text" name="birthday" value="${member.birthday}"
+											<input type="date" name="birthday" value="${member.birthday}"
 												placeholder="Nhập ngày tháng năm sinh..."
 												class="form-control">
 										</div>
@@ -73,11 +74,13 @@
 										<div class="col-sm-6">
 											<input type="text" name="numberPhone"
 												value="${member.numberPhone}"
-												placeholder="Nhập ngày tháng năm sinh..."
+												placeholder="Nhập số điện thoại..."
 												class="form-control">
 										</div>
 									</div>
-
+									<!-- <script type="text/javascript">
+									<!- Validate ở đây - -->
+									</script> -->
 									<div class="form-group">
 										<!-- Category Product Parent -->
 										<label class="col-sm-3 control-label col-lg-3"

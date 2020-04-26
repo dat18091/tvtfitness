@@ -22,7 +22,7 @@
 							<header class="panel-heading">Thêm Gói</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="${pageContext.request.contextPath}/them-goi">
+									action="them-goi">
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã gói</label>
