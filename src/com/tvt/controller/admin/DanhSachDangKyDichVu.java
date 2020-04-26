@@ -1,6 +1,7 @@
 package com.tvt.controller.admin;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.tvt.model.bean.RegisterService;
+import com.tvt.model.bo.RegisterServiceBO;
 
 /**
  * Servlet implementation class DanhSachDangKyDichVu
@@ -28,6 +32,9 @@ public class DanhSachDangKyDichVu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RegisterServiceBO registerServiceBO = new RegisterServiceBO();
+		List<RegisterService> list = registerServiceBO.getAll();
+		request.setAttribute("listRS", list);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/list/danh-sach-dang-ky-dich-vu.jsp");
 		dispatcher.forward(request, response);
 	}

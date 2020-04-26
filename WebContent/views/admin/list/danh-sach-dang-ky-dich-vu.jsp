@@ -42,60 +42,32 @@
 						<table class="table table-striped b-t b-light">
 							<thead>
 								<tr>
-									<th style="width: 20px;"><label class="i-checks m-b-none">
-											<input type="checkbox"><i></i>
-									</label></th>
-									<th>Dịch vụ</th>
-									<th>Mã thành viên</th>
-									<th>Thời gian đăng ký</th>
-									<th>Chi phí</th>
+									<th>Mã ID</th>
+									<th>Mã Dịch Vụ</th>
+									<th>Mã Thành viên</th>
+									<th>Ngày đăng ký dịch vụ</th>
+									<th>Số lượng</th>
 									<th style="width: 250px;">Chức năng</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>Tập với HLV Nam</td>
-									<td>TV0001</td>
-									<td>2020-04-12</td>
-									<td>2000000</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-dich-vu">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>Tập với HLV Nam</td>
-									<td>TV0002</td>
-									<td>2020-04-12</td>
-									<td>2000000</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-dich-vu">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>Tập với HLV Nam</td>
-									<td>TV0003</td>
-									<td>2020-04-12</td>
-									<td>2000000</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-dang-ky-dich-vu">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
+								<c:forEach items="${listRS}" var="rs">
+									<tr>
+										<td>${rs.registerServiceId}</td>
+										<td>${rs.serviceId }</td>
+										<td>${rs.memberId }</td>
+										<td>${rs.timeOfPurchase }</td>
+										<td>${rs.amount }</td>
+										<td><a class="btn btn-primary"
+											href="cap-nhat-dang-ky-dich-vu?id=${rs.registerServiceId}">
+												<i class="fa fa-edit"></i> Update
+										</a> &nbsp; <a class="btn btn-danger"
+											onclick="return confirm('Are you sure delete this service?');"
+											href="xoa-dang-ky-dich-vu?id=${rs.registerServiceId}">
+												<i class="fa fa-trash" aria-hidden="true"></i> Delete
+										</a></td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
