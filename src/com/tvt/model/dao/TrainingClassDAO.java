@@ -25,9 +25,9 @@ public class TrainingClassDAO {
 	Connection conn;
 
 	public void insert(String classId, String className, String packageId, String empId, String[] schedule,
-			int maxMember, String dateStart, String dateEnd, String branchId) {
+			int maxMember, String dateStart, String dateEnd,String status, String branchId) {
 		conn = ConnectDB.getConnect();
-		String sql = "Insert into CLASS (classId,className,packageId,empId,schedule,maxMember,dateStart,dateEnd,branchId) Values (?,?,?,?,?,?,?,?,?)";
+		String sql = "Insert into CLASS (classId,className,packageId,empId,schedule,maxMember,dateStart,dateEnd,status,branchId) Values (?,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, classId);
@@ -44,7 +44,8 @@ public class TrainingClassDAO {
 			pstm.setInt(6, maxMember);
 			pstm.setDate(7, Date.valueOf(dateStart));
 			pstm.setDate(8, Date.valueOf(dateStart));
-			pstm.setString(9, branchId);
+			pstm.setNString(9, status);
+			pstm.setString(10, branchId);
 			pstm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -87,9 +88,9 @@ public class TrainingClassDAO {
 	}
 
 	public void update(String classId, String className, String packageId, String empId, String[] schedule,
-			int maxMember, String dateStart, String dateEnd, String branchId) {
+			int maxMember, String dateStart, String dateEnd,String status, String branchId) {
 		conn = ConnectDB.getConnect();
-		String sql = "UPDATE CLASS SET className = ?, packageId = ?, empId = ?, schedule = ?, maxMember = ?, dateStart = ?, dateEnd = ?,branchId = ? WHERE classId = ?";
+		String sql = "UPDATE CLASS SET className = ?, packageId = ?, empId = ?, schedule = ?, maxMember = ?, dateStart = ?, dateEnd = ?,status = ?,branchId = ? WHERE classId = ?";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setNString(1, className);
@@ -105,8 +106,9 @@ public class TrainingClassDAO {
 			pstm.setInt(5, maxMember);
 			pstm.setDate(6, Date.valueOf(dateStart));
 			pstm.setDate(7, Date.valueOf(dateStart));
-			pstm.setString(8, branchId);
-			pstm.setString(9, classId);
+			pstm.setNString(8, status);
+			pstm.setString(9, branchId);
+			pstm.setString(10, classId);
 			pstm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -115,11 +117,7 @@ public class TrainingClassDAO {
 
 	public TrainingClass searchById(String classId) {
 		conn = ConnectDB.getConnect();
-		String sql = String.format(
-				"SELECT classId, className, packageName, empName, schedule, maxMember, dateStart, dateEnd, status, branchName"
-						+ " FROM CLASS a, BRANCH b, EMPLOYEE c, PACKAGE d "
-						+ "WHERE a.classId = %s AND a.branchId = b.branchId AND a.empId = c.empId AND a.packageId = d.packageId",
-				classId);
+		String sql = String.format("SELECT classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd, status, branchId FROM CLASS WHERE classId = '%s' ", classId);
 		ResultSet resultSet = null;
 		try {
 			Statement statement = conn.createStatement();
@@ -133,14 +131,14 @@ public class TrainingClassDAO {
 				trainingClass = new TrainingClass();
 				trainingClass.setClassId(resultSet.getString("classId"));
 				trainingClass.setClassName(resultSet.getNString("className"));
-				trainingClass.setPackageId(resultSet.getNString("packageName"));
-				trainingClass.setEmpId(resultSet.getNString("empName"));
+				trainingClass.setPackageId(resultSet.getString("packageId"));
+				trainingClass.setEmpId(resultSet.getString("empId"));
 				trainingClass.setSchedule(resultSet.getNString("schedule"));
 				trainingClass.setMaxMember(resultSet.getInt("maxMember"));
 				trainingClass.setDateStart(resultSet.getDate("dateStart").toLocalDate());
 				trainingClass.setDateEnd(resultSet.getDate("dateEnd").toLocalDate());
 				trainingClass.setStatus(resultSet.getNString("status"));
-				trainingClass.setBranchId(resultSet.getNString("branchName"));
+				trainingClass.setBranchId(resultSet.getString("branchId"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

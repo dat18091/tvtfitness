@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.tvt.model.bean.Branch;
 import com.tvt.model.bean.Employee;
 import com.tvt.model.bean.Package;
+import com.tvt.model.bean.TrainingClass;
 import com.tvt.model.bo.BranchBO;
 import com.tvt.model.bo.EmployeeBO;
 import com.tvt.model.bo.PackageBO;
@@ -63,7 +64,7 @@ public class ThemLopTap extends HttpServlet {
 		BranchBO branchBO = new BranchBO();
 		PackageBO packageBO = new PackageBO();
 		EmployeeBO employeeBO = new EmployeeBO();
-
+		
 		// Danh sach cac goi, nhan vien va chi nhanh.
 		List<Branch> listBranchs = null;
 		List<Package> listPackage = null;
@@ -79,9 +80,15 @@ public class ThemLopTap extends HttpServlet {
 		request.setAttribute("listBranch", listBranchs);
 		request.setAttribute("listGoi", listPackage);
 		request.setAttribute("listEmp", listEmployee);
-
+		
 		if ("submit".equals(request.getParameter("submit"))) {
 			String classId = request.getParameter("classId");
+			TrainingClass trainingClass =  trainingClassBO.searchById(classId);
+			if (trainingClass != null) {
+				request.setAttribute("error", "Mã lớp đã tồn tại mời nhập mã khác");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/them-lop-hoc.jsp");
+				dispatcher.forward(request, response);
+			}
 			String className = request.getParameter("className");
 			String packageId = request.getParameter("packageId");
 			String empId = request.getParameter("empId");
@@ -90,7 +97,8 @@ public class ThemLopTap extends HttpServlet {
 			String dateStart = request.getParameter("dateStart");// yyyy-mm-dd;
 			String dateEnd = request.getParameter("dateEnd");
 			String branchId = request.getParameter("branchId");
-			trainingClassBO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd,
+			String status = "Lớp mới tạo";
+			trainingClassBO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd,status,
 					branchId);
 			response.sendRedirect(request.getContextPath() + "/danh-sach-lop-hoc");
 		} else {
