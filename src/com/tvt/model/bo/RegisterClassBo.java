@@ -24,8 +24,16 @@ public class RegisterClassBo {
 		return registerClassDAO.getAll();
 	}
 
-	public void delete(String classId, String memberId) {
-		registerClassDAO.delete(classId, memberId);
+	public void delete(String id) {
+		registerClassDAO.delete(id);
+	}
+
+	public void update(int id, String memberId, String classId, String registerDate, String payStatus) {
+		registerClassDAO.update(id, memberId, classId, registerDate, payStatus);
+	}
+
+	public RegisterClass layThongTin(int id) {
+		return registerClassDAO.layThongTin(id);
 	}
 
 }

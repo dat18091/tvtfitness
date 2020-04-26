@@ -42,9 +42,7 @@
 						<table class="table table-striped b-t b-light">
 							<thead>
 								<tr>
-									<th style="width: 20px;"><label class="i-checks m-b-none">
-											<input type="checkbox"><i></i>
-									</label></th>
+									<th>Mã đăng kí lớp</th>
 									<th>Lớp học</th>
 									<th>Mã thành viên</th>
 									<th>Ngày đăng kí lớp tập</th>
@@ -56,21 +54,19 @@
 
 								<c:forEach items="${listRegisterClass}" var="lop">
 									<tr>
-										<td><label class="i-checks m-b-none"><input
-												type="checkbox" name="post[]"><i></i></label></td>
+										<td>${lop.registerClassId}</td>
 										<td>${lop.classId}</td>
 										<td>${lop.memberId}</td>
 										<td>${lop.registerDate}</td>
 										<td>${lop.payStatus}</td>
-										<td>
-											<a class="btn btn-primary"
-											href="cap-nhat-dang-ky-lop?classId=${lop.classId}&memberId=${lop.memberId}"> <i
-												class="fa fa-edit"></i> Update</a> &nbsp; 
-											<a class="btn btn-danger"
+										<td><a class="btn btn-primary"
+											href="cap-nhat-dang-ky-lop?id=${lop.registerClassId}">
+												<i class="fa fa-edit"></i> Update
+										</a> &nbsp; <a class="btn btn-danger"
 											onclick="return confirm('Are you sure delete this service?');"
-											href="xoa-dang-ky-lop-tap?classId=${lop.classId}&memberId=${lop.memberId}"> <i
-											class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-										</td>
+											href="xoa-dang-ky-lop-tap?id=${lop.registerClassId}">
+												<i class="fa fa-trash" aria-hidden="true"></i> Delete
+										</a></td>
 									</tr>
 								</c:forEach>
 

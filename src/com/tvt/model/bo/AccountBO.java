@@ -8,6 +8,7 @@ import com.tvt.model.dao.AccountDao;
 
 public class AccountBO {
 	private AccountDao accountDao= new AccountDao();
+	
 	public List<Account> getAllAccounts(){
 		return accountDao.getAllAccount();
 	}

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.tvt.common.ValidateUtils;
 import com.tvt.model.bean.Branch;
 import com.tvt.model.bean.Employee;
 import com.tvt.model.bean.Package;
@@ -54,7 +55,7 @@ public class ThemLopTap extends HttpServlet {
 		// kiem tra da dang nhap chua
 		HttpSession session = request.getSession();
 		if (session.getAttribute("thongTinTaiKhoan") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
+			response.sendRedirect(request.getContextPath() + "/login");
 			return;
 		}
 		request.setCharacterEncoding("UTF-8");
@@ -64,7 +65,7 @@ public class ThemLopTap extends HttpServlet {
 		BranchBO branchBO = new BranchBO();
 		PackageBO packageBO = new PackageBO();
 		EmployeeBO employeeBO = new EmployeeBO();
-		
+
 		// Danh sach cac goi, nhan vien va chi nhanh.
 		List<Branch> listBranchs = null;
 		List<Package> listPackage = null;
@@ -80,27 +81,39 @@ public class ThemLopTap extends HttpServlet {
 		request.setAttribute("listBranch", listBranchs);
 		request.setAttribute("listGoi", listPackage);
 		request.setAttribute("listEmp", listEmployee);
-		
+
+		ValidateUtils utils = new ValidateUtils();
+
 		if ("submit".equals(request.getParameter("submit"))) {
 			String classId = request.getParameter("classId");
-			TrainingClass trainingClass =  trainingClassBO.searchById(classId);
+			TrainingClass trainingClass = trainingClassBO.searchById(classId);
 			if (trainingClass != null) {
 				request.setAttribute("error", "Mã lớp đã tồn tại mời nhập mã khác");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/them-lop-hoc.jsp");
 				dispatcher.forward(request, response);
 			}
-			String className = request.getParameter("className");
-			String packageId = request.getParameter("packageId");
-			String empId = request.getParameter("empId");
-			String[] schedule = request.getParameterValues("schedule");// [07:00],[2],[3]
-			int maxMember = Integer.parseInt(request.getParameter("maxMember"));
+
+			// Kiem tra ngay bat dau va ket thuc
 			String dateStart = request.getParameter("dateStart");// yyyy-mm-dd;
 			String dateEnd = request.getParameter("dateEnd");
-			String branchId = request.getParameter("branchId");
-			String status = "Lớp mới tạo";
-			trainingClassBO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd,status,
-					branchId);
-			response.sendRedirect(request.getContextPath() + "/danh-sach-lop-hoc");
+			if (utils.checkDate(dateStart, dateEnd)) {
+				request.setAttribute("errorDate",
+						"Thời gian bắt đầu khóa tập không được lớn hơn ngày kết thúc hoặc nhỏ hơn ngày hiện tại");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/them-lop-hoc.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				String className = request.getParameter("className");
+				String packageId = request.getParameter("packageId");
+				String empId = request.getParameter("empId");
+				String[] schedule = request.getParameterValues("schedule");// [07:00],[2],[3]
+				int maxMember = Integer.parseInt(request.getParameter("maxMember"));
+
+				String branchId = request.getParameter("branchId");
+				String status = "Lớp mới tạo";
+				trainingClassBO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd,
+						status, branchId);
+				response.sendRedirect(request.getContextPath() + "/danh-sach-lop-hoc");
+			}
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/them-lop-hoc.jsp");
 			dispatcher.forward(request, response);
