@@ -16,4 +16,5 @@ public interface IPackageBO<T> {
 	public void update(T object);
 	
 	public T searchById(String object) throws Exception;
+	public T getAllById(String object) throws Exception;
 }

@@ -3,3 +3,4 @@ encoding//WebContent/login.jsp=UTF-8
 encoding//src/com/tvt/controller/admin/AdminHomeController.java=UTF-8
 encoding//src/com/tvt/controller/admin/ThemLopTap.java=UTF-8
 encoding//src/com/tvt/controller/admin/XoaDichVuController.java=UTF-8
+encoding//src/com/tvt/model/dao/PackageDAO.java=UTF-8

@@ -10,7 +10,7 @@ import com.tvt.model.bean.Package;
  * @author DAO
  *
  */
-public class PackageBO implements IPackageBO<Package>{
+public class PackageBOImpl implements IPackageBO<Package>{
 	PackageDAO packageDAO = new PackageDAO();
 	
 	@Override
@@ -34,14 +34,8 @@ public class PackageBO implements IPackageBO<Package>{
 	}
 
 	@Override
-	public Package searchById(String packageId) throws Exception {
-		return packageDAO.searchById(packageId);
-	}
-
-	@Override
-	public Package getAllById(String object) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Package getAllById(String packageId) throws Exception {
+		return packageDAO.getAllById(packageId);
 	}
 	
 }
