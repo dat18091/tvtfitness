@@ -21,54 +21,56 @@
 						<section class="panel">
 							<header class="panel-heading">Cập Nhật Đăng Ký Dịch Vụ</header>
 							<div class="panel-body">
-								<form class="form-horizontal bucket-form" method="post"
-									action="{{URL::to('/save-brand-product')}}">
+								<form class="form-horizontal bucket-form" method="get"
+									action="${pageContext.request.contextPath}/cap-nhat-dang-ky-dich-vu">
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Mã đăng kí dịch vụ</label>
+										<div class="col-sm-6">
+											<input type="text" name="id"
+												value="${rs.registerServiceId }" class="form-control">
+										</div>
+									</div>
 
-									
-									<div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Tên dịch vụ</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Tập với HLV Nữ</option>
-				                                   <option value="{{ $parent->parent_id }}">Tập với HLV Nam</option>
-				                                   <option value="{{ $parent->parent_id }}">Chế độ luyện tập chuyên nghiệp</option>
-				                                   <option value="{{ $parent->parent_id }}">Mua thiết bị</option>
-				                                   <option value="{{ $parent->parent_id }}">Ăn uống</option>
-				                            </select>
-				                        </div>
-				                    </div>
-									
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Mã dịch vụ</label>
+										<div class="col-sm-6">
+											<input type="text" name="maDv"
+												value="${rs.serviceId }" class="form-control">
+										</div>
+									</div>
+
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã thành viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập mã thành viên..." class="form-control">
+											<input type="text" name="maTv"
+											value="${rs.memberId }" class="form-control">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
-										<label class="col-sm-3 control-label">Thời gian đăng ký</label>
+										<label class="col-sm-3 control-label">Thời gian đăng
+											ký dịch vụ</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập thời gian đăng ký..." class="form-control">
+											<input type="date" name="thoiGian" value="${rs.timeOfPurchase }" class="form-control">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Chi phí</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập chi phí đăng ký..." class="form-control">
+											<input type="number" name="chiPhi" min="0"
+												value="${rs.amount }" class="form-control">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
-												type="submit">
-												<i class="glyphicon glyphicon-plus"></i> Update
+											<button name="submit" class="btn btn-save" type="submit"
+												value="submit">
+												<i class="glyphicon glyphicon-plus"></i> Save
 											</button>
-											<button name="cancel_brand_product" class="btn btn-cancel"
+											<button name="cancel" class="btn btn-cancel" value="cancel"
 												type="button">
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>

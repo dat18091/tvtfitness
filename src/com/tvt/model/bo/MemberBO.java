@@ -20,8 +20,7 @@ public class MemberBO {
 		memberDAO.insert(member);
 	}
 
-	public List<Member> getAll(int start, int total, String search, String sortBy)
-			throws SQLException {
+	public List<Member> getAll(int start, int total, String search, String sortBy) throws SQLException {
 		return memberDAO.getAll(start, total, search, sortBy);
 	}
 
@@ -36,8 +35,24 @@ public class MemberBO {
 	public void edit(Member member) throws SQLException {
 		memberDAO.update(member);
 	}
-	
+
 	public List<Member> getAll() throws SQLException {
 		return memberDAO.getAll();
+	}
+
+	public int totalPage(int totalRecord, int numberRecordPerPage) {
+		return (totalRecord / numberRecordPerPage);
+	}
+
+	public int skipRecord(int pageid, int numberRecordPerPage) {
+		return (pageid - 1) * numberRecordPerPage;
+	}
+
+	public int numberOfPage(int totalRecord, int numberRecordPerPage) {
+		int numberOfPage = totalRecord / numberRecordPerPage;
+		if (totalRecord % numberRecordPerPage > 0) {
+			numberOfPage++;
+		}
+		return numberOfPage;
 	}
 }

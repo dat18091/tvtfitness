@@ -40,9 +40,9 @@ public class RegisterClassDAO {
 		}
 	}
 	
-	public void update(int id,String memberId, String classId, String registerDate, String payStatus) {
+	public void update(int id ,String memberId, String classId, String registerDate, String payStatus) {
 		conn = ConnectDB.getConnect();
-		String sql = "UPDATE REGISTER_CLASS SET memberId = ? AND classId = ?,  registerDate = ?, payStatus = ? WHERE registerClassId = ?";
+		String sql = "UPDATE REGISTER_CLASS SET memberId = ?, classId = ?,  registerDate = ?, payStatus = ? WHERE registerClassId = ?";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
 			pstm.setString(1, memberId);

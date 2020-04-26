@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Admin Panel</title>
-<%@include file="/common/admin/css-resources.jsp" %>
+<%@include file="/common/admin/css-resources.jsp"%>
 </head>
 
 <body>
@@ -23,7 +23,14 @@
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
 									action="cap-nhat-dang-ky-lop">
-
+									action="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Mã Đăng kí lớp</label>
+										<div class="col-sm-6">
+											<input type="text" name="id" value="${rc.registerClassId}"
+												readonly="readonly" class="form-control">
+										</div>
+									</div>
 									<div class="form-group">
 										<!-- Category Product Parent -->
 										<label class="col-sm-3 control-label col-lg-3"
@@ -41,14 +48,15 @@
 										<label class="col-sm-3 control-label">Mã thành viên</label>
 										<div class="col-sm-6">
 											<input type="text" name="memberId" value="${rc.memberId}"
-												 class="form-control">
+												class="form-control">
 										</div>
 									</div>
 
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Ngày đăng kí lớp</label>
 										<div class="col-sm-6">
-											<input type="Date" name="registerDate" value="${rc.registerDate}" class="form-control">
+											<input type="Date" name="registerDate"
+												value="${rc.registerDate}" class="form-control">
 											<p style="color: red">${error}</p>
 										</div>
 									</div>
@@ -58,8 +66,7 @@
 										<label class="col-sm-3 control-label col-lg-3"
 											for="inputSuccess">Trạng thái phí</label>
 										<div class="col-lg-6">
-											<select name="payStatus"
-												class="form-control m-bot15">
+											<select name="payStatus" class="form-control m-bot15">
 												<option value="Chưa đóng phí">Chưa thanh toán phí</option>
 												<option value="Đã đóng phí">Đã thanh toán phí</option>
 											</select>
@@ -68,10 +75,12 @@
 
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="submit" value="submit" class="btn btn-save" type="submit">
+											<button name="submit" value="submit" class="btn btn-save"
+												type="submit">
 												<i class="glyphicon glyphicon-plus"></i> Save
 											</button>
-											<button name="cancel" value="cancel" class="btn btn-cancel" type="submit">
+											<button name="cancel" value="cancel" class="btn btn-cancel"
+												type="submit">
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
 										</div>
@@ -94,7 +103,7 @@
 		<!--main content end-->
 	</section>
 
-	<%@include file="/common/admin/js-resources.jsp" %>
+	<%@include file="/common/admin/js-resources.jsp"%>
 </body>
 
 </html>

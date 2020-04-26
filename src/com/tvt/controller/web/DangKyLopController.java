@@ -1,4 +1,4 @@
-package com.tvt.controller.admin;
+package com.tvt.controller.web;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,21 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.tvt.model.bo.TrainingClassBO;
 
 /**
- * Servlet implementation class XoaLopTap
+ * Servlet implementation class DangKyLopController
  */
-@WebServlet("/xoa-lop-hoc")
-public class XoaLopTap extends HttpServlet {
+@WebServlet("/DangKyLopController")
+public class DangKyLopController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public XoaLopTap() {
+    public DangKyLopController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,23 +26,16 @@ public class XoaLopTap extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-        if (session.getAttribute("thongTinTaiKhoan") == null) {
-            response.sendRedirect(request.getContextPath()+"/login");
-            return;
-        }
-		TrainingClassBO trainingClassBO = new TrainingClassBO();
-		String classId = request.getParameter("classId");
-		
-		trainingClassBO.deleteById(classId);
-		response.sendRedirect(request.getContextPath()+"/danh-sach-lop-hoc");
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

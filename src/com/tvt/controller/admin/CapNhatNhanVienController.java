@@ -1,10 +1,12 @@
 package com.tvt.controller.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.tvt.model.bean.Account;
 import com.tvt.model.bean.Branch;
@@ -35,10 +41,15 @@ public class CapNhatNhanVienController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static final String SAVE_DIRECTORY = "uploads";
+	public static final String UPLOAD_DIRECTORY = "D:\\eclipse\\final\\tvtfitness\\WebContent\\resources\\uploads";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+        if (session.getAttribute("thongTinTaiKhoan") == null) {
+            resp.sendRedirect(req.getContextPath()+"/login");
+            return;
+        }
 		String empId = (String) req.getParameter("empId");
 
 		Employee employee = null;
@@ -77,11 +88,32 @@ public class CapNhatNhanVienController extends HttpServlet {
 		String empName = (String) req.getParameter("empName");
 		String numberPhone = (String) req.getParameter("numberPhone");
 		LocalDate birthday = LocalDate.parse(req.getParameter("birthday"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		String img = (String) req.getParameter("imgUrl");
+		String imageUrl = (String) req.getParameter("imgUrl");
+		String fileName = "";
+		if(ServletFileUpload.isMultipartContent(req)){
+            try {
+                Collection<Part> collection = req.getParts();
+        		for (Part part : collection) {
+        			if ("imgUrl".equals(part.getName())) {
+        				fileName = new File(getNewFileName(extractFileName(part))).getName();
+        				part.write(UPLOAD_DIRECTORY + File.separator + fileName);
+        				break;
+        			}
+        		}
+            
+               //File uploaded successfully
+               req.setAttribute("message", "File Uploaded Successfully");
+            } catch (Exception ex) {
+               req.setAttribute("message", "File Upload Failed due to " + ex);
+            }          
+          
+        }else{
+            req.setAttribute("message", "Sorry this Servlet only handles file upload request");
+        }
 		String branchId = (String) req.getParameter("branch");
 		String accountId = (String) req.getParameter("account");
 
-		Employee employee = new Employee(empId, empName, numberPhone, birthday, img, branchId, accountId);
+		Employee employee = new Employee(empId, empName, numberPhone, birthday, imageUrl, branchId, accountId);
 
 		EmployeeBO employeeBO = new EmployeeBO();
 
@@ -109,4 +141,26 @@ public class CapNhatNhanVienController extends HttpServlet {
 			dispatcher.forward(req, resp);
 		}
 	}
+
+	private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
+ 
+ private String getNewFileName(String originalFileName) {
+        String[] name = originalFileName.split("\\.");
+        StringBuilder sb = new StringBuilder();
+        sb.append(name[0]);
+        sb.append("_");
+        sb.append(System.currentTimeMillis());
+        sb.append(".");
+        sb.append(name[1]);
+        return sb.toString();
+    }
 }

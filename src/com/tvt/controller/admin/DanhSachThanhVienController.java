@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tvt.model.bean.Member;
 import com.tvt.model.bo.MemberBO;
@@ -29,6 +30,11 @@ public class DanhSachThanhVienController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+        if (session.getAttribute("thongTinTaiKhoan") == null) {
+            resp.sendRedirect(req.getContextPath()+"/login");
+            return;
+        }
 		List<Member> list = null;
 
 		String search = req.getParameter("search");
@@ -55,18 +61,11 @@ public class DanhSachThanhVienController extends HttpServlet {
 			e1.printStackTrace();
 		}
 
+		MemberBO memberBO = new MemberBO();
 		totalPage = totalRecord / numberRecordPerPage;
-		int skipRecord = (pageid - 1) * numberRecordPerPage;
-
-		int numberOfPage = 0;
-		if (totalRecord % numberRecordPerPage == 0) {
-			numberOfPage = totalRecord / numberRecordPerPage;
-		} else {
-			numberOfPage = totalRecord / numberRecordPerPage + 1;
-		}
-
+		int skipRecord = memberBO.skipRecord(pageid, numberRecordPerPage);
+		int numberOfPage = memberBO.numberOfPage(totalRecord, numberRecordPerPage);
 		try {
-			MemberBO memberBO = new MemberBO();
 			list = memberBO.getAll(skipRecord, numberRecordPerPage, search, sortBy);
 		} catch (SQLException e) {
 			// TODO: handle exception

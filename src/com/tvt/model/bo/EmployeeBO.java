@@ -38,4 +38,20 @@ public class EmployeeBO {
 	public List<Employee> getAll() throws SQLException {
 		return employeeDAO.getAll();
 	}
+	
+	public int totalPage(int totalRecord, int numberRecordPerPage) {
+		return (totalRecord / numberRecordPerPage);
+	}
+
+	public int skipRecord(int pageid, int numberRecordPerPage) {
+		return (pageid - 1) * numberRecordPerPage;
+	}
+
+	public int numberOfPage(int totalRecord, int numberRecordPerPage) {
+		int numberOfPage = totalRecord / numberRecordPerPage;
+		if (totalRecord % numberRecordPerPage > 0) {
+			numberOfPage++;
+		}
+		return numberOfPage;
+	}
 }

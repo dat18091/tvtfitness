@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tvt.model.bo.MemberBO;
 
@@ -30,6 +31,11 @@ public class DeleteMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+        if (session.getAttribute("thongTinTaiKhoan") == null) {
+            response.sendRedirect(request.getContextPath()+"/login");
+            return;
+        }
 		MemberBO memberBO = new MemberBO();
 		String memberId = (String) request.getParameter("memberId");
 		try {

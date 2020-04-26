@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tvt.model.bean.Employee;
 import com.tvt.model.bo.EmployeeBO;
@@ -29,8 +30,13 @@ public class DanhSachNhanVienController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+        if (session.getAttribute("thongTinTaiKhoan") == null) {
+            resp.sendRedirect(req.getContextPath()+"/login");
+            return;
+        }
 		List<Employee> list = null;
-		
+
 		String search = req.getParameter("search");
 		String sortBy = req.getParameter("sortBy");
 
@@ -55,19 +61,12 @@ public class DanhSachNhanVienController extends HttpServlet {
 			e1.printStackTrace();
 		}
 
+		EmployeeBO employeeBO = new EmployeeBO();
 		totalPage = totalRecord / numberRecordPerPage;
-		int skipRecord = (pageid - 1) * numberRecordPerPage;
-
-		int numberOfPage = 0;
-		if (totalRecord % numberRecordPerPage == 0) {
-			numberOfPage = totalRecord / numberRecordPerPage;
-		} else {
-			numberOfPage = totalRecord / numberRecordPerPage + 1;
-		}
-
+		int skipRecord = employeeBO.skipRecord(pageid, numberRecordPerPage);
+		int numberOfPage = employeeBO.numberOfPage(totalRecord, numberRecordPerPage);
 		try {
-			EmployeeBO employeeBO = new EmployeeBO();
-			list = employeeBO.getAll(skipRecord, numberRecordPerPage,  search, sortBy);
+			list = employeeBO.getAll(skipRecord, numberRecordPerPage, search, sortBy);
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();

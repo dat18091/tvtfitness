@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -32,10 +33,15 @@ public class CapNhatDichVuController extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static final String SAVE_DIRECTORY = "D:\\eclipse\\final\\tvtfitness\\WebContent\\resources\\uploads";
+	public static final String UPLOAD_DIRECTORY = "D:\\eclipse\\final\\tvtfitness\\WebContent\\resources\\uploads";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+        if (session.getAttribute("thongTinTaiKhoan") == null) {
+            resp.sendRedirect(req.getContextPath()+"/login");
+            return;
+        }
 		ServiceBOImpl serviceBOImpl = new ServiceBOImpl();
 
 		String serviceId = (String) req.getParameter("serviceId");
@@ -69,7 +75,7 @@ public class CapNhatDichVuController extends HttpServlet {
 		for (int i = 0; i < type.length; i++) {
 			serviceType += type[i];
 		}
-		String imageUrl = (String) req.getParameter("imageUrl");
+		String imageUrl = (String) req.getParameter("imgUrl");
 
 		String fileName = "";
 		if(ServletFileUpload.isMultipartContent(req)){
@@ -77,8 +83,8 @@ public class CapNhatDichVuController extends HttpServlet {
                 Collection<Part> collection = req.getParts();
         		for (Part part : collection) {
         			if ("imgUrl".equals(part.getName())) {
-        				fileName = new File(getNewFileName((String) extractFileName(part))).getName();
-        				part.write(SAVE_DIRECTORY + File.separator + fileName);
+        				fileName = new File(getNewFileName(extractFileName(part))).getName();
+        				part.write(UPLOAD_DIRECTORY + File.separator + fileName);
         				break;
         			}
         		}
@@ -110,8 +116,19 @@ public class CapNhatDichVuController extends HttpServlet {
 		resp.sendRedirect(req.getContextPath() + "/danh-sach-dich-vu");
 	}
 
-	private String getNewFileName(String originalFileName) {
-		String[] name = originalFileName.split("\\.");
+	private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
+ 
+ private String getNewFileName(String originalFileName) {
+        String[] name = originalFileName.split("\\.");
         StringBuilder sb = new StringBuilder();
         sb.append(name[0]);
         sb.append("_");
@@ -119,16 +136,5 @@ public class CapNhatDichVuController extends HttpServlet {
         sb.append(".");
         sb.append(name[1]);
         return sb.toString();
-	}
-
-	private Object extractFileName(Part part) {
-		 String contentDisp = part.getHeader("content-disposition");
-	        String[] items = contentDisp.split(";");
-	        for (String s : items) {
-	            if (s.trim().startsWith("filename")) {
-	                return s.substring(s.indexOf("=") + 2, s.length() - 1);
-	            }
-	        }
-	        return "";
-	}
+    }
 }

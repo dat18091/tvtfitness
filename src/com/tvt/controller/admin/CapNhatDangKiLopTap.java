@@ -48,6 +48,7 @@ public class CapNhatDangKiLopTap extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/login");
 			return;
 		}
+		
 		ValidateUtils utils = new ValidateUtils();
 		request.setCharacterEncoding("UTF-8");
 		RegisterClassBo registerClassBo = new RegisterClassBo();

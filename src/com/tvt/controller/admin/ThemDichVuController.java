@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 //import javax.servlet.http.Part;
 //
 //import org.apache.commons.fileupload.FileItem;
@@ -38,10 +39,15 @@ public class ThemDichVuController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 //	private static final String SAVE_DIR = "uploads";
-	private static final int UPLOAD_DIRECTORY = 0;
+	private static final String UPLOAD_DIRECTORY = "D:\\eclipse\\final\\tvtfitness\\WebContent\\resources\\uploads";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+        if (session.getAttribute("thongTinTaiKhoan") == null) {
+            resp.sendRedirect(req.getContextPath()+"/login");
+            return;
+        }
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/admin/insert/them-dich-vu.jsp");
 		dispatcher.forward(req, resp);
 	}
@@ -50,23 +56,7 @@ public class ThemDichVuController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		ServiceBOImpl serviceBOImpl = new ServiceBOImpl();
-//		if (ServletFileUpload.isMultipartContent(req)) {
-//			try {
-//				List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(req);
-//				for (FileItem item : multiparts) {
-//					if (!item.isFormField()) {
-//						String name = new File(item.getName()).getName();
-//						item.write(new File(req.getServletContext().getContextPath() +File.separator + SAVE_DIR + File.separator + "" + name));
-//					}
-//				}
-//				// File uploaded successfully
-//				req.setAttribute("message", "File Uploaded Successfully");
-//			} catch (Exception ex) {
-//				req.setAttribute("message", "File Upload Failed due to " + ex);
-//			}
-//		} else {
-//			req.setAttribute("message","Sorry this Servlet only handles file upload request");
-//		}
+
 		String serviceId = (String) req.getParameter("serviceId");
 		String serviceName = (String) req.getParameter("serviceName");
 		String serviceType = "";
@@ -75,14 +65,14 @@ public class ThemDichVuController extends HttpServlet {
 			serviceType += type[i];
 		}
 
-		String imageUrl = (String) req.getParameter("imageUrl");
+		String imageUrl = (String) req.getParameter("imgUrl");
 
 		String fileName = "";
 		if(ServletFileUpload.isMultipartContent(req)){
             try {
                 Collection<Part> collection = req.getParts();
         		for (Part part : collection) {
-        			if ("imageUrl".equals(part.getName())) {
+        			if ("imgUrl".equals(part.getName())) {
         				fileName = new File(getNewFileName(extractFileName(part))).getName();
         				part.write(UPLOAD_DIRECTORY + File.separator + fileName);
         				break;
