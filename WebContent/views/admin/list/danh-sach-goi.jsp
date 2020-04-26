@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
+<title>TVT Fitness | Danh Sách Gói</title>
 <%@include file="/common/admin/css-resources.jsp" %>
 </head>
 
@@ -53,49 +53,23 @@
 								</tr>
 							</thead>
 							<tbody>
+							<c:forEach items="${packageList}" var="packagelist">
 								<tr>
 									<td><label class="i-checks m-b-none"><input
 											type="checkbox" name="post[]"><i></i></label></td>
-									<td>G0001</td>
-									<td>Tập luyện cơ bắp</td>
-									<td>Gói tập 1 tháng</td>
-									<td>1500000</td>
+									<td>${packagelist.packageId}</td>
+									<td>${packagelist.packageName}</td>
+									<td>${packagelist.packageType}</td>
+									<td>${packagelist.price}</td>
 									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-goi">
+										<a class="btn btn-primary" href="cap-nhat-goi?packageId=${packagelist.packageId}">
 										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
+										<a class="btn btn-danger" onclick="return confirm('Are you sure delete this package?')" href="xoa-goi?packageId=${packagelist.packageId}">
 										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
 									</td>
 								</tr>
+								</c:forEach>
 								
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>G0002</td>
-									<td>Tập luyện cơ bắp</td>
-									<td>Gói tập 1 tháng</td>
-									<td>1500000</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-goi">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
-								<tr>
-									<td><label class="i-checks m-b-none"><input
-											type="checkbox" name="post[]"><i></i></label></td>
-									<td>G0003</td>
-									<td>Tập luyện cơ bắp</td>
-									<td>Gói tập 1 tháng</td>
-									<td>1500000</td>
-									<td>
-										<a class="btn btn-primary" href="${pageContext.request.contextPath}/cap-nhat-goi">
-										<i class="fa fa-edit"></i> Update</a> &nbsp; 
-										<a class="btn btn-danger" onclick="confirm('Are you sure delete this computer?')" href="delete-computer?computerId=${computer.computerId}">
-										<i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
-									</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
