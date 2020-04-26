@@ -27,7 +27,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã lớp tập</label>
 										<div class="col-sm-6">
-											<input type="text" name="classId" value="${classId}" readonly="readonly"
+											<input type="text" name="classId" value="${lopTap.classId}" readonly="readonly"
 												class="form-control">
 										</div>
 									</div>
@@ -35,7 +35,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Tên lớp tập</label>
 										<div class="col-sm-6">
-											<input type="text" name="className" placeholder="Tên lớp tập"
+											<input type="text" name="className" value="${lopTap.className}"
 												class="form-control">
 										</div>
 									</div>
@@ -98,7 +98,7 @@
 											viên</label>
 										<div class="col-sm-6">
 											<input type="number" name="maxMember" min=3
-												placeholder="Số lượng học viên của lớp tập"
+												value="${lopTap.maxMember}"
 												class="form-control">
 										</div>
 									</div>
@@ -108,7 +108,7 @@
 										<label class="col-sm-3 control-label col-lg-3"
 											for="inputSuccess">Thời gian bắt đầu khóa tập</label>
 										<div class="col-lg-6">
-											<input type="date" id="inputSuccess1" name=dateStart>
+											<input type="date" id="inputSuccess1" name=dateStart value="${lopTap.dateStart}">
 										</div>
 									</div>
 
@@ -117,7 +117,21 @@
 										<label class="col-sm-3 control-label col-lg-3"
 											for="inputSuccess">Thời gian kết thúc khóa tập</label>
 										<div class="col-lg-6">
-											<input type="date" id="inputSuccess2" name=dateEnd>
+											<input type="date" id="inputSuccess2" name=dateEnd value="${lopTap.dateEnd}">
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Trạng thái</label>
+										<div class="col-lg-6">
+											<select name="status" class="form-control m-bot15">
+												<option value="Còn chỗ">Còn chỗ</option>
+												<option value="Đã hết chỗ">Đã hết chỗ</option>
+												<option value="Đã kết thúc">Đã kết thúc</option>
+												<option value="Đã hủy">Đã hủy</option>
+											</select>
 										</div>
 									</div>
 

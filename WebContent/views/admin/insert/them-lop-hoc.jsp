@@ -29,6 +29,7 @@
 										<div class="col-sm-6">
 											<input type="text" name="classId" placeholder="TC0001"
 												class="form-control">
+											<p style="color: red">${error}</p>
 										</div>
 									</div>
 

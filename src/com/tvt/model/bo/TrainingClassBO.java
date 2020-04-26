@@ -17,17 +17,19 @@ public class TrainingClassBO {
 	TrainingClassDAO trainingClassDAO = new TrainingClassDAO();
 
 	public void insert(String classId, String className, String packageId, String empId, String[] schedule,
-			int maxMember, String dateStart, String dateEnd, String branchId) {
-		trainingClassDAO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd, branchId);
+			int maxMember, String dateStart, String dateEnd,String status, String branchId) {
+		trainingClassDAO.insert(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd,status,
+				branchId);
 	}
-	
+
 	public List<TrainingClass> getAll() {
 		return trainingClassDAO.getAll();
 	}
 
 	public void update(String classId, String className, String packageId, String empId, String[] schedule,
-			int maxMember, String dateStart, String dateEnd, String branchId) {
-		trainingClassDAO.update(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd, branchId);
+			int maxMember, String dateStart, String dateEnd,String status, String branchId) {
+		trainingClassDAO.update(classId, className, packageId, empId, schedule, maxMember, dateStart, dateEnd,status,
+				branchId);
 	}
 
 	public TrainingClass searchById(String classId) {
