@@ -39,10 +39,26 @@ public class RegisterClassDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void update(int id ,String memberId, String classId, String registerDate, String payStatus) {
+		conn = ConnectDB.getConnect();
+		String sql = "UPDATE REGISTER_CLASS SET memberId = ?, classId = ?,  registerDate = ?, payStatus = ? WHERE registerClassId = ?";
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(1, memberId);
+			pstm.setString(2, classId);
+			pstm.setDate(3, Date.valueOf(registerDate));
+			pstm.setNString(4, payStatus);
+			pstm.setInt(5, id);
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public List<RegisterClass> getAll() {
 		conn = ConnectDB.getConnect();
-		String sql = "SELECT memberId, classId, registerDate, payStatus FROM REGISTER_CLASS ";
+		String sql = "SELECT registerClassId, memberId, classId, registerDate, payStatus FROM REGISTER_CLASS ";
 		ResultSet resultSet = null;
 		try {
 			Statement statement = conn.createStatement();
@@ -55,6 +71,7 @@ public class RegisterClassDAO {
 		try {
 			while (resultSet.next()) {
 				registerClass = new RegisterClass();
+				registerClass.setRegisterClassId(resultSet.getInt("registerClassId"));
 				registerClass.setMemberId(resultSet.getString("memberId"));
 				registerClass.setClassId(resultSet.getString("classId"));
 				registerClass.setRegisterDate(resultSet.getDate("registerDate").toLocalDate());
@@ -68,17 +85,44 @@ public class RegisterClassDAO {
 		return list;
 	}
 
-	public void delete(String classId, String memberId) {
+	public void delete(String registerClassId) {
 		conn = ConnectDB.getConnect();
-		String sql = "DELETE FROM REGISTER_CLASS where classId = ? AND memberId = ?";
+		String sql = "DELETE FROM REGISTER_CLASS where registerClassId = ?";
 		try {
 			PreparedStatement pstm = conn.prepareStatement(sql);
-			pstm.setString(1, classId);
-			pstm.setString(2, memberId);
+			pstm.setInt(1, Integer.parseInt(registerClassId));
 			pstm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public RegisterClass layThongTin(int id) {
+		conn = connectDB.getConnect();
+		String sql = String.format("SELECT * from REGISTER_CLASS where registerClassId = %d", id);
+		ResultSet rs = null;
+		try {
+			Statement statement = conn.createStatement();
+			rs = statement.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		RegisterClass registerClass = null;
+		try {
+			if (rs.next()) {
+				registerClass = new RegisterClass();
+				registerClass.setRegisterClassId(rs.getInt("registerClassId"));
+				registerClass.setClassId(rs.getString("classId"));
+				registerClass.setMemberId(rs.getString("memberId"));
+				registerClass.setRegisterDate(rs.getDate("registerDate").toLocalDate());
+				registerClass.setPayStatus(rs.getNString("payStatus"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return registerClass;
 	}
 	
 }

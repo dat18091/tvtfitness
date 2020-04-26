@@ -49,6 +49,7 @@
 										<label class="col-sm-3 control-label">Ngày đăng kí lớp</label>
 										<div class="col-sm-6">
 											<input type="Date" name="registerDate" class="form-control">
+											<p style="color: red">${error}</p>
 										</div>
 									</div>
 

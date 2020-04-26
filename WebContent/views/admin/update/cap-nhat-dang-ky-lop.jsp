@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Admin Panel</title>
-<%@include file="/common/admin/css-resources.jsp" %>
+<%@include file="/common/admin/css-resources.jsp"%>
 </head>
 
 <body>
@@ -22,52 +22,64 @@
 							<header class="panel-heading">Cập Nhật Đăng Ký Lớp Học</header>
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
-									action="{{URL::to('/save-brand-product')}}">
+									action="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Mã Đăng kí lớp</label>
+										<div class="col-sm-6">
+											<input type="text" name="id" value="${rc.registerClassId}"
+												readonly="readonly" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Lớp tập</label>
+										<div class="col-lg-6">
+											<select name="classId" class="form-control m-bot15">
+												<c:forEach items="${listClass}" var="lop">
+													<option value="${lop.classId}">${lop.className}</option>
+												</c:forEach>
+											</select>
+										</div>
+									</div>
 
-									<div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Lớp học</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Tập tăng cân</option>
-				                            </select>
-				                        </div>
-				                    </div>
-									
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã thành viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập mã thành viên..." class="form-control">
+											<input type="text" name="memberId" value="${rc.memberId}"
+												class="form-control">
 										</div>
 									</div>
-									
+
 									<div class="form-group">
-										<label class="col-sm-3 control-label">Tên thành viên</label>
+										<label class="col-sm-3 control-label">Ngày đăng kí lớp</label>
 										<div class="col-sm-6">
-											<input type="text" name="brand_product_name"
-												placeholder="Nhập tên thành viên..." class="form-control">
+											<input type="Date" name="registerDate"
+												value="${rc.registerDate}" class="form-control">
+											<p style="color: red">${error}</p>
 										</div>
 									</div>
-									
-									
-									<div class="form-group"><!-- Category Product Parent -->
-				                        <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Trạng thái phí</label>
-				                        <div class="col-lg-6">
-				                            <select name="category_product_parent" class="form-control m-bot15">
-				                                   <option value="{{ $parent->parent_id }}">Trả 1 nửa</option>
-				                                   <option value="{{ $parent->parent_id }}">Đã thanh toán hết</option>
-				                            </select>
-				                        </div>
-				                    </div>
-									
+
+									<div class="form-group">
+										<!-- Category Product Parent -->
+										<label class="col-sm-3 control-label col-lg-3"
+											for="inputSuccess">Trạng thái phí</label>
+										<div class="col-lg-6">
+											<select name="payStatus" class="form-control m-bot15">
+												<option value="Chưa đóng phí">Chưa thanh toán phí</option>
+												<option value="Đã đóng phí">Đã thanh toán phí</option>
+											</select>
+										</div>
+									</div>
+
 									<div class="form-group">
 										<div class="col-lg-offset-3 col-lg-6">
-											<button name="add_brand_product" class="btn btn-save"
+											<button name="submit" value="submit" class="btn btn-save"
 												type="submit">
-												<i class="glyphicon glyphicon-plus"></i> Update
+												<i class="glyphicon glyphicon-plus"></i> Save
 											</button>
-											<button name="cancel_brand_product" class="btn btn-cancel"
-												type="button">
+											<button name="cancel" value="cancel" class="btn btn-cancel"
+												type="submit">
 												<i class="glyphicon glyphicon-remove"></i> Cancel
 											</button>
 										</div>
@@ -90,7 +102,7 @@
 		<!--main content end-->
 	</section>
 
-	<%@include file="/common/admin/js-resources.jsp" %>
+	<%@include file="/common/admin/js-resources.jsp"%>
 </body>
 
 </html>
