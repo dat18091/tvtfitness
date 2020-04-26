@@ -34,14 +34,9 @@ public class PackageBO implements IPackageBO<Package>{
 	}
 
 	@Override
-	public Package searchById(String packageId) throws Exception {
-		return packageDAO.searchById(packageId);
-	}
-
-	@Override
 	public Package getAllById(String object) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return packageDAO.getAllById(object);
 	}
 	
 }

@@ -9,21 +9,10 @@ import java.util.List;
 import com.tvt.model.bean.Package;
 import com.tvt.common.ConnectDB;
 
-<<<<<<< HEAD
-public class PackageDAO implements IDAOBase1<Package>{
-	private Connection con = ConnectDB.getConnect();
-=======
-/**
- * @author DAO
- *
- */
+
 public class PackageDAO implements IDAOBase<Package>{
 	private Connection con = ConnectDB.getConnect();
-	
-	/**
-	 * 
-	 */
->>>>>>> e1f4e5e214f7c951f38c4f579503a77c45128370
+
 	@Override
 	public List<Package> getAll() {
 		List<Package> packagesList = new ArrayList<Package>();
@@ -45,12 +34,6 @@ public class PackageDAO implements IDAOBase<Package>{
 		return packagesList;
 	}
 
-<<<<<<< HEAD
-=======
-	/**
-	 * 
-	 */
->>>>>>> e1f4e5e214f7c951f38c4f579503a77c45128370
 	@Override
 	public void insert(Package package1) {
 		String query = "INSERT INTO PACKAGE(packageId, packageName, packageType, price) VALUES (?, ? , ?, ?)";
@@ -65,13 +48,6 @@ public class PackageDAO implements IDAOBase<Package>{
 			e.printStackTrace();
 		}
 	}
-
-<<<<<<< HEAD
-=======
-	/**
-	 * 
-	 */
->>>>>>> e1f4e5e214f7c951f38c4f579503a77c45128370
 	@Override
 	public void update(Package package1) {
 		String query = "UPDATE PACKAGE SET packageName = ?, packageType = ?, price = ? WHERE packageId = ?";
@@ -86,13 +62,6 @@ public class PackageDAO implements IDAOBase<Package>{
 			e.printStackTrace();
 		}
 	}
-
-<<<<<<< HEAD
-=======
-	/**
-	 * 
-	 */
->>>>>>> e1f4e5e214f7c951f38c4f579503a77c45128370
 	@Override
 	public void delete(String packageId) {
 		String query = "DELETE FROM PACKAGE WHERE packageId = ?";
@@ -112,11 +81,7 @@ public class PackageDAO implements IDAOBase<Package>{
 	 * @throws SQLException
 	 * hiển thị thông tin lên form cập nhật
 	 */
-<<<<<<< HEAD
-	public Package searchById(String packageId) throws SQLException {
-=======
 	public Package getAllById(String packageId) throws SQLException {
->>>>>>> e1f4e5e214f7c951f38c4f579503a77c45128370
 		String query = "SELECT * FROM PACKAGE WHERE packageId = ?";
 		PreparedStatement preparedStatement = con.prepareStatement(query);
 		preparedStatement.setString(1, packageId);
@@ -128,6 +93,12 @@ public class PackageDAO implements IDAOBase<Package>{
 			Package service = new Package(packageId, packageName, packageType, price);
 			return service;
 		}
+		return null;
+	}
+
+	@Override
+	public Package find(String object) throws SQLException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
