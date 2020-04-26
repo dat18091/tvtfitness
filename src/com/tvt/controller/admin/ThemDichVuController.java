@@ -52,21 +52,9 @@ public class ThemDichVuController extends HttpServlet {
 		for (int i = 0; i < type.length; i++) {
 			serviceType += type[i];
 		}
-//		String imageUrl = (String) req.getParameter("imageUrl");
 		String fileName = "";
 		if(ServletFileUpload.isMultipartContent(req)){
             try {
-//                @SuppressWarnings("unchecked")
-//				List<FileItem> multiparts = new ServletFileUpload(
-//                                         new DiskFileItemFactory()).parseRequest(req);
-               
-//                for(FileItem item : multiparts){
-//                    if(!item.isFormField()){
-//                        String name = new File(item.getName()).getName();
-//                        item.write( new File(UPLOAD_DIRECTORY + File.separator + name));
-//                    }
-//                }
-                
                 Collection<Part> collection = req.getParts();
         		for (Part part : collection) {
         			if ("imageUrl".equals(part.getName())) {
