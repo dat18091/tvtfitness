@@ -11,6 +11,9 @@ import com.tvt.common.ConnectDB;
 
 public class PackageDAO implements IDAOBase<Package>{
 	private Connection con = ConnectDB.getConnect();
+	/* (non-Javadoc)
+	 * @see com.tvt.model.dao.IDAOBase#getAll()
+	 */
 	@Override
 	public List<Package> getAll() {
 		List<Package> packagesList = new ArrayList<Package>();
@@ -32,6 +35,9 @@ public class PackageDAO implements IDAOBase<Package>{
 		return packagesList;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tvt.model.dao.IDAOBase#insert(java.lang.Object)
+	 */
 	@Override
 	public void insert(Package package1) {
 		String query = "INSERT INTO PACKAGE(packageId, packageName, packageType, price) VALUES (?, ? , ?, ?)";
@@ -47,6 +53,9 @@ public class PackageDAO implements IDAOBase<Package>{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tvt.model.dao.IDAOBase#update(java.lang.Object)
+	 */
 	@Override
 	public void update(Package package1) {
 		String query = "UPDATE PACKAGE SET packageName = ?, packageType = ?, price = ? WHERE packageId = ?";
@@ -62,6 +71,9 @@ public class PackageDAO implements IDAOBase<Package>{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.tvt.model.dao.IDAOBase#delete(java.lang.String)
+	 */
 	@Override
 	public void delete(String packageId) {
 		String query = "DELETE FROM PACKAGE WHERE packageId = ?";
