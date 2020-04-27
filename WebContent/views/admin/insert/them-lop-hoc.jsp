@@ -27,7 +27,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã lớp tập</label>
 										<div class="col-sm-6">
-											<input type="text" name="classId" placeholder="TC0001"
+											<input type="text" name="classId" placeholder="Nhap lop tap theo dinh dang TCxxxx..."
 												class="form-control">
 											<p style="color: red">${error}</p>
 										</div>

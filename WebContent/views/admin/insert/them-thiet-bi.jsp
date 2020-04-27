@@ -23,11 +23,13 @@
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
 									action="them-thiet-bi" enctype="multipart/form-data">
-
+									<div class="form-group">
+										<label class="col-sm-12" id="notification" style="text-align: center;"></label>
+									</div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã Thiết Bị</label>
 										<div class="col-sm-6">
-											<input type="text" name="equipmentId" required="required"
+											<input type="text" id="equipmentId" name="equipmentId" required="required"
 												placeholder="Nhập mã thiết bị..." class="form-control">
 										</div>
 									</div>
@@ -42,7 +44,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Giá</label>
 										<div class="col-sm-6">
-											<input type="text" name="cost"
+											<input type="text" name="cost" id="cost"
 												placeholder="Giá..." class="form-control" required>
 										</div>
 									</div>
@@ -129,6 +131,35 @@
 	</section>
 
 	<%@include file="/common/admin/js-resources.jsp"%>
+	<script type="text/javascript">
+	if(${error != null}){
+		$("#notification").text("${error}");
+        $("#notification").css("color", "red");
+	}
+	$("#equipmentId").on("change", function () {
+	   var equipmentId = $("#equipmentId").val();
+	   var patt = new RegExp("^TB[0-9]{4}$");
+	   if (!(patt.test(equipmentId))) {
+	       $("#notification").text("Mã TB: Có format là TBxxxx (x: ký tự số)");
+	       $("#notification").css("color", "red");
+	       $(this).val("");
+	       $(this).focus();
+	    } else {
+	       $("#notification").text("")
+	      }
+		});
+	$("#cost").on("change", function () {
+        var cost = $("#cost").val();
+        if(!(parseFloat(cost)>0)){
+            $("#notification").text("Giá phải là 1 số lớn hơn 0");
+            $("#notification").css("color", "red");
+            $(this).val("");
+            $(this).focus();
+        } else {
+            $("#notification").text("")
+        }
+    });
+</script>
 </body>
 
 </html>

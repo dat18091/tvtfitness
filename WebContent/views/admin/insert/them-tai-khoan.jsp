@@ -47,7 +47,7 @@
 				                        <div class="col-lg-6">
 				                            <select name="accountType" class="form-control m-bot15" required>
 				                                   <option value="Administrator" >Administrator</option>
-				                                   <option value="User">User</option>			                                   				                          
+				                                   <option value="User">User</option>		                                   				                          
 				                            </select>
 				                        </div>
 				                    </div>

@@ -29,9 +29,12 @@
 									action="${pageContext.request.contextPath}/them-thanh-vien">
 
 									<div class="form-group">
+										<label class="col-sm-12" id="notification" style="text-align: center;"></label>
+									</div>
+									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã thành viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="memberId" value="${member.memberId}"
+											<input type="text" name="memberId" id="memberId"
 												placeholder="Nhập mã thành viên..." class="form-control">
 											
 										</div>
@@ -40,7 +43,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Họ tên</label>
 										<div class="col-sm-6">
-											<input type="text" name="fullName" value="${member.fullName}"
+											<input type="text" name="fullName" 
 												placeholder="Nhập họ tên đầy đủ..." class="form-control">
 										</div>
 									</div>
@@ -48,7 +51,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Ngày sinh</label>
 										<div class="col-sm-6">
-											<input type="date" name="birthday" value="${member.birthday}"
+											<input type="date" name="birthday" 
 												placeholder="Nhập ngày tháng năm sinh..."
 												class="form-control">
 										</div>
@@ -72,15 +75,11 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Số điện thoại</label>
 										<div class="col-sm-6">
-											<input type="text" name="numberPhone"
-												value="${member.numberPhone}"
+											<input type="text" name="numberPhone" id="soDienThoai"
 												placeholder="Nhập số điện thoại..."
 												class="form-control">
 										</div>
 									</div>
-									<!-- <script type="text/javascript">
-									<!- Validate ở đây - -->
-									</script> -->
 									<div class="form-group">
 										<!-- Category Product Parent -->
 										<label class="col-sm-3 control-label col-lg-3"
@@ -148,6 +147,32 @@
 	</section>
 
 	<%@include file="/common/admin/js-resources.jsp"%>
+	<script type="text/javascript">
+	$("#memberId").on("change", function () {
+		   var memberId = $("#memberId").val();
+		   var patt = new RegExp("^TV[0-9]{5}$");
+		   if (!(patt.test(memberId))) {
+		       $("#notification").text("Mã TV: Có format là TBxxxxx (x: ký tự số)");
+		       $("#notification").css("color", "red");
+		       $(this).val("");
+		       $(this).focus();
+		    } else {
+		       $("#notification").text("")
+		      }
+			});
+	$("#soDienThoai").on("change", function () {
+        var phone = $("#soDienThoai").val();
+        var patt = new RegExp("^(090|091|098|031|035|038)[0-9]{7}$");
+        if (!(patt.test(phone))) {
+            $("#notification").text("Số điện thoại phải bắt đầu bằng(090,091,098,035,038) và có 10 chữ số");
+            $("#notification").css("color", "red");
+            $(this).val("");
+            $(this).focus();
+        } else {
+            $("#notification").text("")
+        }
+    });
+	</script>
 </body>
 
 </html>

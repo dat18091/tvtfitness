@@ -30,7 +30,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã nhân viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="empId" value="${employee.empId}"
+											<input type="text" name="empId" value="${employee.empId}" readonly="readonly"
 												placeholder="Nhập mã nhân viên..." class="form-control">
 										</div>
 									</div>

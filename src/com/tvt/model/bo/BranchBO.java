@@ -56,7 +56,7 @@ public class BranchBO {
 	}
 
 	public int endPosition(int rows, int start, int recordPerPage) {
-		int end = start + recordPerPage + 1;
+		int end = start + recordPerPage;
 		if (end > rows) {
 			end = rows;
 		}

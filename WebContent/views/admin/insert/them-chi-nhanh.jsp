@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +89,7 @@
 	        var branchId = $("#branchId").val();
 	        var patt = new RegExp("^CN[0-9]{4}$");
 	        if (!(patt.test(branchId))) {
-	            $("#notification").text("Mã KH: Có format là KHxxxx (x: ký tự số)");
+	            $("#notification").text("Mã CN: Có format là CNxxxx (x: ký tự số)");
 	            $("#notification").css("color", "red");
 	            $(this).val("");
 	            $(this).focus();

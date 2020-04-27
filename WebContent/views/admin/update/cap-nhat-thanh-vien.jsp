@@ -31,8 +31,8 @@
 										<div class="form-group">
 											<label class="col-sm-3 control-label">Mã thành viên</label>
 											<div class="col-sm-6">
-												<input type="text" name="memberId"
-													value="${member.memberId}"
+												<input type="text" name="memberId" 
+													value="${member.memberId}" readonly="readonly"
 													placeholder="Nhập mã thành viên..." class="form-control">
 											</div>
 										</div>

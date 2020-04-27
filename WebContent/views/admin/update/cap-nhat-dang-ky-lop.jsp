@@ -23,7 +23,6 @@
 							<div class="panel-body">
 								<form class="form-horizontal bucket-form" method="post"
 									action="cap-nhat-dang-ky-lop">
-									action="${pageContext.request.contextPath}/cap-nhat-dang-ky-lop">
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã Đăng kí lớp</label>
 										<div class="col-sm-6">

@@ -27,11 +27,15 @@
 								<form class="form-horizontal bucket-form" method="post"
 									enctype="multipart/form-data"
 									action="${pageContext.request.contextPath}/them-nhan-vien">
-
+									
+									<div class="form-group">
+										<label class="col-sm-12" id="notification" style="text-align: center;"></label>
+									</div>
+									
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Mã nhân viên</label>
 										<div class="col-sm-6">
-											<input type="text" name="empId" value="${employee.empId }"
+											<input type="text" name="empId" id="empId"
 												placeholder="Nhập mã nhân viên..." class="form-control">
 										</div>
 									</div>
@@ -40,7 +44,6 @@
 										<label class="col-sm-3 control-label">Tên nhân viên</label>
 										<div class="col-sm-6">
 											<input type="text" name="empName"
-												value="${employee.empName }"
 												placeholder="Nhập họ tên nhân viên..." class="form-control">
 										</div>
 									</div>
@@ -48,8 +51,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Số điện thoại</label>
 										<div class="col-sm-6">
-											<input type="text" name="numberPhone"
-												value="${employee.numberPhone }"
+											<input type="text" name="numberPhone" id="soDienThoai"
 												placeholder="Nhập số điện thoại của nhân viên..."
 												class="form-control">
 										</div>
@@ -58,8 +60,7 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label">Ngày sinh</label>
 										<div class="col-sm-6">
-											<input type="text" name="birthday"
-												value="${employee.birthday }"
+											<input type="date" name="birthday"
 												placeholder="Nhập ngày tháng năm sinh của nhân viên..."
 												class="form-control">
 										</div>
@@ -69,7 +70,7 @@
 										<!-- Product Image -->
 										<label class="col-sm-3 control-label">Hình ảnh</label>
 										<div class="col-sm-6">
-											<input type="file" name="imgUrl" value="${employee.img}"
+											<input type="file" name="imgUrl"
 												class="form-control">
 										</div>
 									</div>
@@ -141,6 +142,32 @@
 	</section>
 
 	<%@include file="/common/admin/js-resources.jsp"%>
+	<script type="text/javascript">
+	$("#empId").on("change", function () {
+		   var memberId = $("#empId").val();
+		   var patt = new RegExp("^NV[0-9]{4}$");
+		   if (!(patt.test(memberId))) {
+		       $("#notification").text("Mã NV: Có format là NVxxxx (x: ký tự số)");
+		       $("#notification").css("color", "red");
+		       $(this).val("");
+		       $(this).focus();
+		    } else {
+		       $("#notification").text("")
+		      }
+			});
+	$("#soDienThoai").on("change", function () {
+        var phone = $("#soDienThoai").val();
+        var patt = new RegExp("^(090|091|098|031|035|038)[0-9]{7}$");
+        if (!(patt.test(phone))) {
+            $("#notification").text("Số điện thoại phải bắt đầu bằng(090,091,098,035,038) và có 10 chữ số");
+            $("#notification").css("color", "red");
+            $(this).val("");
+            $(this).focus();
+        } else {
+            $("#notification").text("")
+        }
+    });
+	</script>
 </body>
 
 </html>

@@ -68,10 +68,12 @@ public class DangKiLopTap extends HttpServlet {
 				request.setAttribute("error", "Ngày đăng ký không được nhỏ hơn ngày hiện tại");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("views/admin/insert/dang-ky-lop-hoc.jsp");
 				dispatcher.forward(request, response);
+			}else {
+				String payStatus = request.getParameter("payStatus");
+				registerClassBo.insert(memberId, classId, registerDate, payStatus);
+				response.sendRedirect(request.getContextPath() + "/danh-sach-dang-ky-lop");
 			}
-			String payStatus = request.getParameter("payStatus");
-			registerClassBo.insert(memberId, classId, registerDate, payStatus);
-			response.sendRedirect(request.getContextPath() + "/danh-sach-dang-ky-lop");
+			
 		} else if ("cancel".equals(request.getParameter("cancel"))) {
 			response.sendRedirect(request.getContextPath() + "/danh-sach-dang-ky-lop");
 		} else {

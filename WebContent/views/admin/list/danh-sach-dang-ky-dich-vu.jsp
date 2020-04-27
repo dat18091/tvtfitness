@@ -42,7 +42,7 @@
 						<table class="table table-striped b-t b-light">
 							<thead>
 								<tr>
-									<th>Mã ID</th>
+									<th>Mã số</th>
 									<th>Mã Dịch Vụ</th>
 									<th>Mã Thành viên</th>
 									<th>Ngày đăng ký dịch vụ</th>

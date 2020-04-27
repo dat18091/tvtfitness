@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<form action="${pageContext.request.contextPath}/danh-sach-thanh-vien"
+	<form action="${pageContext.request.contextPath}/danh-sach-nhan-vien"
 		method="post">
 		<section id="container">
 			<%@include file="/common/admin/header.jsp"%>
