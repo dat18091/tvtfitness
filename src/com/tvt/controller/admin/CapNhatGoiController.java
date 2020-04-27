@@ -32,7 +32,7 @@ public class CapNhatGoiController extends HttpServlet {
 		Package package1 = null;
 		
 		try {
-			package1 = packageBO.searchById(packageId);
+			package1 = packageBO.getAllById(packageId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

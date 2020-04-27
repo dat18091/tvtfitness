@@ -34,8 +34,8 @@ public class PackageBO implements IPackageBO<Package>{
 	}
 
 	@Override
-	public Package searchById(String packageId) throws Exception {
-		return packageDAO.searchById(packageId);
+	public Package getAllById(String packageId) throws Exception {
+		return packageDAO.getAllById(packageId);
 	}
 	
 }

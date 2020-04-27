@@ -9,10 +9,15 @@ import java.util.List;
 import com.tvt.model.bean.Package;
 import com.tvt.common.ConnectDB;
 
+/**
+ * @author DAO
+ *
+ */
 public class PackageDAO implements IDAOBase<Package>{
 	private Connection con = ConnectDB.getConnect();
-	/* (non-Javadoc)
-	 * @see com.tvt.model.dao.IDAOBase#getAll()
+	
+	/**
+	 * 
 	 */
 	@Override
 	public List<Package> getAll() {
@@ -35,8 +40,8 @@ public class PackageDAO implements IDAOBase<Package>{
 		return packagesList;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tvt.model.dao.IDAOBase#insert(java.lang.Object)
+	/**
+	 * 
 	 */
 	@Override
 	public void insert(Package package1) {
@@ -53,8 +58,8 @@ public class PackageDAO implements IDAOBase<Package>{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tvt.model.dao.IDAOBase#update(java.lang.Object)
+	/**
+	 * 
 	 */
 	@Override
 	public void update(Package package1) {
@@ -71,8 +76,8 @@ public class PackageDAO implements IDAOBase<Package>{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.tvt.model.dao.IDAOBase#delete(java.lang.String)
+	/**
+	 * 
 	 */
 	@Override
 	public void delete(String packageId) {
@@ -93,7 +98,7 @@ public class PackageDAO implements IDAOBase<Package>{
 	 * @throws SQLException
 	 * hiển thị thông tin lên form cập nhật
 	 */
-	public Package searchById(String packageId) throws SQLException {
+	public Package getAllById(String packageId) throws SQLException {
 		String query = "SELECT * FROM PACKAGE WHERE packageId = ?";
 		PreparedStatement preparedStatement = con.prepareStatement(query);
 		preparedStatement.setString(1, packageId);
